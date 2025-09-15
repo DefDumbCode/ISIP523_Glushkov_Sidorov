@@ -19,3 +19,43 @@ for (int i = 0; i < a; i++)
 
     
 }
+
+bool p = true;
+while (p)
+{
+    Console.WriteLine("1. Вывод данных");
+    Console.WriteLine("2. Статистика (среднее, максимальное, минимальное, сумма)");
+    Console.WriteLine("3. Сортировка по цене (пузырьковая сортировка)");
+    Console.WriteLine("4. Конвертация валюты (пользователь вводит курс или выбирает из списка)");
+    Console.WriteLine("5. Поиск по названию ");
+    Console.WriteLine("0. Выход");
+
+    int o = Convert.ToInt32(Console.ReadLine());
+    switch (o)
+    {
+        case 1:
+            for(int i = 0; i < a; i++)
+            {
+                Console.WriteLine($"{Operations[i]}; {Prices[i]}");
+            }
+            break;
+        case 2:
+            int sum = 0;
+            for (int i = 0; i < a; i++)
+            {
+                sum += Prices[i];
+            }
+            Console.WriteLine($"Среднее: {sum/a}");
+
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
+        case 0:
+            return;
+    }
+
+}
