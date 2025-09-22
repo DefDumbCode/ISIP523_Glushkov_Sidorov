@@ -13,7 +13,26 @@ while (a)
     Console.WriteLine("7 - Поиск товара по категории");
     Console.WriteLine("0 - Выход");
 
-
+    int o = Convert.ToInt32(Console.ReadLine());
+    switch (o)
+    {
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
+        case 6:
+            break;
+        case 7:
+            break;
+        case 0:
+            return;
+    }
 }
 
 class Product
