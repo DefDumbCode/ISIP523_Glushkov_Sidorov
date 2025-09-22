@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!");
+List<Product> prod = new List<Product>();
 bool a = true;
 while (a)
 {
@@ -17,6 +18,30 @@ while (a)
     switch (o)
     {
         case 1:
+            Console.WriteLine("Введите название товара: ");
+            string b = Console.ReadLine();
+            Console.WriteLine("Введите цену товара: ");
+            double c = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Введите кол-во товара: ");
+            int d = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Выберите категорию товара: 1 - Еда, 2 - Оружие, 3 - Другое");
+            int y = Convert.ToInt32(Console.ReadLine());
+            Category r;
+            switch (y)
+            {
+                case 1:
+                    r = Category.Еда;
+                    prod.Add(new Product(b, c, d, r));
+                    break;
+                case 2:
+                     r = Category.Оружие;
+                    prod.Add(new Product(b, c, d, r));
+                    break;
+                case 3:
+                     r = Category.Другое;
+                    prod.Add(new Product(b, c, d, r));
+                    break;
+            }
             break;
         case 2:
             break;
@@ -39,11 +64,11 @@ class Product
 {
     public static int Id = 1;
     public string Name;
-    public int Price;
+    public double Price;
     public int Quant;
     public Category Categ;
 
-    public Product(string Name, int Price, int Quant, Category Categ)
+    public Product(string Name, double Price, int Quant, Category Categ)
     {
         Id++;
         this.Name = Name;
