@@ -28,23 +28,9 @@ while (a)
             Console.WriteLine("Введите кол-во товара: ");
             int d = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Выберите категорию товара: 1 - Еда, 2 - Оружие, 3 - Другое");
-            int y = Convert.ToInt32(Console.ReadLine());
-            Category r;
-            switch (y)
-            {
-                case 1:
-                    r = Category.Еда;
-                    prod.Add(new Product(p, b, c, d, r));
-                    break;
-                case 2:
-                     r = Category.Оружие;
-                    prod.Add(new Product(p, b, c, d, r));
-                    break;
-                case 3:
-                     r = Category.Другое;
-                    prod.Add(new Product(p, b, c, d, r));
-                    break;
-            }
+            int f = Convert.ToInt32(Console.ReadLine());
+            Category r = (Category)f;
+            prod.Add(new Product(p, b, c, d, r));
             break;
         case 2:
             Console.Write("Введите ID товара для удаления: ");
