@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!");
 List<Product> prod = new List<Product>();
+
 bool a = true;
 while (a)
 {
@@ -18,6 +19,8 @@ while (a)
     switch (o)
     {
         case 1:
+            Console.WriteLine("Введите ID товара: ");
+            int p = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Введите название товара: ");
             string b = Console.ReadLine();
             Console.WriteLine("Введите цену товара: ");
@@ -31,19 +34,37 @@ while (a)
             {
                 case 1:
                     r = Category.Еда;
-                    prod.Add(new Product(b, c, d, r));
+                    prod.Add(new Product(p, b, c, d, r));
                     break;
                 case 2:
                      r = Category.Оружие;
-                    prod.Add(new Product(b, c, d, r));
+                    prod.Add(new Product(p, b, c, d, r));
                     break;
                 case 3:
                      r = Category.Другое;
-                    prod.Add(new Product(b, c, d, r));
+                    prod.Add(new Product(p, b, c, d, r));
                     break;
             }
             break;
         case 2:
+            Console.Write("Введите ID товара для удаления: ");
+            int removeId = Convert.ToInt32(Console.ReadLine());
+
+            bool found = false;
+
+            for (int i = 0; i < prod.Count; i++)
+            {
+                if (prod[i].Id == removeId)
+                {
+                    prod.RemoveAt(i);
+                    found = true;
+                    Console.WriteLine("Товар удалён!");
+                    break;
+                }
+            }
+
+            if (!found)
+                Console.WriteLine("Товар с таким ID не найден.");
             break;
         case 3:
             break;
@@ -62,15 +83,16 @@ while (a)
 
 class Product
 {
-    public static int Id = 1;
+    public static int id = 1;
+    public int Id;
     public string Name;
     public double Price;
     public int Quant;
     public Category Categ;
 
-    public Product(string Name, double Price, int Quant, Category Categ)
+    public Product(int Id, string Name, double Price, int Quant, Category Categ)
     {
-        Id++;
+        this.Id = Id;
         this.Name = Name;
         this.Price = Price;
         this.Quant = Quant;
