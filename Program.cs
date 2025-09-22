@@ -1,4 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System.ComponentModel;
+
 Console.WriteLine("Hello, World!");
 List<Product> prod = new List<Product>();
 List<double> sales = new List<double>();
@@ -25,12 +27,32 @@ while (a)
         case 1:
             Console.WriteLine("Введите ID товара: ");
             int p = Convert.ToInt32(Console.ReadLine());
+            if (p == null)
+            {
+                Console.WriteLine("Без пустого айди нельзя");
+                break;
+            }
             Console.WriteLine("Введите название товара: ");
             string b = Console.ReadLine();
+            if (b == null)
+            {
+                Console.WriteLine("Без пустого имени нельзя");
+                break;
+            }
             Console.WriteLine("Введите цену товара: ");
             double c = Convert.ToDouble(Console.ReadLine());
+            if (c == null)
+            {
+                Console.WriteLine("Без пустой цены нельзя");
+                break;
+            }
             Console.WriteLine("Введите кол-во товара: ");
             int d = Convert.ToInt32(Console.ReadLine());
+            if (d == null)
+            {
+                Console.WriteLine("Без товара нельзя");
+                break;
+            }
             Console.WriteLine("Выберите категорию товара: 1 - Еда, 2 - Оружие, 3 - Другое");
             int f = Convert.ToInt32(Console.ReadLine());
             Category r = (Category)f;
@@ -57,20 +79,57 @@ while (a)
                 Console.WriteLine("Товар с таким ID не найден.");
             break;
         case 3:
+            int l = 0;
             Console.Write("Введите ID товара который хочите заказатт: ");
             int dih = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Сколько хотиете заказать? ");
-            int bruh = Convert.ToInt32(Console.ReadLine());
-            prod[dih].Quant += bruh;
+            for (int i = 0; i < prod.Count; i++)
+            {
+                if (prod[i].Id == dih)
+                {
+                    Console.WriteLine("Сколько хотиете заказать? ");
+                    int bruh = Convert.ToInt32(Console.ReadLine());
+                    prod[dih].Quant += bruh;
+                    l++;
+
+                }
+            }
+            if (l == 0) {
+                Console.WriteLine("НУ ТЫ ТУПОЙ ИЛИ НЕТ, ВВЕДИ СУЩЕСТВУЮЩИЙ ID!!!!11111");
+                break;
+            }
             break;
+
         case 4:
+            int m = 0;
             Console.Write("Введите ID товара который хочите продать: ");
             int duh = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Сколько хотите продать? ");
-            int brb = Convert.ToInt32(Console.ReadLine());
-            double sale = prod[duh].Price * brb;
-            sales.Add(sale);
-            Console.WriteLine($"Получено {sale} деньгов");
+            for (int i = 0; i < prod.Count; i++)
+            {
+                if (prod[i].Id == duh)
+                {
+                    Console.WriteLine("Сколько хотите продать? ");
+                    int brb = Convert.ToInt32(Console.ReadLine());
+                    if (prod[i].Quant >= brb)
+                    {
+                        double sale = prod[duh].Price * brb;
+                        sales.Add(sale);
+                        Console.WriteLine($"Получено {sale} деньгов");
+                        m++;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ты не настолько богатый, идиот.");
+                        m++;
+                        break;
+                    }
+
+                }
+            }
+            if (m == 0)
+            {
+                Console.WriteLine("НУ ТЫ ТУПОЙ ИЛИ НЕТ, ВВЕДИ СУЩЕСТВУЮЩИЙ ID!!!!11111");
+                break;
+            }
             break;
         case 5:
             Console.Write("Введите ID товара для поиска: ");
