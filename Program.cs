@@ -90,11 +90,13 @@ while (a)
             }
 
             if (!foundd)
+            {
                 Console.WriteLine("\n Товар с таким ID не найден, так что вот всё:");
                 foreach (Product product in prod)
                 {
                     product.PrintInfo();
                 }
+            }
             break;
         case 6:
             int x = 0;
@@ -104,16 +106,12 @@ while (a)
             for (int i = 0; i < prod.Count; i++)
             {
                 bool result1 = prod[i].Name.ToLower().Contains(poisk);
-                if (result1 == true)
-                {
-                    Console.WriteLine(prod[i].Name);
-                    x++;
-                }
                 bool result2 = prod[i].Name.ToUpper().Contains(poisk);
-                if (result2 == true)
+                if (result1 == true || result2 == true)
                 {
-                    Console.WriteLine(prod[i].Name);
+                    prod[i].PrintInfo();
                     x++;
+                    break;
                 }
             }
             if(x == 0)
@@ -123,9 +121,19 @@ while (a)
                 {
                     product.PrintInfo();
                 }
-            }
+            } 
             break;
         case 7:
+            Console.WriteLine("Выберите категорию для поиска 1 - Еда, 2 - Оружие, 3 - Другое");
+            int v = Convert.ToInt32(Console.ReadLine());
+            Category vv = (Category)v;
+            for (int i = 0; i < prod.Count; i++)
+            {
+                if (prod[i].Categ == vv)
+                {
+                    prod[i].PrintInfo();
+                }
+            }
             break;
         case 0:
             return;
