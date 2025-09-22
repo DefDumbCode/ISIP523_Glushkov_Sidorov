@@ -53,8 +53,14 @@ while (a)
                 Console.WriteLine("Товар с таким ID не найден.");
             break;
         case 3:
+            Console.Write("Введите ID товара который хочите заказатт: ");
+            int dih = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Сколько хотиете заказать? ");
+            int bruh = Convert.ToInt32(Console.ReadLine());
+            prod[dih].Quant += bruh;
             break;
         case 4:
+
             break;
         case 5:
             break;
