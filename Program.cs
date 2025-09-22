@@ -97,7 +97,33 @@ while (a)
                 }
             break;
         case 6:
-            
+            int x = 0;
+            Console.WriteLine("Введите название товара для поиска");
+            string poisk = Console.ReadLine();
+            Console.WriteLine("Результаты поиска: ");
+            for (int i = 0; i < prod.Count; i++)
+            {
+                bool result1 = prod[i].Name.ToLower().Contains(poisk);
+                if (result1 == true)
+                {
+                    Console.WriteLine(prod[i].Name);
+                    x++;
+                }
+                bool result2 = prod[i].Name.ToUpper().Contains(poisk);
+                if (result2 == true)
+                {
+                    Console.WriteLine(prod[i].Name);
+                    x++;
+                }
+            }
+            if(x == 0)
+            {
+                Console.WriteLine("\n Товар с таким названием не найден, так что вот всё:");
+                foreach (Product product in prod)
+                {
+                    product.PrintInfo();
+                }
+            }
             break;
         case 7:
             break;
