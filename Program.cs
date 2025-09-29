@@ -6,20 +6,35 @@ int words = 0;
 int sent = 0;
 string small_word = "";
 string big_word = "";
-foreach(char let in text)
+int vowel = 0;
+int cons = 0;
+foreach (char let in text)
 {
-    if(let == ' ')
+    if (let == ' ')
     {
         words++;
     }
-    if (let == '-')
+    else if (let == '-')
     {
         words--;
     }
-    if(let == '.' || let == '!' || let == '?')
+    else if (let == '.' || let == '!' || let == '?')
     {
         sent++;
     }
+    else if (let == 'у' || let == 'е' || let == 'э' || let == 'о' || let == 'а' || let == 'ы' || let == 'я' || let == 'и' || let == 'ю' || let == 'ё')
+    {
+         vowel ++;
+    }
+    else if (let == '"' || let == ',' || let == ':')
+    {
+        continue;
+    }
+    else
+    {
+        cons++;
+    }
+
     count++;
     
 }
@@ -27,6 +42,8 @@ words++;
 if (count > 100) {
     Console.WriteLine(words);
     Console.WriteLine(sent);
+    Console.WriteLine(vowel);
+    Console.WriteLine(cons);
 }
 else
 {
