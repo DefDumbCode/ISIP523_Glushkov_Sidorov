@@ -1,8 +1,12 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-double count = 0;
-int words = 0;
-int sent = 0;
+using Microsoft.VisualBasic;
+using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
+
+double c = 0;
+int w = 0;
+int s = 0;
 List<string> small = new List<string>();
 List<string> big = new List<string>();
 Dictionary <char, double> dictionary = new Dictionary<char, double>();
@@ -10,8 +14,10 @@ string small_word = "бебебе";
 string big_word = "б";
 string small_check = "";
 string big_check = "";
-int vowel = 0;
-int cons = 0;
+int v = 0;
+int con = 0;
+
+List <Stat> statist = new List<Stat>();
 
 bool a = true;
 while (a)
@@ -26,14 +32,26 @@ while (a)
     {
         case 1:
             {
+                c = 0;
+                w = 0;
+                s = 0;
+                v = 0;
+                con = 0;
+                small.Clear();
+                big.Clear();
+                dictionary.Clear();
+                small_word = "бебебе";
+                big_word = "б";
+                small_check = "";
+                big_check = "";
 
                 Console.WriteLine("Введите свой текст: ");
-                string text = Console.ReadLine();
-                foreach (char let in text.ToLower())
+                string t = Console.ReadLine();
+                foreach (char let in t.ToLower())
                 {
                     if (let == ' ')
                     {
-                        words++;
+                        w++;
                         if (small_check == "")
                         {
                             continue;
@@ -65,16 +83,16 @@ while (a)
                     }
                     else if (let == '-')
                     {
-                        words--;
+                        w--;
                     }
                     else if (let == '.' || let == '!' || let == '?')
                     {
-                        sent++;
+                        s++;
 
                     }
                     else if (let == 'у' || let == 'е' || let == 'э' || let == 'о' || let == 'а' || let == 'ы' || let == 'я' || let == 'и' || let == 'ю' || let == 'ё')
                     {
-                        vowel++;
+                        v++;
                         small_check += let;
                         big_check += let;
                         if (dictionary.ContainsKey(let))
@@ -92,7 +110,7 @@ while (a)
                     }
                     else
                     {
-                        cons++;
+                        c++;
                         small_check += let;
                         big_check += let;
                         if (dictionary.ContainsKey(let))
@@ -106,17 +124,17 @@ while (a)
                     }
                     //Console.WriteLine(small_word);
                     //Console.WriteLine(big_word);
-                    count++;
+                    c++;
 
                 }
-                words++;
-                if (count > 100)
+                w++;
+                if (c > 100)
                 {
-                    Console.WriteLine($"Знаков = {count}");
-                    Console.WriteLine($"Слов = {words}");
-                    Console.WriteLine($"Предложений = {sent}");
-                    Console.WriteLine($"Гласных = {vowel}");
-                    Console.WriteLine($"Согласных = {cons}");
+                    Console.WriteLine($"Знаков = {c}");
+                    Console.WriteLine($"Слов = {w}");
+                    Console.WriteLine($"Предложений = {s}");
+                    Console.WriteLine($"Гласных = {v}");
+                    Console.WriteLine($"Согласных = {con}");
                     Console.WriteLine("Список самых маленьких слов: ");
                     foreach (var slovo in small)
                     {
@@ -131,8 +149,8 @@ while (a)
                     Console.WriteLine("Процентное соотношение букв в тексте: ");
                     foreach (var ba in dictionary)
                     {
-                        double percentage = (ba.Value / count) * 100;
-                        Console.WriteLine($"Буква = {ba.Key}; Кол-во = {ba.Value}; Процент от {count} = {percentage:f3};");
+                        double percentage = (ba.Value / c) * 100;
+                        Console.WriteLine($"Буква = {ba.Key}; Кол-во = {ba.Value}; Процент от {c} = {percentage:f3};");
                     }
 
                 }
@@ -141,16 +159,80 @@ while (a)
                     Console.WriteLine("В тексте меньше ста символов!");
                 }
 
+                statist.Add(new Stat(t, c, w, s, v, con, small, big, dictionary));
+
                 break;
             }
         case 2:
             {
+                for (int i = 0; i < statist.Count; i++)
+                {
+                    Console.WriteLine($"Текст #{i + 1}");
+                    statist[i].PrintInfo();
+                }
                 break;
             }
         case 0:
             {
                 return;
             }
+    }
+}
+
+class Stat
+{
+
+
+    public string text;
+    public double count;
+    public int words;
+    public int sent;
+    public int vowel;
+    public int cons;
+    public List<string> small;
+    public List<string> big;
+    public Dictionary<char, double> dictionary;
+    
+
+    public Stat(string text, double count, int words, int sent, int vowel, int cons, List<string> small, List<string> big, Dictionary<char, double> dictionary)
+    {
+        this.text = text;
+        this.count = count;
+        this.words = words;
+        this.sent = sent;
+        this.vowel = vowel;
+        this.cons = cons;
+        this.small = small;
+        this.big = big;
+        this.dictionary = dictionary;
+    }
+    public void PrintInfo()
+    {
+        Console.WriteLine($"Текст: {text}");
+        Console.WriteLine($"Знаки: {count}");
+        Console.WriteLine($"Слов: {words}");
+        Console.WriteLine($"Предложений: {sent}");
+        Console.WriteLine($"Гласных: {vowel}");
+        Console.WriteLine($"Согласных: {cons}");
+
+        Console.WriteLine("Самые маленькие слова:");
+        foreach (var be in small)
+        {
+            Console.WriteLine(be);
+        }
+
+        Console.WriteLine("Самые большие слова:");
+        foreach (var ba in big)
+        {
+            Console.WriteLine(ba);
+        }
+
+        Console.WriteLine("Частота букв:");
+        foreach (var letter in dictionary)
+        {
+            double percentage = (letter.Value / count) * 100;
+            Console.WriteLine($"  {letter.Key}: {letter.Value} шт. ({percentage:f2}%)");
+        }
     }
 }
 
