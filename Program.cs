@@ -1,11 +1,12 @@
 ﻿// See https://aka.ms/new-console-template for more information
 Console.WriteLine("Введите свой текст: ");
 string text = Console.ReadLine();
-int count = 0;
+double count = 0;
 int words = 0;
 int sent = 0;
 List<string> small = new List<string>();
 List<string> big = new List<string>();
+Dictionary <char, double> dictionary = new Dictionary<char, double>();
 string small_word = "бебебе";
 string big_word = "б";
 string small_check = "";
@@ -60,6 +61,14 @@ foreach (char let in text.ToLower())
         vowel ++;
         small_check += let;
         big_check += let;
+        if (dictionary.ContainsKey(let))
+        {
+            dictionary[let]++;
+        }
+        else
+        {
+            dictionary[let] = 1;
+        }
     }
     else if (let == '"' || let == ',' || let == ':')
     {
@@ -70,6 +79,14 @@ foreach (char let in text.ToLower())
         cons++;
         small_check += let;
         big_check += let;
+        if (dictionary.ContainsKey(let))
+        {
+            dictionary[let]++;
+        }
+        else
+        {
+            dictionary[let] = 1;
+        }
     }
     //Console.WriteLine(small_word);
     //Console.WriteLine(big_word);
@@ -78,10 +95,11 @@ foreach (char let in text.ToLower())
 }
 words++;
 if (count > 100) {
-    Console.WriteLine(words);
-    Console.WriteLine(sent);
-    Console.WriteLine(vowel);
-    Console.WriteLine(cons);
+    Console.WriteLine($"Знаков = {count}");
+    Console.WriteLine($"Слов = {words}");
+    Console.WriteLine($"Предложений = {sent}");
+    Console.WriteLine($"Гласных = {vowel}");
+    Console.WriteLine($"Согласных = {cons}");
     Console.WriteLine("Список самых маленьких слов: ");
     foreach (var slovo in small)
     {
@@ -91,6 +109,13 @@ if (count > 100) {
     foreach (var be in big)
     {
         Console.WriteLine(be);
+    }
+
+    Console.WriteLine("Процентное соотношение букв в тексте: ");
+    foreach (var ba in dictionary)
+    {
+        double percentage = (ba.Value / count) * 100;
+        Console.WriteLine($"Буква = {ba.Key}; Кол-во = {ba.Value}; Процент от {count} = {percentage:f3};");
     }
 
 }
