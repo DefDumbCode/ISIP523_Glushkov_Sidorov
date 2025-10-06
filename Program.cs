@@ -151,14 +151,37 @@ while (t)
         //Сортировка по названию
         case 6:
             Bookshelf = Bookshelf.OrderBy(x => x.name).ToList();
+            Console.WriteLine("Книги отсортированы по названию!");
             break;
         //Сортировка по году
         case 7:
-
+            Bookshelf = Bookshelf.OrderBy(x => x.publish_year).ToList();
+            Console.WriteLine("Книги отсортированы по году выпуска!");
             break;
         //Дешевка + дорогая
         case 8:
-
+            int min = 10000000;
+            int ind_min = 0;
+            int max = 0;
+            int ind_max = 0;
+            for (int m = 0; m < Bookshelf.Count; m++)
+            {
+                if (Bookshelf[m].price < min)
+                {
+                    min = Bookshelf[m].price;
+                    ind_min = m;
+                }
+                if (Bookshelf[m].price > max)
+                {
+                    max = Bookshelf[m].price;
+                    ind_max = m;
+                }
+                Console.WriteLine("Самая дешевая книга: ");
+                Bookshelf[ind_min].PrintInfo();
+                Console.WriteLine("--------------------------------------------------------");
+                Console.WriteLine("Самая дорогая книга: ");
+                Bookshelf[ind_max].PrintInfo();
+            }
             break;
         //Группировка книг по автору
         case 9:
