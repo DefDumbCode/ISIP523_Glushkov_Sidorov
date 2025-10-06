@@ -1,9 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
 
-
-bool a = true;
-while (a)
+List<Book> Bookshelf = new List<Book>();
+bool t = true;
+while (t)
 {
     Console.WriteLine("----------МЕНЮ----------");
     Console.WriteLine("1 - Добавить книгу");
@@ -15,6 +14,56 @@ while (a)
     Console.WriteLine("7 - Отсортировать книги по году");
     Console.WriteLine("8 - Вывести самую дорогую и самую дешевую книгу");
     Console.WriteLine("9 - Группировка книг по автору");
+
+    int o = Convert.ToInt32(Console.ReadLine());
+    switch (o)
+    {
+        case 1:
+            Console.WriteLine("Введите ID: ");
+            int i = Convert.ToInt32(Console.ReadLine());
+            if (i == null)
+            {
+                Console.WriteLine("Без пустого айди нельзя");
+                break;
+            }
+            Console.WriteLine("Введите название книги: ");
+            string n = Console.ReadLine();
+            if (n == null)
+            {
+                Console.WriteLine("Без пустого имени нельзя");
+                break;
+            }
+            Console.WriteLine("Введите имя автора: ");
+            string a = Console.ReadLine();
+            if (a == null)
+            {
+                Console.WriteLine("Без пустого автора нельзя");
+                break;
+            }
+            Console.WriteLine("Выберите категорию товара: 1 - Еда, 2 - Оружие, 3 - Другое");
+            int c = Convert.ToInt32(Console.ReadLine());
+            Category g = (Category)c;
+
+            Console.WriteLine("Введите год выпуска: ");
+            int y = Convert.ToInt32(Console.ReadLine());
+            if (y == null)
+            {
+                Console.WriteLine("Без года выпуска нельзя");
+                break;
+            }
+            Console.WriteLine("Введите цену за товар: ");
+            int p = Convert.ToInt32(Console.ReadLine());
+            if (p == null)
+            {
+                Console.WriteLine("Без цены нельзя");
+                break;
+            }
+            Bookshelf.Add(new Book(i, n, a, g, y, p));
+            break;
+        case 0:
+            return;
+    }
+
 }
 
 class Book
