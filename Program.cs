@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Xml.Linq;
 
 List<Book> Bookshelf = new List<Book>();
+List<Book> Shoping = new List<Book>();
 bool t = true;
 while (t)
 {
@@ -19,6 +20,9 @@ while (t)
     Console.WriteLine("8 - Вывести самую дорогую и самую дешевую книгу");
     Console.WriteLine("9 - Группировка книг по автору");
     Console.WriteLine("10 - Вывод всего товара");
+    Console.WriteLine("11 - Вывод всего товара");
+    Console.WriteLine("12 - Добавить в Корзину");
+    Console.WriteLine("13 - Посмотреть Корзину");
     Console.WriteLine("0 - Выход");
 
     int o = Convert.ToInt32(Console.ReadLine());
@@ -191,7 +195,7 @@ while (t)
         break;
     }
             int amount = 1;
-            string Cur_author = Bookshelf[0].author
+            string Cur_author = Bookshelf[0].author;
             Bookshelf = Bookshelf.OrderBy(x => x.author).ToList();
             for (int m = 0; (m < Bookshelf.Count); m++)
             {
@@ -213,6 +217,73 @@ while (t)
                 Console.WriteLine("------------------------------------------------");
                 Bookshelf[m].PrintInfo();
             }
+            break;
+        case 11:
+            int tt = 1;
+            Console.WriteLine("Вводите книги в следующем формате: Название;Автор;Жанр;Год;Цена. При выходи введите 0");
+            while (tt != 0)
+            {
+                string blok = Console.ReadLine();
+                if (blok == "0")
+                {
+                    tt = 0;
+                }
+
+            }
+            break;
+        case 12:
+            Console.WriteLine("Введите ID: ");
+            int ii = Convert.ToInt32(Console.ReadLine());
+            if (ii == null)
+            {
+                Console.WriteLine("Без пустого айди нельзя");
+                break;
+            }
+            Console.WriteLine("Введите название книги: ");
+            string nn = Console.ReadLine();
+            if (nn == null)
+            {
+                Console.WriteLine("Без пустого имени нельзя");
+                break;
+            }
+            Console.WriteLine("Введите имя автора: ");
+            string aa = Console.ReadLine();
+            if (aa == null)
+            {
+                Console.WriteLine("Без пустого автора нельзя");
+                break;
+            }
+            Console.WriteLine("Выберите жанр книги: 1 - Детектив, 2 - Фэнтези, 3 - Ужасы");
+            int cc = Convert.ToInt32(Console.ReadLine());
+            Category gg = (Category)cc;
+
+            Console.WriteLine("Введите год выпуска: ");
+            int yy = Convert.ToInt32(Console.ReadLine());
+            if (yy == null)
+            {
+                Console.WriteLine("Без года выпуска нельзя");
+                break;
+            }
+            Console.WriteLine("Введите цену за товар: ");
+            int pp = Convert.ToInt32(Console.ReadLine());
+            if (pp == null)
+            {
+                Console.WriteLine("Без цены нельзя");
+                break;
+            }
+            Shoping.Add(new Book(ii, nn, aa, gg, yy, pp));
+            break;
+        case 13:
+            int sum = 0;
+            Console.WriteLine("КОРЗИНА:");
+            for (int m = 0; m < Shoping.Count; m++)
+            {
+                Console.WriteLine("------------------------------------------------");
+                Shoping[m].PrintInfo();
+                sum += Shoping[m].price;
+            }
+            Console.WriteLine("------------------------------------------------");
+            Console.WriteLine($"ИТОГОВАЯ СТОИМОСТЬ КОРЗИНЫ: {sum}");
             break;
         case 0:
             return;
