@@ -185,7 +185,20 @@ while (t)
             break;
         //Группировка книг по автору
         case 9:
-
+            int amount = 1;
+            Bookshelf = Bookshelf.OrderBy(x => x.author).ToList();
+            for (int m = 0; (m < Bookshelf.Count - 1); m++)
+            {
+                if(Bookshelf[m].author == Bookshelf[m + 1].author)
+                {
+                    amount++;
+                }
+                else
+                {
+                    Console.WriteLine($"\n Автор - {Bookshelf[m].author}; Кол-во книг - {amount}");
+                    amount = 1;
+                }
+            }
             break;
         case 10:
             for (int m = 0; m < Bookshelf.Count; m++)
