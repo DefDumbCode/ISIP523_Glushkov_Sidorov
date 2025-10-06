@@ -60,6 +60,27 @@ while (t)
             }
             Bookshelf.Add(new Book(i, n, a, g, y, p));
             break;
+        case 2:
+            Console.Write("Введите ID товара для удаления: ");
+            int removeId = Convert.ToInt32(Console.ReadLine());
+
+            bool found = false;
+
+            for (int m = 0; m < Bookshelf.Count; m++)
+            {
+                if (Bookshelf[m].Id == removeId)
+                {
+                    Bookshelf.RemoveAt(m);
+                    found = true;
+                    Console.WriteLine("Товар удалён!");
+                    break;
+                }
+            }
+
+            if (!found)
+                Console.WriteLine("Товар с таким ID не найден.");
+            break;
+
         case 0:
             return;
     }
