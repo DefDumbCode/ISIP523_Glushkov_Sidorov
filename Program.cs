@@ -18,6 +18,8 @@ while (t)
     Console.WriteLine("7 - Отсортировать книги по году");
     Console.WriteLine("8 - Вывести самую дорогую и самую дешевую книгу");
     Console.WriteLine("9 - Группировка книг по автору");
+    Console.WriteLine("10 - Вывод всего товара");
+    Console.WriteLine("0 - Выход");
 
     int o = Convert.ToInt32(Console.ReadLine());
     switch (o)
@@ -44,7 +46,7 @@ while (t)
                 Console.WriteLine("Без пустого автора нельзя");
                 break;
             }
-            Console.WriteLine("Выберите категорию товара: 1 - Еда, 2 - Оружие, 3 - Другое");
+            Console.WriteLine("Выберите жанр книги: 1 - Детектив, 2 - Фэнтези, 3 - Ужасы");
             int c = Convert.ToInt32(Console.ReadLine());
             Category g = (Category)c;
 
@@ -138,12 +140,35 @@ while (t)
             Console.WriteLine("Выберите категорию для поиска 1 - Детектив, 2 - Фэнтези, 3 - Ужасы");
             int v = Convert.ToInt32(Console.ReadLine());
             Category vv = (Category)v;
-            for (int m = 0; m < Bookshelf.Count; i++)
+            for (int m = 0; m < Bookshelf.Count; m++)
             {
                 if (Bookshelf[m].categ == vv)
                 {
                     Bookshelf[m].PrintInfo();
                 }
+            }
+            break;
+        //Сортировка по названию
+        case 6:
+            Bookshelf = Bookshelf.OrderBy(x => x.name).ToList();
+            break;
+        //Сортировка по году
+        case 7:
+
+            break;
+        //Дешевка + дорогая
+        case 8:
+
+            break;
+        //Группировка книг по автору
+        case 9:
+
+            break;
+        case 10:
+            for (int m = 0; m < Bookshelf.Count; m++)
+            {
+                Console.WriteLine("------------------------------------------------");
+                Bookshelf[m].PrintInfo();
             }
             break;
         case 0:
