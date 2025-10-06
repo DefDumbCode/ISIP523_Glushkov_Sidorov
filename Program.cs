@@ -65,7 +65,7 @@ while (t)
             Bookshelf.Add(new Book(i, n, a, g, y, p));
             break;
         case 2:
-            Console.Write("Введите ID товара для удаления: ");
+            Console.Write("Введите ID книги для удаления: ");
             int removeId = Convert.ToInt32(Console.ReadLine());
 
             bool found = false;
@@ -76,17 +76,17 @@ while (t)
                 {
                     Bookshelf.RemoveAt(m);
                     found = true;
-                    Console.WriteLine("Товар удалён!");
+                    Console.WriteLine("Книга удалена!");
                     break;
                 }
             }
 
             if (!found)
-                Console.WriteLine("Товар с таким ID не найден.");
+                Console.WriteLine("Книга с таким ID не найдена.");
             break;
-            case 3:
+        case 3:
             int x = 0;
-            Console.WriteLine("Введите название товара для поиска");
+            Console.WriteLine("Введите название книги для поиска");
             string poisk = Console.ReadLine();
             Console.WriteLine("Результаты поиска: ");
             for (int m = 0; m < Bookshelf.Count; m++)
@@ -102,10 +102,47 @@ while (t)
             }
             if (x == 0)
             {
-                Console.WriteLine("\n Товар с таким названием не найден, так что вот всё:");
+                Console.WriteLine("\n Книга с таким названием не найдена, так что вот всё:");
                 foreach (Book stuff in Bookshelf)
                 {
                     stuff.PrintInfo();
+                }
+            }
+            break;
+        case 4:
+            int z = 0;
+            Console.WriteLine("Введите автора для поиска");
+            string find = Console.ReadLine();
+            Console.WriteLine("Результаты поиска: ");
+            for (int m = 0; m < Bookshelf.Count; m++)
+            {
+                bool result1 = Bookshelf[m].author.ToLower().Contains(find);
+                bool result2 = Bookshelf[m].author.ToUpper().Contains(find);
+                if (result1 == true || result2 == true)
+                {
+                    Bookshelf[m].PrintInfo();
+                    z++;
+                    break;
+                }
+            }
+            if (z == 0)
+            {
+                Console.WriteLine("\n Книги этого автора не найдены, так что вот всё:");
+                foreach (Book stuff in Bookshelf)
+                {
+                    stuff.PrintInfo();
+                }
+            }
+            break;
+        case 5:
+            Console.WriteLine("Выберите категорию для поиска 1 - Детектив, 2 - Фэнтези, 3 - Ужасы");
+            int v = Convert.ToInt32(Console.ReadLine());
+            Category vv = (Category)v;
+            for (int m = 0; m < Bookshelf.Count; i++)
+            {
+                if (Bookshelf[m].categ == vv)
+                {
+                    Bookshelf[m].PrintInfo();
                 }
             }
             break;
