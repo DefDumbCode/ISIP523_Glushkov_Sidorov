@@ -1,5 +1,9 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Diagnostics;
+using System.Xml.Linq;
+
 List<Book> Bookshelf = new List<Book>();
 bool t = true;
 while (t)
@@ -80,7 +84,31 @@ while (t)
             if (!found)
                 Console.WriteLine("Товар с таким ID не найден.");
             break;
-
+            case 3:
+            int x = 0;
+            Console.WriteLine("Введите название товара для поиска");
+            string poisk = Console.ReadLine();
+            Console.WriteLine("Результаты поиска: ");
+            for (int m = 0; m < Bookshelf.Count; m++)
+            {
+                bool result1 = Bookshelf[m].name.ToLower().Contains(poisk);
+                bool result2 = Bookshelf[m].name.ToUpper().Contains(poisk);
+                if (result1 == true || result2 == true)
+                {
+                    Bookshelf[m].PrintInfo();
+                    x++;
+                    break;
+                }
+            }
+            if (x == 0)
+            {
+                Console.WriteLine("\n Товар с таким названием не найден, так что вот всё:");
+                foreach (Book stuff in Bookshelf)
+                {
+                    stuff.PrintInfo();
+                }
+            }
+            break;
         case 0:
             return;
     }
@@ -108,9 +136,18 @@ class Book
         this.categ = categ;
         this.publish_year = publish_year;
         this.price = price;
-
     }
-    
+
+    public void PrintInfo()
+    {
+        Console.WriteLine($"Книга НОМЕР {Id}");
+        Console.WriteLine($"Название: {name}");
+        Console.WriteLine($"Автор: {author}");
+        Console.WriteLine($"Жанр: {categ}");
+        Console.WriteLine($"Год выпуска: {publish_year}");
+        Console.WriteLine($"Цена: {price}");
+    }
+
 }
 enum Category
 {
