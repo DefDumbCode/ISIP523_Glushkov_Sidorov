@@ -20,7 +20,7 @@ while (t)
     Console.WriteLine("8 - Вывести самую дорогую и самую дешевую книгу");
     Console.WriteLine("9 - Группировка книг по автору");
     Console.WriteLine("10 - Вывод всего товара");
-    Console.WriteLine("11 - Вывод всего товара");
+    Console.WriteLine("11 - Пакетный импорт.");
     Console.WriteLine("12 - Добавить в Корзину");
     Console.WriteLine("13 - Посмотреть Корзину");
     Console.WriteLine("0 - Выход");
@@ -220,13 +220,57 @@ while (t)
             break;
         case 11:
             int tt = 1;
-            Console.WriteLine("Вводите книги в следующем формате: Название;Автор;Жанр;Год;Цена. При выходи введите 0");
+            Console.WriteLine("Вводите книги в следующем формате: Id;Название;Автор;Жанр(1 - Детектив, 2 - Фэнтези, 3 - Ужасы);Год;Цена. При выходи введите 0");
             while (tt != 0)
             {
                 string blok = Console.ReadLine();
                 if (blok == "0")
                 {
                     tt = 0;
+                }
+                else
+                {
+                    string[] data = blok.Split(new char[] { ';' },
+                    StringSplitOptions.RemoveEmptyEntries);
+                    int iii;
+                    int.TryParse(data[0], out iii);
+                    if (iii == null)
+                    {
+                        Console.WriteLine("Без пустого айди нельзя");
+                        break;
+                    }
+                    string nnn;
+                    nnn = data[1];
+                    if (nnn == null)
+                    {
+                        Console.WriteLine("Без пустого имени нельзя");
+                        break;
+                    }
+                    string aaa;
+                    aaa = data[2];
+                    if (aaa == null)
+                    {
+                        Console.WriteLine("Без пустого автора нельзя");
+                        break;
+                    }
+                    int ccc;
+                    int.TryParse(data[3], out ccc);
+                    Category ggg = (Category)ccc;
+                    int yyy;
+                    int.TryParse(data[4], out yyy);
+                    if (yyy == null)
+                    {
+                        Console.WriteLine("Без года выпуска нельзя");
+                        break;
+                    }
+                    int ppp;
+                    int.TryParse(data[5], out ppp);
+                    if (ppp == null){
+                        Console.WriteLine("Без цены нельзя");
+                        break;
+                    }
+                    Bookshelf.Add(new Book(iii, nnn, aaa, ggg, yyy, ppp));
+
                 }
 
             }
