@@ -199,6 +199,15 @@ while (t)
             }
             break;
         case 7:
+            Console.WriteLine("Введите ФИО по которому хотите провести поиски: ");
+            string bebebe = Console.ReadLine();
+            for(int x = 0; x < Courses.Count; x++)
+            {
+                if (Courses[x].CourseNames.Contains(bebebe))
+                {
+                    Console.WriteLine(Courses[x].Title);
+                }
+            }
             break;
         case 8:
             for (int p = 0; p < Students.Count; p++)
@@ -222,10 +231,10 @@ while (t)
 class Course
 {
     private int Id;
-    private string Title;
+    public string Title;
     private string Description;
     private string Teacher;
-    private List<string> CourseNames;
+    public List<string> CourseNames;
 
     public Course(int Id, string Title, string Description, string Teacher, List<string> CourseNames)
     {
