@@ -3,8 +3,9 @@ using System.Reflection;
 
 Console.WriteLine("Hello, World!");
 
-List<string> Courses = new List<string>();
 List<string> Names = new List<string>();
+List<Student> Students = new List<Student>();
+
 
 bool t = true;
 while (t)
@@ -24,8 +25,61 @@ while (t)
     switch (o)
     {
         case 1:
+            Console.WriteLine("Введите ID: ");
+            int i = Convert.ToInt32(Console.ReadLine());
+            if (i == null)
+            {
+                Console.WriteLine("Без пустого айди нельзя");
+                break;
+            }
+            Console.WriteLine("Введите ФИО: ");
+            string n = Console.ReadLine();
+            if (n == null)
+            {
+                Console.WriteLine("Без пустого имени нельзя");
+                break;
+            }
+            Console.WriteLine("Введите Дату рождения: (YYYY,MM,DD)");
+            DateOnly d = DateOnly.Parse(Console.ReadLine());
+            bool b = DateOnly.TryParse(Console.ReadLine(), out d);
+            if (b == false)
+            {
+                Console.WriteLine("Ты пишешь херню.");
+                break;
+            }
+            if (d == null)
+            {
+                Console.WriteLine("Без пустого др нельзя");
+                break;
+            }
+            Console.WriteLine("Введите пол: ");
+            string g = Console.ReadLine();
+            if (g == null)
+            {
+                Console.WriteLine("Без пустого пола нельзя");
+                break;
+            }
+            Console.WriteLine("Введите опыт работы с ПК В ГОДАХ: ");
+            int e = Convert.ToInt32(Console.ReadLine());
+            if (e == null)
+            {
+                Console.WriteLine("Без пустого опыта нельзя");
+                break;
+            }
+            Console.WriteLine("Введите группу здоровья: ");
+            string h = Console.ReadLine();
+            if (h == null)
+            {
+                Console.WriteLine("Без пустого группы здоровья нельзя");
+                break;
+            }
+            Students.Add(new Student(i, n, d, g, e, h));
             break;
         case 2:
+            for (int p = 0; p < Students.Count; p++)
+            {
+                Students[p].Print();
+            }
             break;
         case 3:
             break;
@@ -93,15 +147,13 @@ class Student : Person
 {
     private int StudentNumberID;
     private int PCExperience;
-    private List<string> Courses;
     private string TheHealthGroup;
 
-    public Student(int id, string fio, DateOnly birthday, string gender, int PCExperience, List<string> Courses, string TheHealthGroup)
+    public Student(int id, string fio, DateOnly birthday, string gender, int PCExperience, string TheHealthGroup)
         : base(fio, birthday, gender) // вызов конструктора Person
     {
-        StudentNumberID = id;
+        this.StudentNumberID = id;
         this.PCExperience = PCExperience;
-        this.Courses = Courses;
         this.TheHealthGroup = TheHealthGroup;
     }
 
@@ -110,31 +162,29 @@ class Student : Person
         Console.WriteLine("Student");
         base.Print();
         Console.WriteLine($"StudentNumberID: {StudentNumberID}\nPCExperience: {PCExperience}\n");
-        Console.WriteLine("Courses:");
-        foreach (var be in Courses)
-        {
-            Console.WriteLine(be);
-        }
         Console.WriteLine($"TheHealthGroup: {TheHealthGroup}\n");
     }
 }
 
 class Teacher : Person
 {
+    private int TeacherNumberID;
     private List<string> Courses;
     private int ExperienceYears;
 
-    public Teacher(string fio, DateOnly birthday, string gender, List<string> Courses, int WorkExperience)
+    public Teacher(string fio, DateOnly birthday, string gender, int ID, List<string> Courses, int WorkExperience)
         : base(fio, birthday, gender)
     {
-        Courses = Courses;
-        ExperienceYears = WorkExperience;
+        this.TeacherNumberID = ID;
+        this.Courses = Courses;
+        this.ExperienceYears = WorkExperience;
     }
 
     public override void Print()
     {
         Console.WriteLine("Teacher");
         base.Print();
+        Console.WriteLine($"ID: {TeacherNumberID}\n");
         foreach (var be in Courses)
         {
             Console.WriteLine(be);
