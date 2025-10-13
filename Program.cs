@@ -171,10 +171,10 @@ class Teacher : Person
     private int TeacherNumberID;
     private int ExperienceYears;
 
-    public Teacher(int Id, string fio, DateOnly birthday, string gender, int ID, int WorkExperience)
+    public Teacher(int ID, string fio, DateOnly birthday, string gender, int WorkExperience)
         : base(fio, birthday, gender)
     {
-        this.TeacherNumberID = Id;
+        this.TeacherNumberID = ID;
         this.ExperienceYears = WorkExperience;
     }
 
