@@ -130,9 +130,9 @@ while (t)
             Teachers.Add(new Teacher(ii, nn, dd, gg, ee));
             break;
         case 4:
-            for (int p = 0; p < Students.Count; p++)
+            for (int p = 0; p < Teachers.Count; p++)
             {
-                Students[p].Print();
+                Teachers[p].Print();
             }
             break;
         case 5:
@@ -201,6 +201,18 @@ while (t)
         case 7:
             break;
         case 8:
+            for (int p = 0; p < Students.Count; p++)
+            {
+                Students[p].Print();
+            }
+            for (int p = 0; p < Teachers.Count; p++)
+            {
+                Teachers[p].Print();
+            }
+            for (int p = 0; p < Courses.Count; p++)
+            {
+                Courses[p].Print();
+            }
             break;
         case 0:
             return;
