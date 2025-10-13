@@ -193,7 +193,10 @@ while (t)
             }
             break;
         case 6:
-
+            for (int p = 0; p < Courses.Count; p++)
+            {
+                Courses[p].Print();
+            }
             break;
         case 7:
             break;
