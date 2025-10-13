@@ -169,14 +169,12 @@ class Student : Person
 class Teacher : Person
 {
     private int TeacherNumberID;
-    private List<string> Courses;
     private int ExperienceYears;
 
-    public Teacher(string fio, DateOnly birthday, string gender, int ID, List<string> Courses, int WorkExperience)
+    public Teacher(int Id, string fio, DateOnly birthday, string gender, int ID, int WorkExperience)
         : base(fio, birthday, gender)
     {
-        this.TeacherNumberID = ID;
-        this.Courses = Courses;
+        this.TeacherNumberID = Id;
         this.ExperienceYears = WorkExperience;
     }
 
@@ -185,10 +183,6 @@ class Teacher : Person
         Console.WriteLine("Teacher");
         base.Print();
         Console.WriteLine($"ID: {TeacherNumberID}\n");
-        foreach (var be in Courses)
-        {
-            Console.WriteLine(be);
-        }
         Console.WriteLine($"ExperienceYears: {ExperienceYears}\n");
     }
 }
