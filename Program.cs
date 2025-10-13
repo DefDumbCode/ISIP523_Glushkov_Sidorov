@@ -5,6 +5,8 @@ Console.WriteLine("Hello, World!");
 
 List<string> Names = new List<string>();
 List<Student> Students = new List<Student>();
+List<Teacher> Teachers = new List<Teacher>(); 
+List<Course> Courses = new List<Course>();
 
 
 bool t = true;
@@ -82,8 +84,54 @@ while (t)
             }
             break;
         case 3:
+            Console.WriteLine("Введите ID: ");
+            int ii = Convert.ToInt32(Console.ReadLine());
+            if (ii == null)
+            {
+                Console.WriteLine("Без пустого айди нельзя");
+                break;
+            }
+            Console.WriteLine("Введите ФИО: ");
+            string nn = Console.ReadLine();
+            if (nn == null)
+            {
+                Console.WriteLine("Без пустого имени нельзя");
+                break;
+            }
+            Console.WriteLine("Введите Дату рождения: (YYYY,MM,DD)");
+            DateOnly dd = DateOnly.Parse(Console.ReadLine());
+            bool bb = DateOnly.TryParse(Console.ReadLine(), out dd);
+            if (bb == false)
+            {
+                Console.WriteLine("Ты пишешь херню.");
+                break;
+            }
+            if (dd == null)
+            {
+                Console.WriteLine("Без пустого др нельзя");
+                break;
+            }
+            Console.WriteLine("Введите пол: ");
+            string gg = Console.ReadLine();
+            if (gg == null)
+            {
+                Console.WriteLine("Без пустого пола нельзя");
+                break;
+            }
+            Console.WriteLine("Введите опыт работы с ПК В ГОДАХ: ");
+            int ee = Convert.ToInt32(Console.ReadLine());
+            if (ee == null)
+            {
+                Console.WriteLine("Без пустого опыта нельзя");
+                break;
+            }
+            Teachers.Add(new Teacher(ii, nn, dd, gg, ee));
             break;
         case 4:
+            for (int p = 0; p < Students.Count; p++)
+            {
+                Students[p].Print();
+            }
             break;
         case 5:
             break;
