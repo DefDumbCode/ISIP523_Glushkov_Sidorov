@@ -3,9 +3,10 @@ using System.Reflection;
 
 Console.WriteLine("Hello, World!");
 
-List<string> Names = new List<string>();
+List<string> CourseNames = new List<string>();
 List<Student> Students = new List<Student>();
 List<Teacher> Teachers = new List<Teacher>(); 
+List<string> StudentName = new List<string>();
 List<Course> Courses = new List<Course>();
 
 
@@ -19,7 +20,7 @@ while (t)
     Console.WriteLine("4 - Вывести инфу про преподов");
     Console.WriteLine("5 - Добавить курс");
     Console.WriteLine("6 - Вывести инфу про курсы");
-    Console.WriteLine("7 - Найти по Фамилии курсыыы");
+    Console.WriteLine("7 - Найти по ФИО курсыыы");
     Console.WriteLine("8 - ВЫВЕСТИ ВСЁЁЁ");
     Console.WriteLine("0 - Выход");
 
@@ -41,6 +42,7 @@ while (t)
                 Console.WriteLine("Без пустого имени нельзя");
                 break;
             }
+            StudentName.Add(n);
             Console.WriteLine("Введите Дату рождения: (YYYY,MM,DD)");
             DateOnly d = DateOnly.Parse(Console.ReadLine());
             bool b = DateOnly.TryParse(Console.ReadLine(), out d);
@@ -134,8 +136,64 @@ while (t)
             }
             break;
         case 5:
+            Console.WriteLine("Введите ID: ");
+            int iii = Convert.ToInt32(Console.ReadLine());
+            if (iii == null)
+            {
+                Console.WriteLine("Без пустого айди нельзя");
+                break;
+            }
+            Console.WriteLine("Введите Название курса: ");
+            string nnn = Console.ReadLine();
+            if (nnn == null)
+            {
+                Console.WriteLine("Без пустого Названия нельзя");
+                break;
+            }
+            Console.WriteLine("Введите описание курса: ");
+            string ddd = Console.ReadLine();
+            if (ddd == null)
+            {
+                Console.WriteLine("Без пустого описания нельзя");
+                break;
+            }
+            Console.WriteLine("Введите ФИО Преподавателя курса: ");
+            string ttt = Console.ReadLine();
+            if (ttt == null)
+            {
+                Console.WriteLine("Без пустого имени нельзя");
+                break;
+            }
+            Console.WriteLine("Введите ФИО студентов курса через Enter. как закончите наберите 0: ");
+            bool jj = true;
+            while (jj)
+            {
+                string baba = Console.ReadLine();
+                int count = 0;
+                for (int x = 0; x < StudentName.Count; x++)
+                {
+                    if (baba == StudentName[x])
+                    {
+                        count++;
+                    }
+                }
+                if (count > 0)
+                {
+                    CourseNames.Add(baba);
+                }
+                else
+                {
+                    Console.WriteLine("Такого студента нету в базе данных!");
+                }
+                if (baba == "0")
+                {
+                    Courses.Add(new Course(iii, nnn, ddd, ttt, CourseNames));
+                    break;
+                }
+            }
             break;
         case 6:
+
             break;
         case 7:
             break;
@@ -152,21 +210,21 @@ class Course
     private string Title;
     private string Description;
     private string Teacher;
-    private List<string> Names;
+    private List<string> CourseNames;
 
-    public Course(int Id, string Title, string Description, string Teacher, List<string> Names)
+    public Course(int Id, string Title, string Description, string Teacher, List<string> CourseNames)
     {
         this.Id = Id;
         this.Title = Title;
         this.Description = Description;
         this.Teacher = Teacher;
-        this.Names = Names;
+        this.CourseNames = CourseNames;
     }
 
     public void Print()
     {
         Console.WriteLine($"Title: {Title}\nDescription: {Description}\nTeacher: {Teacher} ");
-        foreach (var be in Names)
+        foreach (var be in CourseNames)
         {
             Console.WriteLine(be);
         }
