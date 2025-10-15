@@ -23,23 +23,25 @@ class Hero
 {
     public string Name; //Имя будет единственным что будет запрошено
     public int HP = 250;
+    public string Cur_Weapon = "Деревянный меч";
+    public string Cur_Armor = "Обноски бездомного";
     public Dictionary<string, int> Weapons; //по базе деревяшка
     public Dictionary<string, int> Armor; //по базе обноски
 
-    public Hero(string name, int hP, Dictionary<string, int> weapons, Dictionary<string, int> armor)
+    public Hero(string name, Dictionary<string, int> weapons, Dictionary<string, int> armor)
     {
         Name = name;
-        HP = hP;
-        Weapons = weapons;
-        Armor = armor;
+        Weapons = new Dictionary<string, int>(weapons);
+        Armor = new Dictionary<string, int>(armor);
+;
     }
     public void PrintInfo()
     {
         Console.WriteLine("Статистика вашего персонажа: ");
         Console.WriteLine($"Герой: {Name}");
         Console.WriteLine($"Здоровье: {HP}");
-        Console.WriteLine($"Оружие: {Weapons}");
-        Console.WriteLine($"Броня: {Armor}");
+        Console.WriteLine($"Оружие: {Cur_Weapon} (урон: {Weapons[Cur_Weapon]})");
+        Console.WriteLine($"Броня: {Cur_Armor} (защита: {Armor[Cur_Armor]})");
     }
 }
 
@@ -65,8 +67,37 @@ class Goblin : Monster
         : base(hp, damage, defence)
     {
         krit = krit;
-        HP = hp;
-        Damage = damage;
-        Defence = defence;
+    }
+}
+
+class Skeleton : Monster
+{
+    //должен скипать броню
+    public Skeleton(int hp, int damage, int defence)
+        : base(hp, damage, defence)
+    {
+
+    }
+}
+
+class Pestov : Skeleton
+{
+    public int frost = 40;
+    //+ скипает броню от скелета
+    public Pestov(int hp, int damage, int defence, int frost)
+        : base(hp, damage, defence)
+    {
+        frost = frost;
+    }
+}
+
+class Mage : Monster
+{
+    public int frost = 40;
+
+    public Mage(int hp, int damage, int defence, int frost)
+        : base(hp, damage, defence)
+    {
+        frost = frost;
     }
 }
