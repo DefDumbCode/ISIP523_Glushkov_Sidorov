@@ -19,6 +19,18 @@ var Armor = new Dictionary<string, int>()
     {"Костюм банана", 85 }
 };
 
+var heroi = new Hero("Ин", Weapons, Armor);
+heroi.PrintInfo();
+
+string a;
+
+class Game
+{
+    public Hero player;
+    public List<Monster> monsters;
+    public List<Monster> bosses;
+}
+
 class Hero
 {
     public string Name; //Имя будет единственным что будет запрошено
@@ -61,12 +73,12 @@ class Monster
 
 class Goblin : Monster
 {
-    public int krit = 40;
+    public int Krit = 40;
 
     public Goblin(int hp, int damage, int defence, int krit)
         : base(hp, damage, defence)
     {
-        krit = krit;
+        Krit = krit;
     }
 }
 
@@ -82,22 +94,22 @@ class Skeleton : Monster
 
 class Pestov : Skeleton
 {
-    public int frost = 40;
+    public int Frost = 40;
     //+ скипает броню от скелета
     public Pestov(int hp, int damage, int defence, int frost)
         : base(hp, damage, defence)
     {
-        frost = frost;
+        Frost = frost;
     }
 }
 
 class Mage : Monster
 {
-    public int frost = 40;
+    public int Frost = 40;
 
     public Mage(int hp, int damage, int defence, int frost)
         : base(hp, damage, defence)
     {
-        frost = frost;
+        Frost = frost;
     }
 }
