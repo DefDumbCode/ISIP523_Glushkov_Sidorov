@@ -49,4 +49,24 @@ class Monster
     public int Damage = 50;
     public int Defence = 30;
 
+    public Monster(int hp, int damage, int defence)
+    {   HP = hp;
+        Damage = damage;
+        Defence = defence; 
+    }
+
+}
+
+class Goblin : Monster
+{
+    public int krit = 40;
+
+    public Goblin(int hp, int damage, int defence, int krit)
+        : base(hp, damage, defence)
+    {
+        krit = krit;
+        HP = hp;
+        Damage = damage;
+        Defence = defence;
+    }
 }
