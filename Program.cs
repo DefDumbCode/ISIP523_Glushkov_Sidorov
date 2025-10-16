@@ -19,16 +19,73 @@ var Armor = new Dictionary<string, int>()
     {"Костюм банана", 85 }
 };
 
-var heroi = new Hero("Ин", Weapons, Armor);
-heroi.PrintInfo();
+var igra = new Game(Weapons, Armor);
+Console.WriteLine(Weapons.Count);
+igra.Start_game();
 
-string a;
 
 class Game
 {
     public Hero player;
     public List<Monster> monsters;
     public List<Monster> bosses;
+    string a = " ";
+    Random rnd = new Random();
+    Dictionary<string, int> Weapons;
+    Dictionary<string, int> Armor;
+    public string Cur_Weapon = "Деревянный меч";
+    public string Cur_Armor = "Обноски бездомного";
+    int count = 0;
+
+    public Game(Dictionary<string, int> weapons,  Dictionary<string, int> armor)
+    {
+        Weapons = weapons;
+        Armor = armor;
+    }
+
+    public void Start_game()
+    {
+        Console.WriteLine("Введи своё имя герой!");
+        a = Console.ReadLine();
+        var player = new Hero(a, Weapons, Armor);
+        player.PrintInfo();
+        while(player.HP != 0 || count < 20)
+        {
+            int move = rnd.Next(1, 3);
+            if (move == 1)
+            {
+                Console.WriteLine("Вы нашли сундук!");
+                int loot = rnd.Next(1, 5);
+                if (loot == 1 || loot == 2)
+                {
+                    Console.WriteLine("Вы нашли зелье лечения!! \n Здоровье полностью восстановлено.");
+                    player.HP = 100;
+                }
+                else if (loot == 3)
+                {
+                    int index = rnd.Next(Weapons.Count);
+                    Console.WriteLine($"Вы нашли: {Weapons.Keys.ElementAt(index)}");
+                    Console.WriteLine($"Урон: {Weapons.Values.ElementAt(index)}");
+                    Console.WriteLine("Хотите поменять с вашим? (1 - Да; 2 - Нет)");
+                    Console.WriteLine($"У вас: {Cur_Weapon}");
+                    Console.WriteLine($"Урон: {Weapons[Cur_Weapon]}");
+                    int b = Convert.ToInt32(Console.ReadLine());
+                    switch (b)
+                    {
+
+                    }
+
+                }
+            }
+            else
+            {
+                Console.WriteLine("Вы встретили врага!");
+                return;
+            }
+        }
+
+
+    }
 }
 
 class Hero
@@ -113,3 +170,5 @@ class Mage : Monster
         Frost = frost;
     }
 }
+
+
