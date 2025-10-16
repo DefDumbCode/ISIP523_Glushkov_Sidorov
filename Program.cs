@@ -55,13 +55,13 @@ class Game
             if (move == 1)
             {
                 Console.WriteLine("Вы нашли сундук!");
-                int loot = rnd.Next(1, 5);
-                if (loot == 1 || loot == 2)
+                int loot = rnd.Next(1, 4);
+                if (loot == 1)
                 {
                     Console.WriteLine("Вы нашли зелье лечения!! \n Здоровье полностью восстановлено.");
                     player.HP = 100;
                 }
-                else if (loot == 3)
+                else if (loot == 2)
                 {
                     int index = rnd.Next(Weapons.Count);
                     Console.WriteLine($"Вы нашли: {Weapons.Keys.ElementAt(index)}");
@@ -72,10 +72,33 @@ class Game
                     int b = Convert.ToInt32(Console.ReadLine());
                     switch (b)
                     {
+                        case 1:
+                            Cur_Weapon = Weapons.Keys.ElementAt(index);
+                            Console.WriteLine("Вы поменяли оружие!");
+                            break;
+                        case 2:
+                            break;
+                    }
+                    else if (loot == 3)
+                    {
+                        int ind = rnd.Next(Armor.Count);
+                        Console.WriteLine($"Вы нашли: {Armor.Keys.ElementAt(index)}");
+                        Console.WriteLine($"Урон: {Armor.Values.ElementAt(index)}");
+                        Console.WriteLine("Хотите поменять с вашим? (1 - Да; 2 - Нет)");
+                        Console.WriteLine($"У вас: {Cur_Armor}");
+                        Console.WriteLine($"Урон: {Weapons[Cur_Armor]}");
+                        int b = Convert.ToInt32(Console.ReadLine());
+                        switch (b)
+                        {
+                            case 1:
+                                Cur_Armor = Armor.Keys.ElementAt(index);
+                                Console.WriteLine("Вы поменяли броню!");
+                                break;
+                            case 2:
+                                break;
+                        }
 
                     }
-
-                }
             }
             else
             {
