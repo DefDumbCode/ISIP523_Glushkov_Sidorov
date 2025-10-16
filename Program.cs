@@ -79,37 +79,47 @@ class Game
                         case 2:
                             break;
                     }
-                    else if (loot == 3)
+                }
+                else
+                {
+                    int index = rnd.Next(Armor.Count);
+                    Console.WriteLine($"Вы нашли: {Armor.Keys.ElementAt(index)}");
+                    Console.WriteLine($"Урон: {Armor.Values.ElementAt(index)}");
+                    Console.WriteLine("Хотите поменять с вашим? (1 - Да; 2 - Нет)");
+                    Console.WriteLine($"У вас: {Cur_Armor}");
+                    Console.WriteLine($"Урон: {Weapons[Cur_Armor]}");
+                    int b = Convert.ToInt32(Console.ReadLine());
+                    switch (b)
                     {
-                        int ind = rnd.Next(Armor.Count);
-                        Console.WriteLine($"Вы нашли: {Armor.Keys.ElementAt(index)}");
-                        Console.WriteLine($"Урон: {Armor.Values.ElementAt(index)}");
-                        Console.WriteLine("Хотите поменять с вашим? (1 - Да; 2 - Нет)");
-                        Console.WriteLine($"У вас: {Cur_Armor}");
-                        Console.WriteLine($"Урон: {Weapons[Cur_Armor]}");
-                        int b = Convert.ToInt32(Console.ReadLine());
-                        switch (b)
-                        {
-                            case 1:
-                                Cur_Armor = Armor.Keys.ElementAt(index);
-                                Console.WriteLine("Вы поменяли броню!");
-                                break;
-                            case 2:
-                                break;
-                        }
-
+                        case 1:
+                            Cur_Armor = Armor.Keys.ElementAt(index);
+                            Console.WriteLine("Вы поменяли броню!");
+                            break;
+                        case 2:
+                            break;
                     }
-            }
+
+                }
+                }
             else
             {
                 Console.WriteLine("Вы встретили врага!");
-                return;
+                int chanse = rnd.Next(1,4);
+
             }
         }
 
 
     }
+
+    public void Fight()
+    {
+
+    }
+
 }
+
+
 
 class Hero
 {
