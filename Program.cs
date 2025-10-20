@@ -23,6 +23,25 @@ var igra = new Game(Weapons, Armor);
 Console.WriteLine(Weapons.Count);
 igra.Start_game();
 
+var gobl = new Goblin(100, 50, 30, 40);
+var skel = new Skeleton(100, 50, 30);
+var mag = new Mage(100, 50, 30, 40);
+List <Monster> list = new List<Monster>();
+list.Add(gobl);
+list.Add(skel);
+list.Add(mag);
+var pest = new Mage(150, 90, 3, 55);
+var VVG = new Goblin(200, 75, 36, 50);
+var Koval = new Skeleton(250, 65, 42);
+var Oreh = new Mage(180, 80, 33, 50);
+List <Monster> boss = new List<Monster>();
+boss.Add(pest);
+boss.Add(VVG);
+boss.Add(Koval);
+boss.Add(Oreh);
+
+
+
 
 class Game
 {
