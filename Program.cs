@@ -132,8 +132,9 @@ class Game
         a = Console.ReadLine();
         var player = new Hero(a, Weapons, Armor);
         player.PrintInfo();
-        while(player.HP != 0 || count < 20)
+        while(player.HP > 0 && count < 20)
         {
+            count++;
             int move = rnd.Next(1, 3);
             if (move == 1)
             {
@@ -170,7 +171,7 @@ class Game
                     Console.WriteLine($"Урон: {Armor.Values.ElementAt(index)}");
                     Console.WriteLine("Хотите поменять с вашим? (1 - Да; 2 - Нет)");
                     Console.WriteLine($"У вас: {Cur_Armor}");
-                    Console.WriteLine($"Урон: {Weapons[Cur_Armor]}");
+                    Console.WriteLine($"Урон: {Armor[Cur_Armor]}");
                     int b = Convert.ToInt32(Console.ReadLine());
                     switch (b)
                     {
@@ -199,46 +200,99 @@ class Game
     public void Fight(Hero player)
     {
         int dodge = 0;
+        int frost = 0;
         bool dodge1 = false;
         Monster NewMon = FabEnemy.RandMonstr();
         Console.WriteLine($"Вы повстречали: {NewMon.Name}");
-        while (player.HP != 0 || NewMon.HP != 0)
+        while (player.HP > 0 && NewMon.HP > 0)
         {
 
             Console.WriteLine("Ваш ход: ");
-            Console.WriteLine("1: Атака" +
-                "2: Защита");
-            int answ = Convert.ToInt32(Console.ReadLine());
-            switch(answ)
+            if(frost == 1)
             {
-                case 1:
-                    int dam = player.Weapons[Cur_Weapon] * (100 * NewMon.Defence);
-                    NewMon.HP -= dam;
-                    Console.WriteLine($"Вы нанесли {dam} урона");
-                    Console.WriteLine($"У {NewMon.Name} теперь {NewMon.HP} ХП");
-                    break;
-                case 2:
-                    Console.WriteLine("Вы решили уклониться!");
-                    dodge = 1;
-                    dodge1 = rnd.Next(0, 10)<=4 ? true : false;
-                    break;
+                frost--;
+                Console.WriteLine("ЗАМОРОЖЕНЫ");
+                break;
+            }
+            else
+            {
+                Console.WriteLine("1: Атака" +
+                "2: Защита");
+                int answ = Convert.ToInt32(Console.ReadLine());
+                switch (answ)
+                {
+                    case 1:
+                        double dam = player.Weapons[Cur_Weapon] * (1 - NewMon.Defence / 100.0);
+                        NewMon.HP -= dam;
+                        Console.WriteLine($"Вы нанесли {dam} урона");
+                        Console.WriteLine($"У {NewMon.Name} теперь {NewMon.HP} ХП");
+                        break;
+                    case 2:
+                        Console.WriteLine("Вы решили уклониться!");
+                        dodge = 1;
+                        dodge1 = rnd.Next(0, 10) <= 4 ? true : false;
+                        break;
+                }
+            }
+            if(NewMon.HP <= 0)
+            {
+                break;
             }
             Console.WriteLine("ХОД МОНСТРА");
             if (dodge1)
             {
+
                 Console.WriteLine("Вы увернулись от атаки!");
+                dodge1 = false;
             }
-            else
+            else if (NewMon.Name == "Скелет")
             {
-                int dam = NewMon.Damage * (100 * player.Armor[Cur_Armor]);
-                player.HP -= dam;
-                Console.WriteLine($"Вам нанесли {dam} урона");
+                player.HP -= NewMon.Damage;
+                Console.WriteLine($"Вам нанесли {NewMon.Damage} урона");
                 Console.WriteLine($"У вас теперь {player.HP} ХП");
+            }
+            else if( NewMon.Name == "Гоблин")
+            {
+                bool krit1 = rnd.Next(0, 10) <= 4 ? true : false;
+                if (krit1)
+                {
+                    double dam = NewMon.Damage * (player.Armor[Cur_Armor] / 100) * 1.5;
+                    player.HP -= dam;
+                    Console.WriteLine($"Вам нанесли {dam} урона");
+                    Console.WriteLine($"У вас теперь {player.HP} ХП");
+                }
+                else
+                {
+                    double dam = NewMon.Damage * (player.Armor[Cur_Armor] / 100);
+                    player.HP -= dam;
+                    Console.WriteLine($"Вам нанесли {dam} урона");
+                    Console.WriteLine($"У вас теперь {player.HP} ХП");
+                }
+
+            }
+            else if(NewMon.Name == "Маг")
+            {
+                bool frost1 = rnd.Next(0, 10) <= 4 ? true : false;
+                if (frost1)
+                {
+                    double dam = NewMon.Damage * (player.Armor[Cur_Armor] / 100) * 1.5;
+                    player.HP -= dam;
+                    Console.WriteLine($"Вам нанесли {dam} урона");
+                    Console.WriteLine($"У вас теперь {player.HP} ХП");
+                    Console.WriteLine("Также вы заморожены! Вы пропускаете следующих ход.");
+                }
+                else
+                {
+                    double dam = NewMon.Damage * (player.Armor[Cur_Armor] / 100);
+                    player.HP -= dam;
+                    Console.WriteLine($"Вам нанесли {dam} урона");
+                    Console.WriteLine($"У вас теперь {player.HP} ХП");
+                }
             }
 
             
         }
-
+        
         
     }
 
@@ -249,7 +303,7 @@ class Game
 class Hero
 {
     public string Name; //Имя будет единственным что будет запрошено
-    public int HP = 250;
+    public double HP = 250;
     public string Cur_Weapon = "Деревянный меч";
     public string Cur_Armor = "Обноски бездомного";
     public Dictionary<string, int> Weapons; //по базе деревяшка
@@ -275,7 +329,7 @@ class Hero
 class Monster
 {
     public string Name;
-    public int HP = 100;
+    public double HP = 100;
     public int Damage = 50;
     public int Defence = 30;
 
