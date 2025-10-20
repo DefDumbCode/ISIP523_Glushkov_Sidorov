@@ -22,18 +22,6 @@ var Armor = new Dictionary<string, int>()
     {"Костюм банана", 85 }
 };
 
-
-var pest = new Mage("ПЕСТОВ", 150, 90, 3, 55);
-var VVG = new Goblin("ВВГ", 200, 75, 36, 50);
-var Koval = new Skeleton("КОВАЛЬСКИЙ", 250, 65, 42);
-var Oreh = new Mage("Мессенджер Макс", 180, 80, 33, 50);
-List<Monster> boss = new List<Monster>();
-boss.Add(pest);
-boss.Add(VVG);
-boss.Add(Koval);
-boss.Add(Oreh);
-
-
 var igra = new Game(Weapons, Armor);
 Console.WriteLine(Weapons.Count);
 igra.Start_game();
@@ -236,13 +224,18 @@ class Game
                     break;
             }
             Console.WriteLine("ХОД МОНСТРА");
-            if(dodge == 1)
+            if (dodge1)
             {
-                if (dodge1)
-                {
-                    Console.WriteLine("Вы увернулись от атаки!");
-                }
+                Console.WriteLine("Вы увернулись от атаки!");
             }
+            else
+            {
+                int dam = NewMon.Damage * (100 * player.Armor[Cur_Armor]);
+                player.HP -= dam;
+                Console.WriteLine($"Вам нанесли {dam} урона");
+                Console.WriteLine($"У вас теперь {player.HP} ХП");
+            }
+
             
         }
 
