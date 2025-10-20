@@ -1,4 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System.Security.Cryptography.X509Certificates;
+using System.Xml.Linq;
+
 Console.WriteLine("Hello, World!");
 
 var Weapons = new Dictionary<string, int>()
@@ -19,27 +22,98 @@ var Armor = new Dictionary<string, int>()
     {"Костюм банана", 85 }
 };
 
-var igra = new Game(Weapons, Armor);
-Console.WriteLine(Weapons.Count);
-igra.Start_game();
 
-var gobl = new Goblin(100, 50, 30, 40);
-var skel = new Skeleton(100, 50, 30);
-var mag = new Mage(100, 50, 30, 40);
-List <Monster> list = new List<Monster>();
-list.Add(gobl);
-list.Add(skel);
-list.Add(mag);
-var pest = new Mage(150, 90, 3, 55);
-var VVG = new Goblin(200, 75, 36, 50);
-var Koval = new Skeleton(250, 65, 42);
-var Oreh = new Mage(180, 80, 33, 50);
-List <Monster> boss = new List<Monster>();
+var pest = new Mage("ПЕСТОВ", 150, 90, 3, 55);
+var VVG = new Goblin("ВВГ", 200, 75, 36, 50);
+var Koval = new Skeleton("КОВАЛЬСКИЙ", 250, 65, 42);
+var Oreh = new Mage("Мессенджер Макс", 180, 80, 33, 50);
+List<Monster> boss = new List<Monster>();
 boss.Add(pest);
 boss.Add(VVG);
 boss.Add(Koval);
 boss.Add(Oreh);
 
+
+var igra = new Game(Weapons, Armor);
+Console.WriteLine(Weapons.Count);
+igra.Start_game();
+
+class  FabEnemy
+{
+    public static Monster RandMonstr()
+    {
+        Random random = new Random();
+        switch (random.Next(0, 3))
+        {
+            case 0:
+                return GetGob();
+                break;
+            case 1:
+                return GetSkel();
+                break;
+            case 2:
+                return GetMag();
+                break;
+
+               default : return GetGob();
+        }
+        
+    }
+
+    public static Monster GetGob()
+    {
+        return new Goblin("Гоблин", 100, 50, 30, 40);
+    }
+    public static Monster GetSkel()
+    {
+        return new Skeleton("Скелет", 100, 50, 30);
+    }
+    public static Monster GetMag()
+    {
+        return new Mage("Маг", 100, 50, 30, 40);
+    }
+
+    public static Monster RandBoss()
+    {
+        Random random = new Random();
+        switch (random.Next(0, 4))
+        {
+            case 0:
+                return GetVVG();
+                break;
+            case 1:
+                return GetKov();
+                break;
+            case 2:
+                return GetMaks();
+                break;
+            case 3:
+                return GetPest();
+                break;
+
+            default: return GetVVG();
+        }
+
+    }
+
+    public static Monster GetVVG()
+    {
+        return new Goblin("ВВГ", 200, 75, 36, 50);
+    }
+    public static Monster GetKov()
+    {
+        return new Skeleton("КОВАЛЬСКИЙ", 250, 65, 42);
+    }
+    public static Monster GetMaks()
+    {
+        return new Mage("Мессенджер Макс", 180, 80, 33, 50);
+    }
+    public static Monster GetPest()
+    {
+        return new Mage("ПЕСТОВ", 150, 90, 3, 55);
+    }
+
+}
 
 
 
@@ -48,6 +122,8 @@ class Game
     public Hero player;
     public List<Monster> monsters;
     public List<Monster> bosses;
+    public List<Monster> list = new List<Monster>{ new Goblin("Гоблин", 100, 50, 30, 40), new Skeleton("Скелет", 100, 50, 30), new Mage("Маг", 100, 50, 30, 40)};
+    public List<Monster> boss = new List<Monster>{ new Mage("ПЕСТОВ", 150, 90, 3, 55), new Goblin("ВВГ", 200, 75, 36, 50), new Skeleton("КОВАЛЬСКИЙ", 250, 65, 42), new Mage("Мессенджер Макс", 180, 80, 33, 50)};
     string a = " ";
     Random rnd = new Random();
     Dictionary<string, int> Weapons;
@@ -123,7 +199,8 @@ class Game
             else
             {
                 Console.WriteLine("Вы встретили врага!");
-                int chanse = rnd.Next(1,4);
+                Fight(player);
+                
 
             }
         }
@@ -131,9 +208,45 @@ class Game
 
     }
 
-    public void Fight()
+    public void Fight(Hero player)
     {
+        int dodge = 0;
+        bool dodge1 = false;
+        Monster NewMon = FabEnemy.RandMonstr();
+        Console.WriteLine($"Вы повстречали: {NewMon.Name}");
+        while (player.HP != 0 || NewMon.HP != 0)
+        {
 
+            Console.WriteLine("Ваш ход: ");
+            Console.WriteLine("1: Атака" +
+                "2: Защита");
+            int answ = Convert.ToInt32(Console.ReadLine());
+            switch(answ)
+            {
+                case 1:
+                    int dam = player.Weapons[Cur_Weapon] * (100 * NewMon.Defence);
+                    NewMon.HP -= dam;
+                    Console.WriteLine($"Вы нанесли {dam} урона");
+                    Console.WriteLine($"У {NewMon.Name} теперь {NewMon.HP} ХП");
+                    break;
+                case 2:
+                    Console.WriteLine("Вы решили уклониться!");
+                    dodge = 1;
+                    dodge1 = rnd.Next(0, 10)<=4 ? true : false;
+                    break;
+            }
+            Console.WriteLine("ХОД МОНСТРА");
+            if(dodge == 1)
+            {
+                if (dodge1)
+                {
+                    Console.WriteLine("Вы увернулись от атаки!");
+                }
+            }
+            
+        }
+
+        
     }
 
 }
@@ -168,14 +281,25 @@ class Hero
 
 class Monster
 {
+    public string Name;
     public int HP = 100;
     public int Damage = 50;
     public int Defence = 30;
 
-    public Monster(int hp, int damage, int defence)
-    {   HP = hp;
+    public Monster(string name, int hp, int damage, int defence)
+    {
+        Name = name;
+        HP = hp;
         Damage = damage;
         Defence = defence; 
+    }
+
+    public void PrintInfo()
+    {
+        Console.WriteLine($"Статистика {Name}: ");
+        Console.WriteLine($"Здоровье: {HP}");
+        Console.WriteLine($"Урон: {Damage}");
+        Console.WriteLine($"Броня: {Defence}");
     }
 
 }
@@ -184,8 +308,8 @@ class Goblin : Monster
 {
     public int Krit = 40;
 
-    public Goblin(int hp, int damage, int defence, int krit)
-        : base(hp, damage, defence)
+    public Goblin(string name, int hp, int damage, int defence, int krit)
+        : base(name, hp, damage, defence)
     {
         Krit = krit;
     }
@@ -194,8 +318,8 @@ class Goblin : Monster
 class Skeleton : Monster
 {
     //должен скипать броню
-    public Skeleton(int hp, int damage, int defence)
-        : base(hp, damage, defence)
+    public Skeleton(string name, int hp, int damage, int defence)
+        : base(name, hp, damage, defence)
     {
 
     }
@@ -205,8 +329,8 @@ class Pestov : Skeleton
 {
     public int Frost = 40;
     //+ скипает броню от скелета
-    public Pestov(int hp, int damage, int defence, int frost)
-        : base(hp, damage, defence)
+    public Pestov(string name, int hp, int damage, int defence, int frost)
+        : base(name, hp, damage, defence)
     {
         Frost = frost;
     }
@@ -216,8 +340,8 @@ class Mage : Monster
 {
     public int Frost = 40;
 
-    public Mage(int hp, int damage, int defence, int frost)
-        : base(hp, damage, defence)
+    public Mage(string name, int hp, int damage, int defence, int frost)
+        : base(name,hp, damage, defence)
     {
         Frost = frost;
     }
