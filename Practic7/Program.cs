@@ -44,6 +44,29 @@ namespace Practic7
                     }
                 }
 
+                Console.WriteLine("Новый клиент!");
+                Client rClient = FabClient.RandCar();
+                rClient.Print();
+
+                Console.WriteLine("Ваши действия? \n 1 - Поменять деталь \n 2 - Отказаться от ремонта");
+                int o = Convert.ToInt32(Console.ReadLine());
+                Part newPart = Core.Context.Part.First(p => p.Name == rClient.Trouble);
+                Warehouse_Part G = Core.Context.Warehouse_Part.FirstOrDefault(w => w.ID_Part == newPart.ID);
+                switch (o)
+                { 
+                    case 1:
+                        if (G.Count > 0)
+                        {
+                            G.Count--;
+                            Console.WriteLine("Ремонт прошёл успешно!");
+                        }
+                        
+                        break;
+                    case 2:
+                        break;
+
+                }
+
 
             }
   
@@ -59,6 +82,7 @@ namespace Practic7
         {
             public string Car;
             public string Trouble;
+            public int TroubleId;
 
             public Client(string car, string trouble)
             {
@@ -76,12 +100,12 @@ namespace Practic7
 
         class FabClient
         {
-            public List<string> Cars = new List<string>() { "BMW", "Mercedes", "Lada", "Subaru" };
-            public List<string> Troubles = new List<string>() { "Подорвало дверь", "Пробило стекло", "Пробило трубу", "Белка в двигателе" };
+            public static List<string> Cars = new List<string>() { "BMW", "Mercedes", "Lada", "Subaru" };
+            public static List<string> Troubles = new List<string>() { "Подорвало дверь", "Пробило стекло", "Пробило трубу", "Белка в двигателе" };
 
             public static Random rand = new Random();
 
-            public static Client RandCar(List<string> Cars, List<string> Troubles)
+            public static Client RandCar()
             {
                 string Car = Cars[rand.Next(Cars.Count)];
                 string Trouble = Troubles[rand.Next(Troubles.Count)];
