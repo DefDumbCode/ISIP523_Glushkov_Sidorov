@@ -8,6 +8,6 @@ namespace Practic7
 {
     internal class Core
     {
-        public static PR7Entities1 Context = new PR7Entities1();
+        public static PR7Entities Context = new PR7Entities();
     }
 }

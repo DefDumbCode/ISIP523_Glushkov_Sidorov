@@ -21,5 +21,6 @@ namespace Practic7
     
         public virtual Part Part { get; set; }
         public virtual Warehouse Warehouse { get; set; }
+
     }
 }

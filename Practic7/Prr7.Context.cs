@@ -13,10 +13,10 @@ namespace Practic7
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PR7Entities1 : DbContext
+    public partial class PR7Entities : DbContext
     {
-        public PR7Entities1()
-            : base("name=PR7Entities1")
+        public PR7Entities()
+            : base("name=PR7Entities")
         {
         }
     

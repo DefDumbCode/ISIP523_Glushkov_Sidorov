@@ -22,8 +22,7 @@ namespace Practic7
         }
     
         public int ID { get; set; }
-        public int ID_Part { get; set; }
-        public int Amount { get; set; }
+        public string Adress { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Player> Player { get; set; }

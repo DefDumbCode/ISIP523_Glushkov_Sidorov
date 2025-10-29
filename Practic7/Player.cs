@@ -20,5 +20,11 @@ namespace Practic7
         public int ID_Warehouse { get; set; }
     
         public virtual Warehouse Warehouse { get; set; }
+
+        public virtual void Printinfo()
+        {
+            Console.WriteLine($"Имя: {Name}");
+            Console.WriteLine($"Баланс: {Balance}");
+        }
     }
 }
