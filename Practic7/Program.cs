@@ -59,6 +59,7 @@ namespace Practic7
                         {
                             G.Count--;
                             Console.WriteLine("Ремонт прошёл успешно!");
+                            newPlayer.Balance += (newPart.Price+25);
                         }
                         
                         break;
