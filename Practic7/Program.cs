@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -61,12 +62,21 @@ namespace Practic7
                             Console.WriteLine("Ремонт прошёл успешно!");
                             newPlayer.Balance += (newPart.Price+25);
                         }
-                        
-                        break;
+                        else
+                        {
+                            var f = capital.First(w => w.Count > 0);
+                            Console.WriteLine("Необходимой детали не было, было взято что попало! \n Клиент вернулся очень злым!"); 
+                            f.Count--;
+                            newPlayer.Balance -= 75;
+                        }
+                            break;
                     case 2:
+                        Console.WriteLine("Клиент был недоволен отказом, ШТРАФ 30 ЗОЛОТЫХ!");
+                        newPlayer.Balance -= 30;
                         break;
 
                 }
+
 
 
             }
@@ -102,7 +112,7 @@ namespace Practic7
         class FabClient
         {
             public static List<string> Cars = new List<string>() { "BMW", "Mercedes", "Lada", "Subaru" };
-            public static List<string> Troubles = new List<string>() { "Подорвало дверь", "Пробило стекло", "Пробило трубу", "Белка в двигателе" };
+            public static List<string> Troubles = new List<string>() { "Дверь", "Лобовое стекло", "Выхлопная труба", "Двигатель" };
 
             public static Random rand = new Random();
 
@@ -114,6 +124,44 @@ namespace Practic7
                 return new Client(Car, Trouble);
             }
                 
+        }
+
+        class Shop
+        {
+            List<Part> parts;
+
+            public void Buy()
+            {
+                
+                Console.WriteLine("Вы желаете заказать доставку в магазине? 1 - да/2 - нет");
+                int m = Convert.ToInt32(Console.ReadLine());
+                switch (m)
+                {
+                    case 1:
+                        Console.WriteLine("=====Добро пожаловать в МАГАЗИН=====");
+                        foreach (var p in parts)
+                        {
+                            Console.WriteLine($"Товар: {p.Name}, Цена: {p.Price}");
+                        }
+                        Console.WriteLine("Что вы хотите взять?");
+                        Console.WriteLine("Введите ТОЧНОЕ название товара которое вы хотите взять: ");
+                        string l = Console.ReadLine();
+                        Part newPart2 = Core.Context.Part.First(p => p.Name == l);
+                        Warehouse_Part GG = Core.Context.Warehouse_Part.FirstOrDefault(w => w.ID_Part == newPart2.ID);
+                        Console.WriteLine("Сколько вы хотите купить?");
+                        int x = Convert.ToInt32(Console.ReadLine());
+                        int xx = x * newPart2.Price;
+                        if (xx > newPlayer.Balance)
+                        {
+                        }
+                        break;
+                    case 2:
+
+                        break;
+
+                }
+
+            }
         }
     }
 
