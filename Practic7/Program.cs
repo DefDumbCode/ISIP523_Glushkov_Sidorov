@@ -30,7 +30,7 @@ namespace Practic7
                 Console.WriteLine("Персонаж создан!");
                 
 
-            while (a)
+            while (newPlayer.Balance >= 0)
             {
                 newPlayer.Printinfo();
                 foreach (var c in capital)
@@ -77,14 +77,17 @@ namespace Practic7
 
                 }
                 Shop shop = new Shop();
+                Console.WriteLine($"Баланс: {newPlayer.Balance}");
                 shop.Buy(newPlayer);
+                count++;
 
 
 
             }
-  
-                
-        
+            Console.WriteLine($"ВЫ БАНКРОТ! \n Вы обслужили - {count} клиентов");
+
+
+
 
 
         }
@@ -148,7 +151,6 @@ namespace Practic7
                             {
                                 Console.WriteLine($"Товар: {p.Name}, Цена: {p.Price}");
                             }
-                            Console.WriteLine($"Баланс: {newPlayer.Balance}");
                             Console.WriteLine("Что вы хотите взять?");
                             Console.WriteLine("Введите ТОЧНОЕ название товара которое вы хотите взять: ");
                             string l = Console.ReadLine();
