@@ -14,13 +14,13 @@ var Weapons = new Dictionary<string, int>()
     {"Орешник", 300 }
 };
 
-var Armor = new Dictionary<string, int>()
+var Armor = new Dictionary<string, double>()
 {
-    {"Обноски бездомного", 20 },
-    {"Одежка вора", 25 },
-    {"Обмундирование Рейнджера", 40 },
-    {"Броня рыцаря", 60 },
-    {"Костюм банана", 85 }
+    {"Обноски бездомного", 0.20 },
+    {"Одежка вора", 0.25 },
+    {"Обмундирование Рейнджера", 0.40 },
+    {"Броня рыцаря", 0.60 },
+    {"Костюм банана", 0.85 }
 };
 
 var igra = new Game(Weapons, Armor);
@@ -115,12 +115,12 @@ class Game
     string a = " ";
     Random rnd = new Random();
     Dictionary<string, int> Weapons;
-    Dictionary<string, int> Armor;
+    Dictionary<string, double> Armor;
     public string Cur_Weapon = "Деревянный меч";
     public string Cur_Armor = "Обноски бездомного";
     int count = 0;
 
-    public Game(Dictionary<string, int> weapons,  Dictionary<string, int> armor)
+    public Game(Dictionary<string, int> weapons,  Dictionary<string, double> armor)
     {
         Weapons = weapons;
         Armor = armor;
@@ -215,14 +215,14 @@ class Game
                 bool krit1 = rnd.Next(0, 10) <= 4 ? true : false;
                 if (krit1)
                 {
-                    double dam = NewMon.Damage * (player.Armor[Cur_Armor] / 100) * 1.5;
+                    double dam = NewMon.Damage * (1 - player.Armor[Cur_Armor]) * 1.5;
                     player.HP -= dam;
                     Console.WriteLine($"Вам нанесли {dam} урона");
                     Console.WriteLine($"У вас теперь {player.HP} ХП");
                 }
                 else
                 {
-                    double dam = NewMon.Damage * (player.Armor[Cur_Armor] / 100);
+                    double dam = NewMon.Damage * (1 - player.Armor[Cur_Armor]);
                     player.HP -= dam;
                     Console.WriteLine($"Вам нанесли {dam} урона");
                     Console.WriteLine($"У вас теперь {player.HP} ХП");
@@ -234,7 +234,7 @@ class Game
                 bool frost1 = rnd.Next(0, 10) <= 4 ? true : false;
                 if (frost1)
                 {
-                    double dam = NewMon.Damage * (player.Armor[Cur_Armor] / 100) * 1.5;
+                    double dam = NewMon.Damage * (1 - player.Armor[Cur_Armor]) * 1.5;
                     player.HP -= dam;
                     Console.WriteLine($"Вам нанесли {dam} урона");
                     Console.WriteLine($"У вас теперь {player.HP} ХП");
@@ -242,7 +242,7 @@ class Game
                 }
                 else
                 {
-                    double dam = NewMon.Damage * (player.Armor[Cur_Armor] / 100);
+                    double dam = NewMon.Damage * (1 - player.Armor[Cur_Armor]);
                     player.HP -= dam;
                     Console.WriteLine($"Вам нанесли {dam} урона");
                     Console.WriteLine($"У вас теперь {player.HP} ХП");
@@ -290,7 +290,7 @@ class Game
             Console.WriteLine($"Урон: {Armor.Values.ElementAt(index)}");
             Console.WriteLine("Хотите поменять с вашим? (1 - Да; 2 - Нет)");
             Console.WriteLine($"У вас: {Cur_Armor}");
-            Console.WriteLine($"Урон: {Armor[Cur_Armor]}");
+            Console.WriteLine($"Процент брони: {Armor[Cur_Armor]*100}%");
             int b = Convert.ToInt32(Console.ReadLine());
             switch (b)
             {
@@ -364,14 +364,14 @@ class Game
                 bool krit1 = rnd.Next(0, 10) <= 4 ? true : false;
                 if (krit1)
                 {
-                    double dam = NewMon.Damage * (player.Armor[Cur_Armor] / 100) * 1.5;
+                    double dam = NewMon.Damage * (1 - player.Armor[Cur_Armor]) * 1.5;
                     player.HP -= dam;
                     Console.WriteLine($"Вам нанесли {dam} урона");
                     Console.WriteLine($"У вас теперь {player.HP} ХП");
                 }
                 else
                 {
-                    double dam = NewMon.Damage * (player.Armor[Cur_Armor] / 100);
+                    double dam = NewMon.Damage * (1 - player.Armor[Cur_Armor]);
                     player.HP -= dam;
                     Console.WriteLine($"Вам нанесли {dam} урона");
                     Console.WriteLine($"У вас теперь {player.HP} ХП");
@@ -383,7 +383,7 @@ class Game
                 bool frost1 = rnd.Next(0, 10) <= 4 ? true : false;
                 if (frost1)
                 {
-                    double dam = NewMon.Damage * (player.Armor[Cur_Armor] / 100) * 1.5;
+                    double dam = NewMon.Damage * (1 - player.Armor[Cur_Armor]) * 1.5;
                     player.HP -= dam;
                     Console.WriteLine($"Вам нанесли {dam} урона");
                     Console.WriteLine($"У вас теперь {player.HP} ХП");
@@ -391,7 +391,7 @@ class Game
                 }
                 else
                 {
-                    double dam = NewMon.Damage * (player.Armor[Cur_Armor] / 100);
+                    double dam = NewMon.Damage * (1 - player.Armor[Cur_Armor]);
                     player.HP -= dam;
                     Console.WriteLine($"Вам нанесли {dam} урона");
                     Console.WriteLine($"У вас теперь {player.HP} ХП");
@@ -415,17 +415,22 @@ class Hero
     public string Cur_Weapon = "Деревянный меч";
     public string Cur_Armor = "Обноски бездомного";
     public Dictionary<string, int> Weapons; //по базе деревяшка
-    public Dictionary<string, int> Armor; //по базе обноски
+    public Dictionary<string, double> Armor; //по базе обноски
 
-    public Hero(string name, Dictionary<string, int> weapons, Dictionary<string, int> armor)
+    public Hero(string name, Dictionary<string, int> weapons, Dictionary<string, double> armor)
     {
         Name = name;
         Weapons = new Dictionary<string, int>(weapons);
-        Armor = new Dictionary<string, int>(armor);
+        Armor = new Dictionary<string, double>(armor);
 ;
     }
 
     public void GetHeal(Hero player) => HP = MAX_HP;
+
+    public void GetGurt(Hero player)
+    {
+
+    }
 
     public void PrintInfo()
     {
@@ -433,7 +438,7 @@ class Hero
         Console.WriteLine($"Герой: {Name}");
         Console.WriteLine($"Здоровье: {HP}");
         Console.WriteLine($"Оружие: {Cur_Weapon} (урон: {Weapons[Cur_Weapon]})");
-        Console.WriteLine($"Броня: {Cur_Armor} (защита: {Armor[Cur_Armor]})");
+        Console.WriteLine($"Броня: {Cur_Armor} (защита: {Armor[Cur_Armor]*100}%)");
     }
 }
 
