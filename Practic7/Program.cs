@@ -76,6 +76,8 @@ namespace Practic7
                         break;
 
                 }
+                Shop shop = new Shop();
+                shop.Buy(newPlayer);
 
 
 
@@ -128,9 +130,9 @@ namespace Practic7
 
         class Shop
         {
-            List<Part> parts;
+            List<Part> parts = Core.Context.Part.ToList();
 
-            public void Buy()
+            public void Buy(Player newPlayer)
             {
                 
                 Console.WriteLine("Вы желаете заказать доставку в магазине? 1 - да/2 - нет");
@@ -138,23 +140,37 @@ namespace Practic7
                 switch (m)
                 {
                     case 1:
-                        Console.WriteLine("=====Добро пожаловать в МАГАЗИН=====");
-                        foreach (var p in parts)
+                        bool purchase = false;
+                        while(purchase != true)
                         {
-                            Console.WriteLine($"Товар: {p.Name}, Цена: {p.Price}");
+                            Console.WriteLine("=====Добро пожаловать в МАГАЗИН=====");
+                            foreach (var p in parts)
+                            {
+                                Console.WriteLine($"Товар: {p.Name}, Цена: {p.Price}");
+                            }
+                            Console.WriteLine($"Баланс: {newPlayer.Balance}");
+                            Console.WriteLine("Что вы хотите взять?");
+                            Console.WriteLine("Введите ТОЧНОЕ название товара которое вы хотите взять: ");
+                            string l = Console.ReadLine();
+                            Part newPart2 = Core.Context.Part.First(p => p.Name == l);
+                            Warehouse_Part GG = Core.Context.Warehouse_Part.FirstOrDefault(w => w.ID_Part == newPart2.ID);
+                            Console.WriteLine("Сколько вы хотите купить?");
+                            int x = Convert.ToInt32(Console.ReadLine());
+                            int xx = x * newPart2.Price;
+                            if (xx > newPlayer.Balance)
+                            {
+                                Console.WriteLine("У вас недостаточно средств!");
+                            }
+                            else
+                            {
+                                newPlayer.Balance -= xx;
+                                GG.Count += x;
+                                Console.WriteLine($"Покупка успешна! Куплено {x} единиц {l}");
+                                purchase = true;
+                            }
                         }
-                        Console.WriteLine("Что вы хотите взять?");
-                        Console.WriteLine("Введите ТОЧНОЕ название товара которое вы хотите взять: ");
-                        string l = Console.ReadLine();
-                        Part newPart2 = Core.Context.Part.First(p => p.Name == l);
-                        Warehouse_Part GG = Core.Context.Warehouse_Part.FirstOrDefault(w => w.ID_Part == newPart2.ID);
-                        Console.WriteLine("Сколько вы хотите купить?");
-                        int x = Convert.ToInt32(Console.ReadLine());
-                        int xx = x * newPart2.Price;
-                        if (xx > newPlayer.Balance)
-                        {
-                        }
-                        break;
+                        
+                            break;
                     case 2:
 
                         break;
