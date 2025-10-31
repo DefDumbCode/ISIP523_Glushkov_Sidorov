@@ -30,7 +30,7 @@ namespace Practic7
                 Console.WriteLine("Персонаж создан!");
                 
 
-            while (newPlayer.Balance >= 0)
+            while (newPlayer.Balance > 0)
             {
                 newPlayer.Printinfo();
                 foreach (var c in capital)
@@ -87,7 +87,7 @@ namespace Practic7
                         break;
 
                 }
-                if(newPlayer.Balance < 0)
+                if(newPlayer.Balance <= 0)
                 {
                     break;
                 }
@@ -95,7 +95,7 @@ namespace Practic7
                 Console.WriteLine($"Баланс: {newPlayer.Balance}");
                 shop.Buy(newPlayer);
                 count++;
-                if (newPlayer.Balance < 0)
+                if (newPlayer.Balance <= 0)
                 {
                     break;
                 }
