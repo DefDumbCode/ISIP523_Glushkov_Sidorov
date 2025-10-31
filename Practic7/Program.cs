@@ -49,6 +49,17 @@ namespace Practic7
                 Client rClient = FabClient.RandCar();
                 rClient.Print();
 
+                bool WorkAbility = capital.Any(w => w.Count > 0);
+                if (WorkAbility == false)
+                {
+                    Console.WriteLine("На складе закончились все детали! Вы вынуждены отказать клиенту. ШТРАФ 30 ЗОЛОТЫХ!");
+                    newPlayer.Balance -= 30;
+                    Shop shopp = new Shop();
+                    Console.WriteLine($"Баланс: {newPlayer.Balance}");
+                    shopp.Buy(newPlayer);
+                    continue;
+                }
+
                 Console.WriteLine("Ваши действия? \n 1 - Поменять деталь \n 2 - Отказаться от ремонта");
                 int o = Convert.ToInt32(Console.ReadLine());
                 Part newPart = Core.Context.Part.First(p => p.Name == rClient.Trouble);
@@ -76,10 +87,18 @@ namespace Practic7
                         break;
 
                 }
+                if(newPlayer.Balance < 0)
+                {
+                    break;
+                }
                 Shop shop = new Shop();
                 Console.WriteLine($"Баланс: {newPlayer.Balance}");
                 shop.Buy(newPlayer);
                 count++;
+                if (newPlayer.Balance < 0)
+                {
+                    break;
+                }
 
 
 
