@@ -130,7 +130,7 @@ class Game
     {
         Console.WriteLine("Введи своё имя герой!");
         a = Console.ReadLine();
-        var player = new Hero(a, Weapons, Armor);
+        player = new Hero(a, Weapons, Armor);
         player.PrintInfo();
         while(player.HP > 0)
         {
@@ -262,7 +262,7 @@ class Game
         if (loot == 1)
         {
             Console.WriteLine("Вы нашли зелье лечения!! \n Здоровье полностью восстановлено.");
-            player.GetHeal();
+            player.GetHeal(player);
         }
         else if (loot == 2)
         {
@@ -425,7 +425,7 @@ class Hero
 ;
     }
 
-    public void GetHeal() => HP = MAX_HP;
+    public void GetHeal(Hero player) => HP = MAX_HP;
 
     public void PrintInfo()
     {
