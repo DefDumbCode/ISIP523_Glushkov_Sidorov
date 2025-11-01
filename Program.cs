@@ -159,7 +159,7 @@ class Game
     public void MOBFight(Hero player)
     {
         int dodge = 0;
-        int frost = 0;
+        bool frost = false;
         bool dodge1 = false;
         Monster NewMon = FabEnemy.RandMonstr();
         Console.WriteLine($"Вы повстречали: {NewMon.Name}");
@@ -167,9 +167,9 @@ class Game
         {
 
             Console.WriteLine("Ваш ход: ");
-            if(frost == 1)
+            if(frost == true)
             {
-                frost--;
+                frost = false;
                 Console.WriteLine("ЗАМОРОЖЕНЫ");
                 break;
             }
@@ -204,52 +204,11 @@ class Game
                 Console.WriteLine("Вы увернулись от атаки!");
                 dodge1 = false;
             }
-            else if (NewMon.Name == "Скелет")
-            {
-                player.HP -= NewMon.Damage;
-                Console.WriteLine($"Вам нанесли {NewMon.Damage} урона");
-                Console.WriteLine($"У вас теперь {player.HP} ХП");
-            }
-            else if( NewMon.Name == "Гоблин")
-            {
-                bool krit1 = rnd.Next(0, 10) <= 4 ? true : false;
-                if (krit1)
-                {
-                    double dam = NewMon.Damage * (1 - player.Armor[Cur_Armor]) * 1.5;
-                    player.HP -= dam;
-                    Console.WriteLine($"Вам нанесли {dam} урона");
-                    Console.WriteLine($"У вас теперь {player.HP} ХП");
-                }
-                else
-                {
-                    double dam = NewMon.Damage * (1 - player.Armor[Cur_Armor]);
-                    player.HP -= dam;
-                    Console.WriteLine($"Вам нанесли {dam} урона");
-                    Console.WriteLine($"У вас теперь {player.HP} ХП");
-                }
-
-            }
-            else if(NewMon.Name == "Маг")
-            {
-                bool frost1 = rnd.Next(0, 10) <= 4 ? true : false;
-                if (frost1)
-                {
-                    double dam = NewMon.Damage * (1 - player.Armor[Cur_Armor]) * 1.5;
-                    player.HP -= dam;
-                    Console.WriteLine($"Вам нанесли {dam} урона");
-                    Console.WriteLine($"У вас теперь {player.HP} ХП");
-                    Console.WriteLine("Также вы заморожены! Вы пропускаете следующих ход.");
-                }
-                else
-                {
-                    double dam = NewMon.Damage * (1 - player.Armor[Cur_Armor]);
-                    player.HP -= dam;
-                    Console.WriteLine($"Вам нанесли {dam} урона");
-                    Console.WriteLine($"У вас теперь {player.HP} ХП");
-                }
+            else {
+                player.GetHurt(player, NewMon);
             }
 
-            
+
         }
         
         
@@ -427,9 +386,38 @@ class Hero
 
     public void GetHeal(Hero player) => HP = MAX_HP;
 
-    public void GetGurt(Hero player)
+    public void GetHurt(Hero player, Monster NewMon)
     {
+        int dodge = 0;
+        int frost = 0;
+        bool dodge1 = false;
+        Random rnd = new Random();
+        double dam = 0.0;
 
+        if (NewMon.Name == "Гоблин")
+        {
+            bool krit1 = rnd.Next(0, 10) <= 4 ? true : false;
+            if (krit1)
+            {
+                dam = NewMon.Damage * (1 - player.Armor[Cur_Armor]);
+            }
+        }
+        else if(NewMon.Name == "Скелет")
+        {
+            dam = NewMon.Damage;
+        }
+        else if (NewMon.Name == "Маг")
+        {
+            bool frost1 = rnd.Next(0, 10) <= 4 ? true : false;
+            if (frost1)
+            {
+                dam = NewMon.Damage * (1 - player.Armor[Cur_Armor]);
+                Console.WriteLine("Также вы заморожены! Вы пропускаете следующий ход.");
+            }
+        }
+            player.HP -= dam;
+        Console.WriteLine($"Вам нанесли {dam} урона");
+        Console.WriteLine($"У вас теперь {player.HP} ХП");
     }
 
     public void PrintInfo()
@@ -464,7 +452,7 @@ class Monster
         Console.WriteLine($"Урон: {Damage}");
         Console.WriteLine($"Броня: {Defence}");
     }
-
+    
 }
 
 class Goblin : Monster
