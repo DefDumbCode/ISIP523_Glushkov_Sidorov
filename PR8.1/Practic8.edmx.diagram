@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="c6569e1178dc423db79e2a7d94948aff" Name="Diagram1">
         <EntityTypeShape EntityType="PR8Model.Cart" Width="1.5" PointX="2.75" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PR8Model.Cart_Product" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PR8Model.User_Product" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PR8Model.Order" Width="1.5" PointX="3.75" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="PR8Model.Product" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="PR8Model.PVZ" Width="1.5" PointX="1.5" PointY="7" IsExpanded="true" />

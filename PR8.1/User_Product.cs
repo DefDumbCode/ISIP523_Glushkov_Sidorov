@@ -12,10 +12,10 @@ namespace PR8._1
     using System;
     using System.Collections.Generic;
     
-    public partial class Cart_Product
+    public partial class User_Product
     {
         public int ID { get; set; }
-        public int ID_Cart { get; set; }
+        public int ID_Product { get; set; }
         public int ID_User { get; set; }
         public int Amount { get; set; }
     

@@ -189,12 +189,12 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="Cart_Product">
+        <EntityType Name="User_Product">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID_Cart" Type="Int32" Nullable="false" />
+          <Property Name="ID_Product" Type="Int32" Nullable="false" />
           <Property Name="ID_User" Type="Int32" Nullable="false" />
           <Property Name="Amount" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Cart_Product_Product" FromRole="Cart_Product" ToRole="Product" />
@@ -264,7 +264,7 @@
         </EntityType>
         <Association Name="FK_Cart_Product_Product">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="Cart_Product" Type="Self.Cart_Product" Multiplicity="*" />
+          <End Role="Cart_Product" Type="PR8Model.User_Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="ID" />
@@ -276,7 +276,7 @@
         </Association>
         <Association Name="FK_Cart_Product_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Cart_Product" Type="Self.Cart_Product" Multiplicity="*" />
+          <End Role="Cart_Product" Type="PR8Model.User_Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="ID" />
@@ -336,7 +336,7 @@
         </Association>
         <EntityContainer Name="PR8Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cart" EntityType="Self.Cart" />
-          <EntitySet Name="Cart_Product" EntityType="Self.Cart_Product" />
+          <EntitySet Name="Cart_Product" EntityType="PR8Model.User_Product" />
           <EntitySet Name="Order" EntityType="Self.Order" />
           <EntitySet Name="Product" EntityType="Self.Product" />
           <EntitySet Name="PVZ" EntityType="Self.PVZ" />
@@ -382,10 +382,10 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Cart_Product">
-            <EntityTypeMapping TypeName="PR8Model.Cart_Product">
+            <EntityTypeMapping TypeName="PR8Model.User_Product">
               <MappingFragment StoreEntitySet="Cart_Product">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ID_Cart" ColumnName="ID_Cart" />
+                <ScalarProperty Name="ID_Product" ColumnName="ID_Cart" />
                 <ScalarProperty Name="ID_User" ColumnName="ID_User" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
               </MappingFragment>

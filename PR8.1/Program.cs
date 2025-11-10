@@ -64,11 +64,22 @@ namespace PR8._1
                 }
                 if (In_Acc == false)
                 {
-                    Console.WriteLine("Так как вы не вошли в аккаунт, вы не можете совершить покупки");
+                    Console.WriteLine("Так как вы не вошли в аккаунт, вы не можете совершать покупки");
                 }
                 else
                 {
-
+                    Console.WriteLine("Введите точное название товара, который вы хотите купить.");
+                    string l = Console.ReadLine();
+                    Product Prod2 = Core.Context.Product.FirstOrDefault(p => p.Name == l);
+                    Console.WriteLine("Сколько вы хотите купить?");
+                    int x = Convert.ToInt32(Console.ReadLine());
+                    User_Product New_Us_Prod = new User_Product
+                    {
+                        ID_User = NewUser.ID,
+                        ID_Product = Prod2.ID,
+                        Amount = x
+                    };
+                    Console.WriteLine($"Вы добавили в корзину {l} единиц предмета {x}");
                 }
                 
             }

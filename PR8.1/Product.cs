@@ -11,14 +11,13 @@ namespace PR8._1
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-
+    
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.Cart_Product = new HashSet<Cart_Product>();
+            this.Cart_Product = new HashSet<User_Product>();
             this.User_Order = new HashSet<User_Order>();
         }
     
@@ -27,7 +26,7 @@ namespace PR8._1
         public int Price { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cart_Product> Cart_Product { get; set; }
+        public virtual ICollection<User_Product> Cart_Product { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User_Order> User_Order { get; set; }
     }

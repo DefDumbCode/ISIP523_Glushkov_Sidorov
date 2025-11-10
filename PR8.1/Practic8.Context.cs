@@ -26,7 +26,7 @@ namespace PR8._1
         }
     
         public virtual DbSet<Cart> Cart { get; set; }
-        public virtual DbSet<Cart_Product> Cart_Product { get; set; }
+        public virtual DbSet<User_Product> Cart_Product { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<PVZ> PVZ { get; set; }

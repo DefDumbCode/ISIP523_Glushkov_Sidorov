@@ -54,9 +54,6 @@
     <Compile Include="Cart.cs">
       <DependentUpon>Practic8.tt</DependentUpon>
     </Compile>
-    <Compile Include="Cart_Product.cs">
-      <DependentUpon>Practic8.tt</DependentUpon>
-    </Compile>
     <Compile Include="Core.cs" />
     <Compile Include="Order.cs">
       <DependentUpon>Practic8.tt</DependentUpon>
@@ -91,6 +88,9 @@
       <DependentUpon>Practic8.tt</DependentUpon>
     </Compile>
     <Compile Include="User_Order.cs">
+      <DependentUpon>Practic8.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User_Product.cs">
       <DependentUpon>Practic8.tt</DependentUpon>
     </Compile>
   </ItemGroup>
