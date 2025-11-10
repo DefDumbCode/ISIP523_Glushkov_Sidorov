@@ -37,8 +37,9 @@ namespace PR8._1
             Console.WriteLine($"Данные аккаунта: \n ФИО: {FIO} \n Телефон: {Phone_num}");
         }
 
-        public void Regist()
+        public void Regist(bool In_Acc)
         {
+            
             Console.WriteLine("Введите свое ФИО: ");
             string n = Console.ReadLine();
             Console.WriteLine("Введите свой номер телефона: (Формат 89999999999)");
@@ -58,6 +59,8 @@ namespace PR8._1
 
                 Core.Context.User.Add(login);
                 Core.Context.SaveChanges();
+                Console.WriteLine("Аккаунт создан!");
+                In_Acc = true;
             }
             else
             {
@@ -66,7 +69,7 @@ namespace PR8._1
 
 
         }
-        public void Log_In(User login)
+        public void Log_In(User login, bool In_Acc)
         {
             List<User> users = Core.Context.User.ToList();
             Console.WriteLine("Номер телефона: (Формат 89999999999)");
@@ -79,6 +82,8 @@ namespace PR8._1
                 if (fg.Password == p)
                 {
                     login = fg;
+                    Console.WriteLine("Вы вошли в аккаунт!");
+                    In_Acc = true;
                 }
             }
             else
