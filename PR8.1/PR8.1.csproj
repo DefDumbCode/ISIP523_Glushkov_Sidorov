@@ -84,6 +84,7 @@
     <Compile Include="PVZ.cs">
       <DependentUpon>Practic8.tt</DependentUpon>
     </Compile>
+    <Compile Include="Register.cs" />
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>Practic8.tt</DependentUpon>
     </Compile>
