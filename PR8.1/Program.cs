@@ -10,6 +10,8 @@ namespace PR8._1
     {
         static void Main(string[] args)
         {
+            User NewUser = new User();
+            List<Product> products = Core.Context.Product.ToList();
             while (true)
             {
                 Console.WriteLine("---Меню--- \n 1) Каталог товаров \n 2) Корзина товаров \n 3) Заказы \n 4) Аккаунт \n 5) Выход");
@@ -17,7 +19,10 @@ namespace PR8._1
                 switch (q)
                 {
                     case 1:
-
+                        foreach (Product p in products)
+                        {
+                            Console.WriteLine($"Товар: {p.Name}, Цена: {p.Price}");
+                        }
                         break;
                     case 2:
                         break;
@@ -29,9 +34,10 @@ namespace PR8._1
                         switch (qq)
                         {
                             case 1:
-                                //fghjk
+                                NewUser.Regist();
                                 break;
                             case 2:
+                                NewUser.Log_In(NewUser);
                                 break;
                         }
                         break;
@@ -47,5 +53,6 @@ namespace PR8._1
 
             }
         }
+
     }
 }
