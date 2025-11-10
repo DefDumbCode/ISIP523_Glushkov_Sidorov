@@ -30,5 +30,10 @@ namespace PR8._1
         public virtual ICollection<Cart_Product> Cart_Product { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User_Order> User_Order { get; set; }
+
+        public virtual void PrintInfo()
+        {
+            Console.WriteLine($"Данные аккаунта: \n ФИО: {FIO} \n Телефон: {Phone_num}");
+        }
     }
 }
