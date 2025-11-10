@@ -19,6 +19,7 @@ namespace PR8._1
                 switch (q)
                 {
                     case 1:
+                        Shop shopp = new Shop();
 
                         break;
                     case 2:
