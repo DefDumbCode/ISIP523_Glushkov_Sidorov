@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISIP523_Glushkov", "ISIP523_Glushkov.csproj", "{BE491E85-8276-4C7A-96F8-4A104CF1A2EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PR8.1", "PR8.1\PR8.1.csproj", "{75DDF6ED-7E2D-4D3E-868B-C07B041D8EE8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BE491E85-8276-4C7A-96F8-4A104CF1A2EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BE491E85-8276-4C7A-96F8-4A104CF1A2EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BE491E85-8276-4C7A-96F8-4A104CF1A2EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BE491E85-8276-4C7A-96F8-4A104CF1A2EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75DDF6ED-7E2D-4D3E-868B-C07B041D8EE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75DDF6ED-7E2D-4D3E-868B-C07B041D8EE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75DDF6ED-7E2D-4D3E-868B-C07B041D8EE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75DDF6ED-7E2D-4D3E-868B-C07B041D8EE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
