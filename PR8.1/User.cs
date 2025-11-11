@@ -26,20 +26,24 @@ namespace PR8._1
         public string FIO { get; set; }
         public int Phone_num { get; set; }
         public string Password { get; set; }
+
+        public bool In_Acc;
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User_Product> User_Product { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User_Order> User_Order { get; set; }
 
+
         public virtual void PrintInfo()
         {
             Console.WriteLine($"Данные аккаунта: \n ФИО: {FIO} \n Телефон: {Phone_num}");
         }
 
-        public void Regist(bool In_Acc)
+
+        public void Regist(ref bool In_Acc)
         {
-            
+
             Console.WriteLine("Введите свое ФИО: ");
             string n = Console.ReadLine();
             Console.WriteLine("Введите свой номер телефона: (Формат 89999999999)");
@@ -69,7 +73,7 @@ namespace PR8._1
 
 
         }
-        public void Log_In(User login, bool In_Acc)
+        public void Log_In(ref User login, ref bool In_Acc)
         {
             List<User> users = Core.Context.User.ToList();
             Console.WriteLine("Номер телефона: (Формат 89999999999)");

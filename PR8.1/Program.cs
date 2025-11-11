@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,8 @@ namespace PR8._1
     {
         static void Main(string[] args)
         {
-            User NewUser = new User();
+            List<User_Product> User_Prods = Core.Context.User_Product.ToList();
+            User NewUser = null;
             bool In_Acc = false;
             while (true)
             {
@@ -20,29 +22,54 @@ namespace PR8._1
                 {
                     case 1:
                         Shop shopp = new Shop();
-
+                        shopp.Buy(NewUser, In_Acc);
                         break;
                     case 2:
+                        Console.WriteLine("---КОРЗИНА---");
+
+                        var userProducts = Core.Context.User_Product
+                        .Where(up => up.ID_User == NewUser.ID)
+                        .Include(up => up.Product) 
+                        .ToList();
+
+                        foreach (User_Product u in User_Prods)
+                        {
+                            Console.WriteLine($"Название: {u.Product.Name}, Цена {u.Product.Price}");
+                        }
+                        
                         break;
                     case 3:
                         break;
                     case 4:
-                        Console.WriteLine("Регистрация или вход? \n 1) Регистрация \n 2) Вход");
-                        int qq = Convert.ToInt32(Console.ReadLine());
-                        switch (qq)
+                        if(In_Acc == true)
                         {
-                            case 1:
-                                NewUser.Regist(In_Acc);
-                                break;
-                            case 2:
-                                NewUser.Log_In(NewUser, In_Acc);
-                                break;
+                            Console.WriteLine("Вы уже вошли в аккаунт!");
+                            NewUser.PrintInfo();
+                            break;
                         }
-                        break;
+                        else
+                        {
+                            Console.WriteLine("Регистрация или вход? \n 1) Регистрация \n 2) Вход");
+                            int qq = Convert.ToInt32(Console.ReadLine());
+                            switch (qq)
+                            {
+                                case 1:
+                                    NewUser = new User();
+                                    NewUser.Regist(ref In_Acc);
+                                    
+                                    break;
+                                case 2:
+                                    NewUser = new User();
+                                    NewUser.Log_In(ref NewUser, ref In_Acc);
+                                    break;
+                            }
+                            break;
+                        }
+                            
                     case 5:
                         Console.WriteLine("Адиос");
                         break;
-                    deafult:
+                    default:
                         Console.WriteLine("Непонятный ввод, повторите пожалуйста");
                         break;
                 }
@@ -81,6 +108,8 @@ namespace PR8._1
                         Amount = x
                     };
                     Console.WriteLine($"Вы добавили в корзину {l} единиц предмета {x}");
+                    Core.Context.User_Product.Add(New_Us_Prod);
+                    Core.Context.SaveChanges();
                 }
                 
             }

@@ -52,73 +52,73 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cart.cs">
-      <DependentUpon>Practic8.tt</DependentUpon>
+      <DependentUpon>PR8.tt</DependentUpon>
     </Compile>
     <Compile Include="Core.cs" />
     <Compile Include="Order.cs">
-      <DependentUpon>Practic8.tt</DependentUpon>
+      <DependentUpon>PR8.tt</DependentUpon>
     </Compile>
-    <Compile Include="Practic8.Context.cs">
+    <Compile Include="PR8.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Practic8.Context.tt</DependentUpon>
+      <DependentUpon>PR8.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Practic8.cs">
+    <Compile Include="PR8.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Practic8.tt</DependentUpon>
+      <DependentUpon>PR8.tt</DependentUpon>
     </Compile>
-    <Compile Include="Practic8.Designer.cs">
+    <Compile Include="PR8.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Practic8.edmx</DependentUpon>
+      <DependentUpon>PR8.edmx</DependentUpon>
     </Compile>
     <Compile Include="Product.cs">
-      <DependentUpon>Practic8.tt</DependentUpon>
+      <DependentUpon>PR8.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PVZ.cs">
-      <DependentUpon>Practic8.tt</DependentUpon>
+      <DependentUpon>PR8.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.cs">
-      <DependentUpon>Practic8.tt</DependentUpon>
+      <DependentUpon>PR8.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
-      <DependentUpon>Practic8.tt</DependentUpon>
+      <DependentUpon>PR8.tt</DependentUpon>
     </Compile>
     <Compile Include="User_Order.cs">
-      <DependentUpon>Practic8.tt</DependentUpon>
+      <DependentUpon>PR8.tt</DependentUpon>
     </Compile>
     <Compile Include="User_Product.cs">
-      <DependentUpon>Practic8.tt</DependentUpon>
+      <DependentUpon>PR8.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="Practic8.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Practic8.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="packages.config" />
-    <None Include="Practic8.edmx.diagram">
-      <DependentUpon>Practic8.edmx</DependentUpon>
+    <EntityDeploy Include="PR8.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PR8.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="PR8.edmx.diagram">
+      <DependentUpon>PR8.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Practic8.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Practic8.Context.cs</LastGenOutput>
-      <DependentUpon>Practic8.edmx</DependentUpon>
-    </Content>
-    <Content Include="Practic8.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Practic8.edmx</DependentUpon>
-      <LastGenOutput>Practic8.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="PR8.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PR8.edmx</DependentUpon>
+      <LastGenOutput>PR8.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="PR8.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PR8.edmx</DependentUpon>
+      <LastGenOutput>PR8.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

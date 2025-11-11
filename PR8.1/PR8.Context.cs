@@ -13,10 +13,10 @@ namespace PR8._1
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PR8Entities : DbContext
+    public partial class PR8Entities1 : DbContext
     {
-        public PR8Entities()
-            : base("name=PR8Entities")
+        public PR8Entities1()
+            : base("name=PR8Entities1")
         {
         }
     
@@ -26,12 +26,12 @@ namespace PR8._1
         }
     
         public virtual DbSet<Cart> Cart { get; set; }
-        public virtual DbSet<User_Product> Cart_Product { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<PVZ> PVZ { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<User_Order> User_Order { get; set; }
+        public virtual DbSet<User_Product> User_Product { get; set; }
     }
 }
