@@ -11,6 +11,8 @@ namespace PR8._1
     {
         static void Main(string[] args)
         {
+            
+
             List<User_Product> User_Prods = Core.Context.User_Product.ToList();
             User NewUser = null;
             bool In_Acc = false;
@@ -34,7 +36,7 @@ namespace PR8._1
 
                         foreach (User_Product u in User_Prods)
                         {
-                            Console.WriteLine($"Название: {u.Product.Name}, Цена {u.Product.Price}");
+                            Console.WriteLine($"Название: {u.Product.Name}, Цена за штуку {u.Product.Price}, Кол-во {u.Amount}");
                         }
                         
                         break;
