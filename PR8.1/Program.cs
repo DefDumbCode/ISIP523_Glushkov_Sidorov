@@ -30,22 +30,29 @@ namespace PR8._1
 
                         var userProducts = Core.Context.User_Product
                         .Where(up => up.ID_User == NewUser.ID)
-                        //.Include(up => up.Product) 
                         .ToList();
-                        var listpr = Core.Context.Product.ToList();
                         foreach (var u in userProducts)
                         {
-                            Console.WriteLine($"Название: {u.Product.Name}, Цена за штуку {u.Product.Price}, Кол-во {u.Amount}");
+                            Console.WriteLine($"ID: {u.ID} Название: {u.Product.Name}, Цена за штуку {u.Product.Price}, Кол-во {u.Amount}");
                         }
                         Console.WriteLine("Вы хотите купить определенный товар или всю корзину? \n 1) Один \n 2) Всё");
                         int qqq = Convert.ToInt32(Console.ReadLine());
                         switch (qqq)
                         {
                             case 1:
+                                Console.WriteLine("Введите ID, который вы хотите купить.");
+                                int i = Convert.ToInt32(Console.ReadLine());
+                                User_Product UsProd3 = Core.Context.User_Product.FirstOrDefault(u => u.ID == i);
 
                                 break;
                             case 2:
                                 break;
+                        }
+                        Console.WriteLine("В какой ПВЗ вы хотите это заказать?");
+                        List<PVZ> pvz = Core.Context.PVZ.ToList();
+                        foreach (var u in pvz)
+                        {
+                            Console.WriteLine($"ID: {u.ID} Адрес: {u.Adress}");
                         }
                         break;
                     case 3:
