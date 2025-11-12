@@ -26,8 +26,6 @@ namespace PR8._1
         public string FIO { get; set; }
         public int Phone_num { get; set; }
         public string Password { get; set; }
-
-        public bool In_Acc;
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User_Product> User_Product { get; set; }

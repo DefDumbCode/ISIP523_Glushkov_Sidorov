@@ -12,8 +12,6 @@ namespace PR8._1
         static void Main(string[] args)
         {
             
-
-            List<User_Product> User_Prods = Core.Context.User_Product.ToList();
             User NewUser = null;
             bool In_Acc = false;
             while (true)
@@ -27,18 +25,28 @@ namespace PR8._1
                         shopp.Buy(NewUser, In_Acc);
                         break;
                     case 2:
+                       
                         Console.WriteLine("---КОРЗИНА---");
 
                         var userProducts = Core.Context.User_Product
                         .Where(up => up.ID_User == NewUser.ID)
-                        .Include(up => up.Product) 
+                        //.Include(up => up.Product) 
                         .ToList();
-
-                        foreach (User_Product u in User_Prods)
+                        var listpr = Core.Context.Product.ToList();
+                        foreach (var u in userProducts)
                         {
                             Console.WriteLine($"Название: {u.Product.Name}, Цена за штуку {u.Product.Price}, Кол-во {u.Amount}");
                         }
-                        
+                        Console.WriteLine("Вы хотите купить определенный товар или всю корзину? \n 1) Один \n 2) Всё");
+                        int qqq = Convert.ToInt32(Console.ReadLine());
+                        switch (qqq)
+                        {
+                            case 1:
+
+                                break;
+                            case 2:
+                                break;
+                        }
                         break;
                     case 3:
                         break;
@@ -63,6 +71,7 @@ namespace PR8._1
                                 case 2:
                                     NewUser = new User();
                                     NewUser.Log_In(ref NewUser, ref In_Acc);
+                                    Console.WriteLine(NewUser.FIO);
                                     break;
                             }
                             break;
@@ -103,6 +112,7 @@ namespace PR8._1
                     Product Prod2 = Core.Context.Product.FirstOrDefault(p => p.Name == l);
                     Console.WriteLine("Сколько вы хотите купить?");
                     int x = Convert.ToInt32(Console.ReadLine());
+                    
                     User_Product New_Us_Prod = new User_Product
                     {
                         ID_User = NewUser.ID,

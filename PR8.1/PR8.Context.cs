@@ -13,10 +13,10 @@ namespace PR8._1
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PR8Entities1 : DbContext
+    public partial class PR8Entities2 : DbContext
     {
-        public PR8Entities1()
-            : base("name=PR8Entities1")
+        public PR8Entities2()
+            : base("name=PR8Entities2")
         {
         }
     
