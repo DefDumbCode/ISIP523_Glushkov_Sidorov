@@ -57,6 +57,17 @@ namespace PR8._1
                         Console.WriteLine("Введите ID нужного ПВЗ:");
                         int ii = Convert.ToInt32(Console.ReadLine());
                         PVZ pVZ = Core.Context.PVZ.FirstOrDefault(p => p.ID == ii);
+                        Order New_Ord = new Order
+                        {
+                            ID_PVZ = pVZ.ID,
+                            Date = DateTime.Now
+                        };
+                        User_Order Us_Ord = new User_Order 
+                        {
+                            ID_User = NewUser.ID,
+                            ID_Order = New_Ord.ID,
+                            ID_Product = 
+                        };
                         break;
                     case 3:
                         Console.WriteLine(DateTime.Now);
