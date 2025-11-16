@@ -33,7 +33,7 @@ namespace PR8._1
                         .ToList();
                         foreach (var u in userProducts)
                         {
-                            Console.WriteLine($"ID: {u.ID} Название: {u.Product.Name}, Цена за штуку {u.Product.Price}, Кол-во {u.Amount}");
+                            Console.WriteLine($"ID: {u.ID} Название: {u.Product.Name}, Цена {u.Product.Price * u.Amount}, Кол-во {u.Amount}");
                         }
                         Console.WriteLine("Вы хотите купить определенный товар или всю корзину? \n 1) Один \n 2) Всё");
                         int qqq = Convert.ToInt32(Console.ReadLine());
@@ -54,8 +54,12 @@ namespace PR8._1
                         {
                             Console.WriteLine($"ID: {u.ID} Адрес: {u.Adress}");
                         }
+                        Console.WriteLine("Введите ID нужного ПВЗ:");
+                        int ii = Convert.ToInt32(Console.ReadLine());
+                        PVZ pVZ = Core.Context.PVZ.FirstOrDefault(p => p.ID == ii);
                         break;
                     case 3:
+                        Console.WriteLine(DateTime.Now);
                         break;
                     case 4:
                         if(In_Acc == true)
