@@ -18,17 +18,19 @@ namespace PR8._1
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
+            this.Order = new HashSet<Order>();
             this.User_Product = new HashSet<User_Product>();
         }
-
+    
         public int ID { get; set; }
         public string FIO { get; set; }
         public int Phone_num { get; set; }
         public string Password { get; set; }
-
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Order { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User_Product> User_Product { get; set; }
-
 
         public virtual void PrintInfo()
         {

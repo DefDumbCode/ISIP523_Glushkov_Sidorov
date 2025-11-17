@@ -4,20 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5e698261056b41ef8eccf9b07d51ecde" Name="Diagram1" ZoomLevel="86">
-        <EntityTypeShape EntityType="PR8Model.Cart" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PR8Model.Order" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="PR8Model.Product" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PR8Model.PVZ" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PR8Model.sysdiagrams" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PR8Model.User" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="PR8Model.User_Order" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="PR8Model.User_Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="af9d6374d97a4ba79f4dc0a45678be71" Name="Diagram1">
+        <EntityTypeShape EntityType="PR8Model.Cart" Width="1.5" PointX="2.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PR8Model.Order" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PR8Model.Order_Product" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PR8Model.Product" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PR8Model.PVZ" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="PR8Model.sysdiagrams" Width="1.5" PointX="4.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PR8Model.User" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PR8Model.User_Product" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="PR8Model.FK_Order_PVZ" ManuallyRouted="false" />
+        <AssociationConnector Association="PR8Model.FK_Order_User" ManuallyRouted="false" />
         <AssociationConnector Association="PR8Model.FK_User_Order_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="PR8Model.FK_Order_Product_Product" ManuallyRouted="false" />
         <AssociationConnector Association="PR8Model.FK_User_Product_Product" ManuallyRouted="false" />
         <AssociationConnector Association="PR8Model.FK_Cart_Product_User" ManuallyRouted="false" />
-        <AssociationConnector Association="PR8Model.FK_User_Order_User_Product" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

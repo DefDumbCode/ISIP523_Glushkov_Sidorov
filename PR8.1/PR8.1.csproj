@@ -58,6 +58,9 @@
     <Compile Include="Order.cs">
       <DependentUpon>PR8.tt</DependentUpon>
     </Compile>
+    <Compile Include="Order_Product.cs">
+      <DependentUpon>PR8.tt</DependentUpon>
+    </Compile>
     <Compile Include="PR8.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -85,9 +88,6 @@
       <DependentUpon>PR8.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
-      <DependentUpon>PR8.tt</DependentUpon>
-    </Compile>
-    <Compile Include="User_Order.cs">
       <DependentUpon>PR8.tt</DependentUpon>
     </Compile>
     <Compile Include="User_Product.cs">

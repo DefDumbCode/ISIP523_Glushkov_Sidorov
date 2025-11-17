@@ -60,18 +60,20 @@ namespace PR8._1
                         Order New_Ord = new Order
                         {
                             ID_PVZ = pVZ.ID,
-                            Date = DateTime.Now
+                            Date = DateTime.Now,
+                            ID_User = NewUser.ID
                         };
                         Core.Context.Order.Add(New_Ord);
                         Core.Context.SaveChanges();
                         if (qqq == 1)
                         {
-                            User_Order Us_Ord = new User_Order
+                            Order_Product Us_Ord = new Order_Product
                             {
                                 ID_Order = New_Ord.ID,
-                                ID_User_Product = UsProd3.ID
+                                ID_Product = UsProd3.ID_Product,
+                                Amount = UsProd3.Amount
                             };
-                            Core.Context.User_Order.Add(Us_Ord);
+                            Core.Context.Order_Product.Add(Us_Ord);
                             Core.Context.User_Product.Remove(UsProd3);
                             Core.Context.SaveChanges();
                         }
@@ -79,12 +81,13 @@ namespace PR8._1
                         {
                             foreach(var u in userProducts)
                             {
-                                User_Order Us_Ord = new User_Order
+                                Order_Product Us_Ord = new Order_Product
                                 {
                                     ID_Order = New_Ord.ID,
-                                    ID_User_Product = u.ID
+                                    ID_Product = u.ID_Product,
+                                    Amount = u.Amount
                                 };
-                                Core.Context.User_Order.Add(Us_Ord);
+                                Core.Context.Order_Product.Add(Us_Ord);
                                 Core.Context.User_Product.Remove(u);
                                 Core.Context.SaveChanges();
                             }
@@ -92,21 +95,34 @@ namespace PR8._1
                         Console.WriteLine("Заказ оформлен!");
                             break;
                     case 3:
+                        //var orders = Core.Context.Order.ToList();
+                        //foreach (var order in orders)
+                        //{
+                        //    var Us_Ord2 = Core.Context.User_Order
+                        //    .Where(up => up.ID_Order == order.ID)
+                        //    .ToList();
+                        //    foreach (var u in Us_Ord2)
+                        //    {
+                        //        var userProduct = Core.Context.User_Product.FirstOrDefault(up => up.ID == u.ID_User_Product);
+                        //        var product = Core.Context.Product.FirstOrDefault(p => p.ID == userProduct.ID_Product);
+                        //        var pvvz = Core.Context.PVZ.FirstOrDefault(pv => pv.ID == order.ID_PVZ);
+                        //        Console.WriteLine($"Name: {product.Name}, Amount: {userProduct.Amount}, PVZ: {pvvz.Adress}, Date: {order.Date}");
+                        //    }
+                        //}
+
                         var orders = Core.Context.Order.ToList();
-                        foreach(var order in orders)
+                        foreach (var order in orders)
                         {
-                            var Us_Ord2 = Core.Context.User_Order
-                            .Where(up => up.ID_Order == order.ID)
+                            var Us_Ord2 = Core.Context.Order_Product
+                            .Where(up => up.ID_Order == order.ID && NewUser.ID == order.ID)
                             .ToList();
-                            foreach(var u in Us_Ord2)
+                            foreach (var u in Us_Ord2)
                             {
-                                var userProduct = Core.Context.User_Product.FirstOrDefault(up => up.ID == u.ID_User_Product);
-                                var product = Core.Context.Product.FirstOrDefault(p => p.ID == userProduct.ID_Product);
+                                var product = Core.Context.Product.FirstOrDefault(p => p.ID == u.ID_Product);
                                 var pvvz = Core.Context.PVZ.FirstOrDefault(pv => pv.ID == order.ID_PVZ);
-                                Console.WriteLine($"Name: {product.Name}, Amount: {userProduct.Amount}, PVZ: {pvvz.Adress}, Date: {order.Date}");
+                                Console.WriteLine($"Name: {product.Name}, Amount: {u.Amount}, PVZ: {pvvz.Adress}, Date: {order.Date}");
                             }
                         }
-
 
                         break;
                     case 4:

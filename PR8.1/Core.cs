@@ -8,6 +8,6 @@ namespace PR8._1
 {
     internal class Core
     {
-        public static PR8Entities3 Context = new PR8Entities3();
+        public static PR8Entities5 Context = new PR8Entities5();
     }
 }

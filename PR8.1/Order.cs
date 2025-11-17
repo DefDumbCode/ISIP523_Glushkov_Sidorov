@@ -17,15 +17,17 @@ namespace PR8._1
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Order()
         {
-            this.User_Order = new HashSet<User_Order>();
+            this.Order_Product = new HashSet<Order_Product>();
         }
     
         public int ID { get; set; }
         public int ID_PVZ { get; set; }
         public System.DateTime Date { get; set; }
+        public int ID_User { get; set; }
     
         public virtual PVZ PVZ { get; set; }
+        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User_Order> User_Order { get; set; }
+        public virtual ICollection<Order_Product> Order_Product { get; set; }
     }
 }

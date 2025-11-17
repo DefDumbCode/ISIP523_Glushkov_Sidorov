@@ -17,6 +17,7 @@ namespace PR8._1
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
+            this.Order_Product = new HashSet<Order_Product>();
             this.User_Product = new HashSet<User_Product>();
         }
     
@@ -24,6 +25,8 @@ namespace PR8._1
         public string Name { get; set; }
         public int Price { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order_Product> Order_Product { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User_Product> User_Product { get; set; }
     }
