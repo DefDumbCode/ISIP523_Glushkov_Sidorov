@@ -95,21 +95,6 @@ namespace PR8._1
                         Console.WriteLine("Заказ оформлен!");
                             break;
                     case 3:
-                        //var orders = Core.Context.Order.ToList();
-                        //foreach (var order in orders)
-                        //{
-                        //    var Us_Ord2 = Core.Context.User_Order
-                        //    .Where(up => up.ID_Order == order.ID)
-                        //    .ToList();
-                        //    foreach (var u in Us_Ord2)
-                        //    {
-                        //        var userProduct = Core.Context.User_Product.FirstOrDefault(up => up.ID == u.ID_User_Product);
-                        //        var product = Core.Context.Product.FirstOrDefault(p => p.ID == userProduct.ID_Product);
-                        //        var pvvz = Core.Context.PVZ.FirstOrDefault(pv => pv.ID == order.ID_PVZ);
-                        //        Console.WriteLine($"Name: {product.Name}, Amount: {userProduct.Amount}, PVZ: {pvvz.Adress}, Date: {order.Date}");
-                        //    }
-                        //}
-
                         var orders = Core.Context.Order.ToList();
                         foreach (var order in orders)
                         {
