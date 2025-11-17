@@ -72,6 +72,7 @@ namespace PR8._1
                                 ID_User_Product = UsProd3.ID
                             };
                             Core.Context.User_Order.Add(Us_Ord);
+                            Core.Context.User_Product.Remove(UsProd3);
                             Core.Context.SaveChanges();
                         }
                         else
@@ -84,6 +85,7 @@ namespace PR8._1
                                     ID_User_Product = u.ID
                                 };
                                 Core.Context.User_Order.Add(Us_Ord);
+                                Core.Context.User_Product.Remove(u);
                                 Core.Context.SaveChanges();
                             }
                         }
@@ -122,7 +124,7 @@ namespace PR8._1
                             {
                                 case 1:
                                     NewUser = new User();
-                                    NewUser.Regist(ref In_Acc);
+                                    NewUser.Regist(ref NewUser, ref In_Acc);
                                     
                                     break;
                                 case 2:
