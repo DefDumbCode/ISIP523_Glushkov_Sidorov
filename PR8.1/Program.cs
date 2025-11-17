@@ -14,6 +14,7 @@ namespace PR8._1
             
             User NewUser = null;
             bool In_Acc = false;
+            User_Product UsProd3 = null;
             while (true)
             {
                 Console.WriteLine("---Меню--- \n 1) Каталог товаров \n 2) Корзина товаров \n 3) Заказы \n 4) Аккаунт \n 5) Выход");
@@ -42,8 +43,7 @@ namespace PR8._1
                             case 1:
                                 Console.WriteLine("Введите ID, который вы хотите купить.");
                                 int i = Convert.ToInt32(Console.ReadLine());
-                                User_Product UsProd3 = Core.Context.User_Product.FirstOrDefault(u => u.ID == i);
-
+                                UsProd3 = Core.Context.User_Product.FirstOrDefault(u => u.ID == i);
                                 break;
                             case 2:
                                 break;
@@ -62,15 +62,50 @@ namespace PR8._1
                             ID_PVZ = pVZ.ID,
                             Date = DateTime.Now
                         };
-                        User_Order Us_Ord = new User_Order 
+                        Core.Context.Order.Add(New_Ord);
+                        Core.Context.SaveChanges();
+                        if (qqq == 1)
                         {
-                            ID_User = NewUser.ID,
-                            ID_Order = New_Ord.ID,
-                            ID_Product = 
-                        };
-                        break;
+                            User_Order Us_Ord = new User_Order
+                            {
+                                ID_Order = New_Ord.ID,
+                                ID_User_Product = UsProd3.ID
+                            };
+                            Core.Context.User_Order.Add(Us_Ord);
+                            Core.Context.SaveChanges();
+                        }
+                        else
+                        {
+                            foreach(var u in userProducts)
+                            {
+                                User_Order Us_Ord = new User_Order
+                                {
+                                    ID_Order = New_Ord.ID,
+                                    ID_User_Product = u.ID
+                                };
+                                Core.Context.User_Order.Add(Us_Ord);
+                                Core.Context.SaveChanges();
+                            }
+                        }
+                        Console.WriteLine("Заказ оформлен!");
+                            break;
                     case 3:
-                        Console.WriteLine(DateTime.Now);
+                        var orders = Core.Context.Order.ToList();
+                        foreach(var order in orders)
+                        {
+                            var Us_Ord2 = Core.Context.User_Order
+                            .Where(up => up.ID_Order == order.ID)
+                            .ToList();
+                            foreach(var u in Us_Ord2)
+                            {
+                                var userProduct = Core.Context.User_Product.FirstOrDefault(up => up.ID == u.ID_User_Product);
+                                var product = Core.Context.Product.FirstOrDefault(p => p.ID == userProduct.ID_Product);
+                                var pvvz = Core.Context.PVZ.FirstOrDefault(pv => pv.ID == order.ID_PVZ);
+                                Console.WriteLine($"Name: {product.Name}, Amount: {userProduct.Amount}, PVZ: {pvvz.Adress}, Date: {order.Date}");
+                            }
+                        }
+
+
                         break;
                     case 4:
                         if(In_Acc == true)
@@ -111,6 +146,7 @@ namespace PR8._1
 
             }
         }
+
 
         class Shop
         {

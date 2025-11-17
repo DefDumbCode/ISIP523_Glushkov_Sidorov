@@ -14,6 +14,12 @@ namespace PR8._1
     
     public partial class User_Product
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User_Product()
+        {
+            this.User_Order = new HashSet<User_Order>();
+        }
+    
         public int ID { get; set; }
         public int ID_Product { get; set; }
         public int ID_User { get; set; }
@@ -21,5 +27,7 @@ namespace PR8._1
     
         public virtual Product Product { get; set; }
         public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User_Order> User_Order { get; set; }
     }
 }

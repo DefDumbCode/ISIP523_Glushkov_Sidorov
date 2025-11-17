@@ -11,15 +11,13 @@ namespace PR8._1
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-
+    
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
             this.User_Product = new HashSet<User_Product>();
-            this.User_Order = new HashSet<User_Order>();
         }
     
         public int ID { get; set; }
@@ -29,72 +27,5 @@ namespace PR8._1
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User_Product> User_Product { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User_Order> User_Order { get; set; }
-
-
-        public virtual void PrintInfo()
-        {
-            Console.WriteLine($"Данные аккаунта: \n ФИО: {FIO} \n Телефон: {Phone_num}");
-        }
-
-
-        public void Regist(ref bool In_Acc)
-        {
-
-            Console.WriteLine("Введите свое ФИО: ");
-            string n = Console.ReadLine();
-            Console.WriteLine("Введите свой номер телефона: (Формат 89999999999)");
-            int t = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Введите пароль: ");
-            string p = Console.ReadLine();
-            Console.WriteLine("Введите пароль повторно: ");
-            string pp = Console.ReadLine();
-            if (p == pp)
-            {
-                User login = new User
-                {
-                    FIO = n,
-                    Phone_num = t,
-                    Password = p
-                };
-
-                Core.Context.User.Add(login);
-                Core.Context.SaveChanges();
-                Console.WriteLine("Аккаунт создан!");
-                In_Acc = true;
-            }
-            else
-            {
-                Console.WriteLine("Пароли не совпадают");
-            }
-
-
-        }
-        public void Log_In(ref User login, ref bool In_Acc)
-        {
-            List<User> users = Core.Context.User.ToList();
-            Console.WriteLine("Номер телефона: (Формат 89999999999)");
-            int t = Convert.ToInt32(Console.ReadLine());
-            User fg = users.FirstOrDefault(u => u.Phone_num == t);
-            if (fg != null)
-            {
-                Console.WriteLine("Пароль: ");
-                string p = Console.ReadLine();
-                if (fg.Password == p)
-                {
-                    login = fg;
-                    Console.WriteLine("Вы вошли в аккаунт!");
-                    In_Acc = true;
-                }
-            }
-            else
-            {
-
-                Console.WriteLine("Аккаунта с таким номером не существует");
-                return;
-            }
-
-        }
     }
 }

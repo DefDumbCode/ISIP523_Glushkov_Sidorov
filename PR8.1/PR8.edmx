@@ -58,10 +58,8 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ID_User" Type="int" Nullable="false" />
           <Property Name="ID_Order" Type="int" Nullable="false" />
-          <Property Name="ID_Product" Type="int" Nullable="false" />
-          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="ID_User_Product" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="User_Product">
           <Key>
@@ -108,27 +106,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_User_Order_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+        <Association Name="FK_User_Order_User_Product">
+          <End Role="User_Product" Type="Self.User_Product" Multiplicity="1" />
           <End Role="User_Order" Type="Self.User_Order" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Product">
+            <Principal Role="User_Product">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="User_Order">
-              <PropertyRef Name="ID_Product" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_User_Order_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="User_Order" Type="Self.User_Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="User_Order">
-              <PropertyRef Name="ID_User" />
+              <PropertyRef Name="ID_User_Product" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -165,12 +151,8 @@
             <End Role="Order" EntitySet="Order" />
             <End Role="User_Order" EntitySet="User_Order" />
           </AssociationSet>
-          <AssociationSet Name="FK_User_Order_Product" Association="Self.FK_User_Order_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="User_Order" EntitySet="User_Order" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_Order_User" Association="Self.FK_User_Order_User">
-            <End Role="User" EntitySet="User" />
+          <AssociationSet Name="FK_User_Order_User_Product" Association="Self.FK_User_Order_User_Product">
+            <End Role="User_Product" EntitySet="User_Product" />
             <End Role="User_Order" EntitySet="User_Order" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Product_Product" Association="Self.FK_User_Product_Product">
@@ -206,7 +188,6 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Price" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="User_Order" Relationship="Self.FK_User_Order_Product" FromRole="Product" ToRole="User_Order" />
           <NavigationProperty Name="User_Product" Relationship="Self.FK_User_Product_Product" FromRole="Product" ToRole="User_Product" />
         </EntityType>
         <EntityType Name="PVZ">
@@ -236,20 +217,16 @@
           <Property Name="Phone_num" Type="Int32" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="User_Product" Relationship="Self.FK_Cart_Product_User" FromRole="User" ToRole="User_Product" />
-          <NavigationProperty Name="User_Order" Relationship="Self.FK_User_Order_User" FromRole="User" ToRole="User_Order" />
         </EntityType>
         <EntityType Name="User_Order">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID_User" Type="Int32" Nullable="false" />
           <Property Name="ID_Order" Type="Int32" Nullable="false" />
-          <Property Name="ID_Product" Type="Int32" Nullable="false" />
-          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="ID_User_Product" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Order" Relationship="Self.FK_User_Order_Order" FromRole="User_Order" ToRole="Order" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_User_Order_Product" FromRole="User_Order" ToRole="Product" />
-          <NavigationProperty Name="User" Relationship="Self.FK_User_Order_User" FromRole="User_Order" ToRole="User" />
+          <NavigationProperty Name="User_Product" Relationship="Self.FK_User_Order_User_Product" FromRole="User_Order" ToRole="User_Product" />
         </EntityType>
         <EntityType Name="User_Product">
           <Key>
@@ -261,6 +238,7 @@
           <Property Name="Amount" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="Self.FK_User_Product_Product" FromRole="User_Product" ToRole="Product" />
           <NavigationProperty Name="User" Relationship="Self.FK_Cart_Product_User" FromRole="User_Product" ToRole="User" />
+          <NavigationProperty Name="User_Order" Relationship="Self.FK_User_Order_User_Product" FromRole="User_Product" ToRole="User_Order" />
         </EntityType>
         <Association Name="FK_Order_PVZ">
           <End Role="PVZ" Type="Self.PVZ" Multiplicity="1" />
@@ -283,18 +261,6 @@
             </Principal>
             <Dependent Role="User_Order">
               <PropertyRef Name="ID_Order" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_User_Order_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="User_Order" Type="Self.User_Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="User_Order">
-              <PropertyRef Name="ID_Product" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -322,19 +288,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_User_Order_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
+        <Association Name="FK_User_Order_User_Product">
+          <End Role="User_Product" Type="Self.User_Product" Multiplicity="1" />
           <End Role="User_Order" Type="Self.User_Order" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
+            <Principal Role="User_Product">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="User_Order">
-              <PropertyRef Name="ID_User" />
+              <PropertyRef Name="ID_User_Product" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PR8Entities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PR8Entities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cart" EntityType="Self.Cart" />
           <EntitySet Name="Order" EntityType="Self.Order" />
           <EntitySet Name="Product" EntityType="Self.Product" />
@@ -351,10 +317,6 @@
             <End Role="Order" EntitySet="Order" />
             <End Role="User_Order" EntitySet="User_Order" />
           </AssociationSet>
-          <AssociationSet Name="FK_User_Order_Product" Association="Self.FK_User_Order_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="User_Order" EntitySet="User_Order" />
-          </AssociationSet>
           <AssociationSet Name="FK_User_Product_Product" Association="Self.FK_User_Product_Product">
             <End Role="Product" EntitySet="Product" />
             <End Role="User_Product" EntitySet="User_Product" />
@@ -363,8 +325,8 @@
             <End Role="User" EntitySet="User" />
             <End Role="User_Product" EntitySet="User_Product" />
           </AssociationSet>
-          <AssociationSet Name="FK_User_Order_User" Association="Self.FK_User_Order_User">
-            <End Role="User" EntitySet="User" />
+          <AssociationSet Name="FK_User_Order_User_Product" Association="Self.FK_User_Order_User_Product">
+            <End Role="User_Product" EntitySet="User_Product" />
             <End Role="User_Order" EntitySet="User_Order" />
           </AssociationSet>
         </EntityContainer>
@@ -373,7 +335,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище PR8ModelContainer" CdmEntityContainer="PR8Entities2">
+        <EntityContainerMapping StorageEntityContainer="Хранилище PR8ModelContainer" CdmEntityContainer="PR8Entities3">
           <EntitySetMapping Name="Cart">
             <EntityTypeMapping TypeName="PR8Model.Cart">
               <MappingFragment StoreEntitySet="Cart">
@@ -432,10 +394,8 @@
             <EntityTypeMapping TypeName="PR8Model.User_Order">
               <MappingFragment StoreEntitySet="User_Order">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
                 <ScalarProperty Name="ID_Order" ColumnName="ID_Order" />
-                <ScalarProperty Name="ID_Product" ColumnName="ID_Product" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ID_User_Product" ColumnName="ID_User_Product" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
