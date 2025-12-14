@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ISIP523_Glushkov.Model.Fabric;
 
 namespace ISIP523_Glushkov
 {
@@ -11,6 +12,7 @@ namespace ISIP523_Glushkov
     {
         public Hero player;
         int count = 0;
+
 
         public void Start_game()
         {
@@ -21,18 +23,26 @@ namespace ISIP523_Glushkov
 
             player.PrintInfo();
 
-            while (player.Health.current_health >= 0)
+            while (player.Health.current_health > 0)
             {
                 count++;
+                int move = ISIP523_Glushkov.Model.Action.Random.Next(1, 3);
                 if (count >= 10 || count % 5 == 0)
                 {
-
+                    Console.WriteLine("БОСС!");
+                    BOSSFight(player);
                 }
-                else if (ISIP523_Glushkov.Model.Action.Random.Next(11) < 5)
+                else if (move == 1)
                 {
-
+                    Loot();
+                }
+                else
+                {
+                    Console.WriteLine("Вы встретили врага!");
+                    MOBFight(player);
                 }
             }
+            Console.WriteLine($"ВЫ УМЕРЛИ! Вы прошли {count} этажей!");
         }
     }
 }

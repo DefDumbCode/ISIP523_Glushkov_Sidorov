@@ -9,11 +9,11 @@ namespace ISIP523_Glushkov.Model.Mobs
     public class Monster
     {
         public string Name;
-        public int HP = 100;
+        public double HP = 100;
         public int Damage = 50;
         public int Defence = 30;
 
-        public Monster(string name, int hp, int damage, int defence)
+        public Monster(string name, double hp, int damage, int defence)
         {
             Name = name;
             HP = hp;

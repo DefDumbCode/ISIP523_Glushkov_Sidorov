@@ -12,7 +12,7 @@ namespace ISIP523_Glushkov.Model.Fabric
         public static Monster RandMob()
         {
             Random random = new Random();
-            switch (random.Next(0, 3))
+            switch (random.Next(0, 4))
             {
                 case 0:
                     return new Goblin("Гоблин", 100, 30, 40, 4);
@@ -23,6 +23,9 @@ namespace ISIP523_Glushkov.Model.Fabric
                 case 2:
                     return new Mage("Маг", 100, 50, 30, 40);
                     break;
+                case 3:
+                    return new Slime("Слизень", 100, 50, 30);
+                    break;
 
                 default: return new Goblin("Гоблин", 100, 30, 40, 4);
             }
@@ -30,6 +33,24 @@ namespace ISIP523_Glushkov.Model.Fabric
 
         public static Monster RandBoss()
         {
+            Random random = new Random();
+        switch (random.Next(0, 4))
+        {
+            case 0:
+                    return new Goblin("ВВГ", 200, 75, 36, 50);
+                    break;
+            case 1:
+                    return new Skeleton("КОВАЛЬСКИЙ", 250, 65, 42);
+                    break;
+            case 2:
+                    return new Mage("Мессенджер Макс", 180, 80, 33, 50);
+                    break;
+            case 3:
+                    return new Mage("ПЕСТОВ", 150, 90, 3, 55);
+                    break;
+
+            default: return new Goblin("ВВГ", 200, 75, 36, 50); ;
+        }
         }
 
     }

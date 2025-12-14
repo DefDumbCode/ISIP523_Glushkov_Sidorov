@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace ISIP523_Glushkov.Model.Mobs
 {
-    public class Slime
+    public class Slime : Monster
     {
-        public int Crit = 4;
+        //поглощает часть урона
 
-        public Goblin(string name, int hp, int damage, int defence, int krit)
+        public Slime(string name, int hp, int damage, int defence)
         : base(name, hp, damage, defence)
         {
-            Crit = krit;
         }
     }
 }
