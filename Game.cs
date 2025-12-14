@@ -12,6 +12,10 @@ namespace ISIP523_Glushkov
 
         public void Start_game()
         {
+            Console.WriteLine("как тебя звать?");
+            string a = Console.ReadLine();
+
+            Hero player = new Hero
 
         }
     }

@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <Folder Include="Model\Fabric\" />
-    <Folder Include="Model\Action\" />
   </ItemGroup>
 
 </Project>
