@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace ISIP523_Glushkov.Model.Mobs
 {
-    internal class Skeleton
+    public class Skeleton : Monster
     {
+        //должен скипать броню
+        public Skeleton(string name, int hp, int damage, int defence)
+            : base(name, hp, damage, defence)
+        {
+
+        }
     }
 }

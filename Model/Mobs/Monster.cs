@@ -6,13 +6,20 @@ using System.Threading.Tasks;
 
 namespace ISIP523_Glushkov.Model.Mobs
 {
-    internal class Monster
+    public class Monster
     {
         public string Name;
-        public int HP;
-        public int Damage;
-        public int Defence;
+        public int HP = 100;
+        public int Damage = 50;
+        public int Defence = 30;
 
+        public Monster(string name, int hp, int damage, int defence)
+        {
+            Name = name;
+            HP = hp;
+            Damage = damage;
+            Defence = defence;
+        }
         public virtual void TakeDamage(int damage)
         {
             HP -= damage;

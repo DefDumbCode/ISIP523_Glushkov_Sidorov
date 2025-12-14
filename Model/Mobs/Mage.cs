@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace ISIP523_Glushkov.Model.Mobs
 {
-    internal class Mage
+    public class Mage : Monster
     {
+        public int Frost = 40;
 
+        public Mage(string name, int hp, int damage, int defence, int frost)
+            : base(name, hp, damage, defence)
+        {
+            Frost = frost;
+        }
     }
 }

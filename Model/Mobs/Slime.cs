@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ISIP523_Glushkov.Model.Mobs
 {
-    public class Goblin : Monster
+    public class Slime
     {
         public int Crit = 4;
 
