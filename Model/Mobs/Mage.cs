@@ -8,5 +8,6 @@ namespace ISIP523_Glushkov.Model.Mobs
 {
     internal class Mage
     {
+
     }
 }

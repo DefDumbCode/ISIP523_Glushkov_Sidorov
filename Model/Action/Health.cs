@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ISIP523_Glushkov.Model.Action
 {
-    internal class Health
+    public class Health
     {
         public double current_health;
         public double Max = 250;

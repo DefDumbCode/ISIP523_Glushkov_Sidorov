@@ -8,7 +8,6 @@ namespace ISIP523_Glushkov.Model.Mobs
 {
     internal class Monster
     {
-        public int ID;
         public string Name;
         public int HP;
         public int Damage;
