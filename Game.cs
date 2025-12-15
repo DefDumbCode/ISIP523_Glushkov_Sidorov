@@ -1,10 +1,11 @@
-﻿using ISIP523_Glushkov.Model.Player;
+﻿using ISIP523_Glushkov.Model.Action;
+using ISIP523_Glushkov.Model.Fabric;
+using ISIP523_Glushkov.Model.Player;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ISIP523_Glushkov.Model.Fabric;
 
 namespace ISIP523_Glushkov
 {
@@ -12,6 +13,9 @@ namespace ISIP523_Glushkov
     {
         public Hero player;
         int count = 0;
+        private readonly BFight bFight = new BFight();
+        private readonly MFight mFight = new MFight();
+        private readonly Loot loot = new Loot();
 
 
         public void Start_game()
@@ -27,19 +31,19 @@ namespace ISIP523_Glushkov
             {
                 count++;
                 int move = ISIP523_Glushkov.Model.Action.Random.Next(1, 3);
-                if (count >= 10 || count % 5 == 0)
+                if (count >= 10 && count % 5 == 0)
                 {
                     Console.WriteLine("БОСС!");
-                    BOSSFight(player);
+                    bFight.BOSSFight(player);
                 }
                 else if (move == 1)
                 {
-                    Loot();
+                    loot.FindLoot(player);
                 }
                 else
                 {
                     Console.WriteLine("Вы встретили врага!");
-                    MOBFight(player);
+                    mFight.MOBFight(player);
                 }
             }
             Console.WriteLine($"ВЫ УМЕРЛИ! Вы прошли {count} этажей!");

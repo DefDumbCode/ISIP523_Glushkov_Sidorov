@@ -24,7 +24,7 @@ namespace ISIP523_Glushkov.Model.Fabric
                     return new Mage("Маг", 100, 50, 30, 40);
                     break;
                 case 3:
-                    return new Slime("Слизень", 100, 50, 30);
+                    return new Slime("Слизень", 100, 50, 50);
                     break;
 
                 default: return new Goblin("Гоблин", 100, 30, 40, 4);

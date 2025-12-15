@@ -45,7 +45,7 @@ namespace ISIP523_Glushkov.Model.Player
                     dam = NewMon.Damage * (1 - player.Cur_Arm.Damage);
                 }
             }
-            else if (NewMon.Name == "Скелет")
+            else if (NewMon.Name == "Скелет" || NewMon.Name == "Слизень")
             {
                 dam = NewMon.Damage;
             }
