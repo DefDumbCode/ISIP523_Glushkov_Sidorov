@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISIP523_Glushkov", "ISIP523_Glushkov.csproj", "{BE491E85-8276-4C7A-96F8-4A104CF1A2EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pr13", "..\..\Pr13\Pr13.csproj", "{F470D9FC-6392-495A-B392-71F12B15CCE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{BE491E85-8276-4C7A-96F8-4A104CF1A2EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE491E85-8276-4C7A-96F8-4A104CF1A2EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE491E85-8276-4C7A-96F8-4A104CF1A2EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F470D9FC-6392-495A-B392-71F12B15CCE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F470D9FC-6392-495A-B392-71F12B15CCE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F470D9FC-6392-495A-B392-71F12B15CCE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F470D9FC-6392-495A-B392-71F12B15CCE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
