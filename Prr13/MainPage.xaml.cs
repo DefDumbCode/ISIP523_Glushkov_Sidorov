@@ -26,5 +26,14 @@ namespace Prr13
             InitializeComponent();
             ProductList.ItemsSource = Products;
         }
+
+        private void Butt1_Click(object sender, RoutedEventArgs e)
+        {
+            Button Btn = sender as Button;
+            Product SelectProd = Btn.DataContext as Product;
+            if(SelectProd == null)
+                return;
+            MessageBox.Show(SelectProd.Name);
+        }
     }
 }
