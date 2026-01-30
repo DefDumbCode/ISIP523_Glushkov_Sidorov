@@ -16,14 +16,15 @@ using System.Windows.Shapes;
 namespace Prr13
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для MainPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainPage : Page
     {
-        public MainWindow()
+        public static List<Product> Products = Core.Context.Product.ToList();
+        public MainPage()
         {
             InitializeComponent();
-            MainFrame.NavigationService.Navigate(new MainPage());
+            ProductList.ItemsSource = Products;
         }
     }
 }

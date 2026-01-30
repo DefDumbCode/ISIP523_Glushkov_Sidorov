@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISIP523_Glushkov", "ISIP523_Glushkov.csproj", "{BE491E85-8276-4C7A-96F8-4A104CF1A2EC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prr13", "Prr13\Prr13.csproj", "{EDD9C11B-2CD6-46CB-A66D-F5DD880101A1}"
 EndProject
 Global
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BE491E85-8276-4C7A-96F8-4A104CF1A2EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BE491E85-8276-4C7A-96F8-4A104CF1A2EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BE491E85-8276-4C7A-96F8-4A104CF1A2EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BE491E85-8276-4C7A-96F8-4A104CF1A2EC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EDD9C11B-2CD6-46CB-A66D-F5DD880101A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EDD9C11B-2CD6-46CB-A66D-F5DD880101A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDD9C11B-2CD6-46CB-A66D-F5DD880101A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
