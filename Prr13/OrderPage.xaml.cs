@@ -20,7 +20,7 @@ namespace Prr13
     /// </summary>
     public partial class OrderPage : Page
     {
-        public OrderPage()
+        public OrderPage(List<Product> _CartSpisok)
         {
             InitializeComponent();
         }

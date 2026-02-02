@@ -21,7 +21,11 @@ namespace Prr13
     public partial class MainPage : Page
     {
         public static List<Product> Products = Core.Context.Product.ToList();
-        List<Product> CartSpisok = new List<Product>();
+        public static List<Order_Product> Ords = Core.Context.Order_Product.ToList();
+
+        public static List<Product> CartSpisok = new List<Product>();
+        Order NewOrd = new Order();
+      
         public MainPage()
         {
             InitializeComponent();
@@ -34,7 +38,22 @@ namespace Prr13
             Product SelectProd = Btn.DataContext as Product;
             if(SelectProd == null)
                 return;
-            CartSpisok.Add(SelectProd);
+            if (CartSpisok.FirstOrDefault(c => c.ID == SelectProd.ID) == null)
+            {
+                Order_Product OrdPro = new Order_Product { ID_Order = NewOrd.ID, Amount = 1, ID_Product = SelectProd.ID };
+            }
+            else
+            {
+                for(int i = 0; i < Ords.Count; i++)
+                {
+                    if (Ords[i].ID_Order == NewOrd.ID && Ords[i].ID_Product == SelectProd.ID)
+                        Ords[i].Amount++;
+                }
+            }
+
+                CartSpisok.Add(SelectProd);
+
+
             MessageBox.Show($"{SelectProd.Name} добавлен(а) в корзину");
         }
 

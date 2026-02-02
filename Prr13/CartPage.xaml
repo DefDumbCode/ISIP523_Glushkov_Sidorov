@@ -13,7 +13,6 @@
         <StackPanel>
             <Label Content="Коризна покупок:" FontSize="20" HorizontalAlignment="Center"/>
             <TextBox x:Name="CartList" Height="250" Width="350" VerticalAlignment="Top"/>
-
         </StackPanel>
         <Button x:Name="Butt3" Height="45" Width="100" Margin="15" Content="Далее" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Butt3_Click"/>
         <Button x:Name="Butt4" Height="45" Width="100" Margin="15" Content="Назад" VerticalAlignment="Bottom" HorizontalAlignment="Left" Click="Butt4_Click"/>
