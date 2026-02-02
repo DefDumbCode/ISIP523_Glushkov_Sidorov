@@ -40,5 +40,14 @@ namespace Prr13
         {
 
         }
+
+        private void ADREStb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+           if(!string.IsNullOrEmpty(EMAILtb.Text) && !string.IsNullOrEmpty(ADREStb.Text) && !string.IsNullOrEmpty(ADREStb.Text))
+                Butt6.IsEnabled = true;
+
+        }
+
+
     }
 }

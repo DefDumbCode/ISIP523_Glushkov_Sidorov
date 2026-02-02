@@ -13,18 +13,18 @@
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal">
                 <Label Content="ФИО:" Margin="25" FontSize="20"/>
-                <TextBox x:Name="FIOtb" Width="190" Height="25" Margin="15"/>
+                <TextBox x:Name="FIOtb" Width="190" Height="25" Margin="15" TextChanged="ADREStb_TextChanged"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Эл. Почта:" Margin="25" FontSize="20"/>
-                <TextBox x:Name="EMAILtb" Width="190" Height="25" Margin="25"/>
+                <TextBox x:Name="EMAILtb" Width="190" Height="25" Margin="25" TextChanged="ADREStb_TextChanged"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Адрес:" Margin="25" FontSize="20"/>
-                <TextBox x:Name="ADREStb" Width="190" Height="25" Margin="15"/>
+                <TextBox x:Name="ADREStb" Width="190" Height="25" Margin="15" TextChanged="ADREStb_TextChanged"/>
             </StackPanel>
        </StackPanel>
         <Button x:Name="Butt5" Height="45" Width="100" Margin="15" Content="Назад" VerticalAlignment="Bottom" HorizontalAlignment="Left" Click="Butt5_Click"/>
-        <Button x:Name="Butt6" Height="45" Width="100" Margin="15" Content="Оформить" VerticalAlignment="Bottom" HorizontalAlignment="Center" Click="Butt6_Click"/>
+        <Button x:Name="Butt6" Height="45" Width="100" Margin="15" Content="Оформить" VerticalAlignment="Bottom" HorizontalAlignment="Center" Click="Butt6_Click" IsEnabled="False"/>
     </Grid>
 </Page>
