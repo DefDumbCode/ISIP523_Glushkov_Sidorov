@@ -23,6 +23,12 @@ namespace Prr13
         public CartPage(List<Product> CartSpisok)
         {
             InitializeComponent();
+            string b = "";
+            for (int i = 0; i < CartSpisok.Count; i++)
+            {
+                b += ($"{CartSpisok[i].Name}\n");
+            }
+            CartList.Text = b;
             
         }
 
