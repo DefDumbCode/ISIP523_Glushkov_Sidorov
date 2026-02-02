@@ -20,9 +20,15 @@ namespace Prr13
     /// </summary>
     public partial class OrderPage : Page
     {
-        public OrderPage(List<Product> _CartSpisok)
+
+        List<Product> CartSpisok;
+        List<Order_Product> Ords;
+        public OrderPage(List<Product> _CartSpisok, List<Order_Product> _Ords)
         {
             InitializeComponent();
+            CartSpisok = _CartSpisok;
+            Ords = _Ords;
+
         }
 
         private void Butt5_Click(object sender, RoutedEventArgs e)

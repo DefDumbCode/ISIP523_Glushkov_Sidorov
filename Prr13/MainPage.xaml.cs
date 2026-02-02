@@ -59,7 +59,7 @@ namespace Prr13
 
         private void Butt2_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new CartPage(CartSpisok));
+            NavigationService.Navigate(new CartPage(CartSpisok,Ords));
         }
     }
 }
