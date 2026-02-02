@@ -41,6 +41,7 @@ namespace Prr13
             if (CartSpisok.FirstOrDefault(c => c.ID == SelectProd.ID) == null)
             {
                 Order_Product OrdPro = new Order_Product { ID_Order = NewOrd.ID, Amount = 1, ID_Product = SelectProd.ID };
+                Core.Context.Order_Product.Add(OrdPro);
             }
             else
             {
@@ -48,9 +49,11 @@ namespace Prr13
                 {
                     if (Ords[i].ID_Order == NewOrd.ID && Ords[i].ID_Product == SelectProd.ID)
                         Ords[i].Amount++;
+                        Core.Context.SaveChanges();
+
                 }
             }
-
+                
                 CartSpisok.Add(SelectProd);
 
 
@@ -59,7 +62,7 @@ namespace Prr13
 
         private void Butt2_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new CartPage(CartSpisok,Ords));
+            NavigationService.Navigate(new CartPage(CartSpisok,NewOrd));
         }
     }
 }

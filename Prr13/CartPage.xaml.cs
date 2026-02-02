@@ -21,12 +21,12 @@ namespace Prr13
     public partial class CartPage : Page
     {
         List<Product> CartSpisok;
-        List<Order_Product> Ords;
-        public CartPage(List<Product> _CartSpisok, List<Order_Product> _Ords)
+        Order NewOrd;
+        public CartPage(List<Product> _CartSpisok, Order _NewOrd)
         {
             InitializeComponent();
             CartSpisok = _CartSpisok;
-            Ords = _Ords;
+            NewOrd = _NewOrd;
             string b = "";
             for (int i = 0; i < CartSpisok.Count; i++)
             {
@@ -38,7 +38,7 @@ namespace Prr13
 
         private void Butt3_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new OrderPage(CartSpisok, Ords));
+            NavigationService.Navigate(new OrderPage(CartSpisok, NewOrd));
         }
 
         private void Butt4_Click(object sender, RoutedEventArgs e)

@@ -20,14 +20,23 @@ namespace Prr13
     /// </summary>
     public partial class OrderPage : Page
     {
-
         List<Product> CartSpisok;
-        List<Order_Product> Ords;
-        public OrderPage(List<Product> _CartSpisok, List<Order_Product> _Ords)
+        Order NewOrd;
+        public OrderPage(List<Product> _CartSpisok, Order _NewOrd)
         {
             InitializeComponent();
             CartSpisok = _CartSpisok;
-            Ords = _Ords;
+            NewOrd = _NewOrd;
+            string b = "";
+            double total = 0;
+            for(int i = 0; i < CartSpisok.Count; i++)
+            {
+                b += ($"{CartSpisok[i].Name}\n");
+                Product beb = MainPage.Products.FirstOrDefault(c => c.ID == CartSpisok[i].ID);
+                total += beb.Price;
+            }
+            TotalTB.Text = b;
+            Cost.Content = ($"Итоговая стоимость: {total}");
 
         }
 
@@ -38,12 +47,17 @@ namespace Prr13
 
         private void Butt6_Click(object sender, RoutedEventArgs e)
         {
-
+            NewOrd.Adress = ADREStb.Text;
+            NewOrd.Email = EMAILtb.Text;
+            NewOrd.FIO = FIOtb.Text;
+            Core.Context.Order.Add(NewOrd);
+            Core.Context.SaveChanges();
+            MessageBox.Show("Заказ оформлен.");
         }
 
         private void ADREStb_TextChanged(object sender, TextChangedEventArgs e)
         {
-           if(!string.IsNullOrEmpty(EMAILtb.Text) && !string.IsNullOrEmpty(ADREStb.Text) && !string.IsNullOrEmpty(ADREStb.Text))
+           if(!string.IsNullOrEmpty(EMAILtb.Text) && !string.IsNullOrEmpty(FIOtb.Text) && !string.IsNullOrEmpty(ADREStb.Text))
                 Butt6.IsEnabled = true;
 
         }

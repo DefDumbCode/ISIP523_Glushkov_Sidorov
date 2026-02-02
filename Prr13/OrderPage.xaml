@@ -10,6 +10,11 @@
       Background="Gray">
 
     <Grid>
+        <StackPanel HorizontalAlignment="Right"> 
+            <Label Content="Конечный заказ: "  FontSize="20" Margin="15, 5, 5, 5" x:Name="Final"></Label>
+            <TextBox VerticalAlignment="Center" Margin="5" Width="200" Height="250" x:Name="TotalTB"></TextBox>
+            <Label Content="" FontSize="20" Margin="15, 5, 5, 5" x:Name="Cost"></Label>
+        </StackPanel>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal">
                 <Label Content="ФИО:" Margin="25" FontSize="20"/>
