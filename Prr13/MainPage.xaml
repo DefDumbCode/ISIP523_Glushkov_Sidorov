@@ -15,7 +15,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1">
-            <Button x:Name="Butt2" Height="45" Width="100" Margin="15" Content="Далее"/>
+            <Button x:Name="Butt2" Height="45" Width="100" Margin="15" Content="Далее" Click="Butt2_Click"/>
         </StackPanel>
         <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="ProductList" Grid.Row="0">
             <ListBox.ItemTemplate>

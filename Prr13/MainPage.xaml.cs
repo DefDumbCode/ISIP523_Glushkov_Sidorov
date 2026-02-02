@@ -21,6 +21,7 @@ namespace Prr13
     public partial class MainPage : Page
     {
         public static List<Product> Products = Core.Context.Product.ToList();
+        List<Product> CartSpisok = new List<Product>();
         public MainPage()
         {
             InitializeComponent();
@@ -33,7 +34,13 @@ namespace Prr13
             Product SelectProd = Btn.DataContext as Product;
             if(SelectProd == null)
                 return;
-            MessageBox.Show(SelectProd.Name);
+            CartSpisok.Add(SelectProd);
+            MessageBox.Show($"{SelectProd.Name} добавлен(а) в корзину");
+        }
+
+        private void Butt2_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new CartPage(CartSpisok));
         }
     }
 }
