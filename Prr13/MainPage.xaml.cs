@@ -21,40 +21,50 @@ namespace Prr13
     public partial class MainPage : Page
     {
         public static List<Product> Products = Core.Context.Product.ToList();
-        public static List<Order_Product> Ords = Core.Context.Order_Product.ToList();
+        public List<Order_Product> Ords = Core.Context.Order_Product.ToList();
 
         public static List<Product> CartSpisok = new List<Product>();
-        Order NewOrd = new Order();
+        public static Order NewOrd = new Order();
+        int count = 0;
       
         public MainPage()
         {
             InitializeComponent();
             ProductList.ItemsSource = Products;
+            Core.Context.Order.Add(NewOrd);
+            Core.Context.SaveChanges();
+
         }
 
         private void Butt1_Click(object sender, RoutedEventArgs e)
         {
             Button Btn = sender as Button;
             Product SelectProd = Btn.DataContext as Product;
+            
             if(SelectProd == null)
                 return;
             if (CartSpisok.FirstOrDefault(c => c.ID == SelectProd.ID) == null)
             {
-                Order_Product OrdPro = new Order_Product { ID_Order = NewOrd.ID, Amount = 1, ID_Product = SelectProd.ID };
+                Order_Product OrdPro = new Order_Product { ID_Order = MainPage.NewOrd.ID, Amount = 1, ID_Product = SelectProd.ID };
                 Core.Context.Order_Product.Add(OrdPro);
+                count++;
             }
             else
             {
-                for(int i = 0; i < Ords.Count; i++)
+                for (int i = 0; i < Ords.Count; i++)
                 {
-                    if (Ords[i].ID_Order == NewOrd.ID && Ords[i].ID_Product == SelectProd.ID)
+                    if (Ords[i].ID_Order == MainPage.NewOrd.ID && Ords[i].ID_Product == SelectProd.ID)
+                    {
                         Ords[i].Amount++;
-                        Core.Context.SaveChanges();
+                        count++;
+                        
+                    }
 
                 }
             }
-                
-                CartSpisok.Add(SelectProd);
+
+            Core.Context.SaveChanges();
+            CartSpisok.Add(SelectProd);
 
 
             MessageBox.Show($"{SelectProd.Name} добавлен(а) в корзину");
