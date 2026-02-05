@@ -21,12 +21,13 @@ namespace Prr13
     public partial class OrderPage : Page
     {
         List<Product> CartSpisok;
-        Order NewOrd;
-        public OrderPage(List<Product> _CartSpisok, Order _NewOrd)
+        public List<Order_Product> Ords = Core.Context.Order_Product.ToList();
+
+        public OrderPage(List<Product> _CartSpisok)
         {
             InitializeComponent();
             CartSpisok = _CartSpisok;
-            NewOrd = _NewOrd;
+            //NewOrd = _NewOrd;
             string b = "";
             double total = 0;
             for(int i = 0; i < CartSpisok.Count; i++)
@@ -47,10 +48,23 @@ namespace Prr13
 
         private void Butt6_Click(object sender, RoutedEventArgs e)
         {
-            NewOrd.Adress = ADREStb.Text;
-            NewOrd.Email = EMAILtb.Text;
-            NewOrd.FIO = FIOtb.Text;
+            Order NewOrd = new Order { FIO = FIOtb.Text, Email = EMAILtb.Text, Adress = ADREStb.Text, };
             Core.Context.Order.Add(NewOrd);
+            Core.Context.SaveChanges();
+            for (int i = 0; i < CartSpisok.Count; i++)
+            {
+                if (Ords.FirstOrDefault(c => c.ID_Product == CartSpisok[i].ID) == null && Ords.FirstOrDefault(b => b.ID_Order == NewOrd.ID) == null)
+                {
+                    Order_Product OrdPro = new Order_Product { ID_Order = NewOrd.ID, Amount = 1, ID_Product = CartSpisok[i].ID };
+                    Core.Context.Order_Product.Add(OrdPro);
+                }
+                else
+                {
+                    Order_Product OrdPro = Ords.FirstOrDefault(c => c.ID == CartSpisok[i].ID);
+                    OrdPro.Amount++;
+                    
+                }
+            }
             Core.Context.SaveChanges();
             MessageBox.Show("Заказ оформлен.");
         }
