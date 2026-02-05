@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -51,21 +52,27 @@ namespace Prr13
             Order NewOrd = new Order { FIO = FIOtb.Text, Email = EMAILtb.Text, Adress = ADREStb.Text, };
             Core.Context.Order.Add(NewOrd);
             Core.Context.SaveChanges();
+
+            List<Order_Product> ExisList = Core.Context.Order_Product.ToList();
+
             for (int i = 0; i < CartSpisok.Count; i++)
             {
-                if (Ords.FirstOrDefault(c => c.ID_Product == CartSpisok[i].ID) == null && Ords.FirstOrDefault(b => b.ID_Order == NewOrd.ID) == null)
+                Order_Product ExisOrdPro = ExisList.FirstOrDefault(c => c.ID_Product == CartSpisok[i].ID && c.ID_Order == NewOrd.ID);
+
+                if (ExisOrdPro == null)
                 {
                     Order_Product OrdPro = new Order_Product { ID_Order = NewOrd.ID, Amount = 1, ID_Product = CartSpisok[i].ID };
                     Core.Context.Order_Product.Add(OrdPro);
                 }
                 else
                 {
-                    Order_Product OrdPro = Ords.FirstOrDefault(c => c.ID == CartSpisok[i].ID);
-                    OrdPro.Amount++;
+                    
+                    ExisOrdPro.Amount++;
                     
                 }
+                Core.Context.SaveChanges();
             }
-            Core.Context.SaveChanges();
+            
             MessageBox.Show("Заказ оформлен.");
         }
 
