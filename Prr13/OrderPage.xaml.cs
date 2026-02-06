@@ -53,8 +53,8 @@ namespace Prr13
             Core.Context.Order.Add(NewOrd);
             Core.Context.SaveChanges();
 
-            List<Order_Product> ExisList = Core.Context.Order_Product.ToList();
 
+            List<Order_Product> ExisList = Core.Context.Order_Product.ToList();
             for (int i = 0; i < CartSpisok.Count; i++)
             {
                 Order_Product ExisOrdPro = ExisList.FirstOrDefault(c => c.ID_Product == CartSpisok[i].ID && c.ID_Order == NewOrd.ID);
@@ -62,6 +62,7 @@ namespace Prr13
                 if (ExisOrdPro == null)
                 {
                     Order_Product OrdPro = new Order_Product { ID_Order = NewOrd.ID, Amount = 1, ID_Product = CartSpisok[i].ID };
+                    ExisList.Add(OrdPro);
                     Core.Context.Order_Product.Add(OrdPro);
                 }
                 else
@@ -70,8 +71,8 @@ namespace Prr13
                     ExisOrdPro.Amount++;
                     
                 }
-                Core.Context.SaveChanges();
             }
+                Core.Context.SaveChanges();
             
             MessageBox.Show("Заказ оформлен.");
         }

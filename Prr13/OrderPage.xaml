@@ -22,7 +22,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Эл. Почта:" Margin="25" FontSize="20"/>
-                <TextBox x:Name="EMAILtb" Width="190" Height="25" Margin="25" TextChanged="ADREStb_TextChanged"/>
+                <TextBox x:Name="EMAILtb" Width="190" Height="25" TextChanged="ADREStb_TextChanged"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Адрес:" Margin="25" FontSize="20"/>
