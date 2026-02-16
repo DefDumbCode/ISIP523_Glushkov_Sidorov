@@ -1,0 +1,31 @@
+﻿<Page x:Class="Pr_Kino.RegPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Pr_Kino"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="RegPage"
+      Background="Beige">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center">
+            <Label Content="Регистрация" FontSize="35" HorizontalAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label FontSize="25" Content="Логин:" Margin="10"/>
+                <TextBox x:Name="LogRegName" Width="250" Height="30"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label FontSize="25" Content="Пароль:" Margin="10"/>
+                <TextBox x:Name="PassRegName" Width="250" Height="30"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label FontSize="25" Content="Повтор пароля:" Margin="10"/>
+                <TextBox x:Name="PassAgRegName" Width="250" Height="30"/>
+            </StackPanel>
+            <Button x:Name="EnterButt" Height="45" Width="100" Content="Войти" Margin="0, 20, 0, 0"/>
+
+        </StackPanel>
+    </Grid>
+</Page>
