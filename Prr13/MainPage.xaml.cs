@@ -42,27 +42,6 @@ namespace Prr13
             
             if(SelectProd == null)
                 return;
-            //if (CartSpisok.FirstOrDefault(c => c.ID == SelectProd.ID) == null)
-            //{
-            //    Order_Product OrdPro = new Order_Product { ID_Order = MainPage.NewOrd.ID, Amount = 1, ID_Product = SelectProd.ID };
-            //    Core.Context.Order_Product.Add(OrdPro);
-            //    count++;
-            //}
-            //else
-            //{
-            //    for (int i = 0; i < Ords.Count; i++)
-            //    {
-            //        if (Ords[i].ID_Order == MainPage.NewOrd.ID && Ords[i].ID_Product == SelectProd.ID)
-            //        {
-            //            Ords[i].Amount++;
-            //            count++;
-                        
-            //        }
-
-            //    }
-            //}
-
-            //Core.Context.SaveChanges();
             CartSpisok.Add(SelectProd);
 
 
