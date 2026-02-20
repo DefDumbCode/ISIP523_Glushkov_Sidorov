@@ -31,7 +31,14 @@ namespace Pr_Kino
 
         private void UserButt_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new LogPage());
+            if(MainWindow.user == null)
+            {
+                NavigationService.Navigate(new LogPage());
+            }
+            else
+            {
+                UserButt.Content = "Аккаунт";
+            }
         }
 
         private void FilmList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
