@@ -27,7 +27,17 @@ namespace Pr_Kino
             FilmList.ItemsSource = Films;
             List<String> genre = new List<String> {"По названию", "По рейтингу"};
             FilterBox.ItemsSource = genre;
+            if(MainWindow.user == null)
+            {
+                UserButt.Content = "Войти в аккаунт";
+            }
+            else
+            {
+                UserButt.Content = "Аккаунт";
+            }
         }
+
+
 
         private void UserButt_Click(object sender, RoutedEventArgs e)
         {
@@ -37,7 +47,7 @@ namespace Pr_Kino
             }
             else
             {
-                UserButt.Content = "Аккаунт";
+                NavigationService.Navigate(new AccPage());
             }
         }
 

@@ -16,16 +16,13 @@ using System.Windows.Shapes;
 namespace Pr_Kino
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для AccPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AccPage : Page
     {
-        public static User user;
-        public MainWindow()
+        public AccPage()
         {
             InitializeComponent();
-            MainFrame.NavigationService.Navigate(new MainePage());
-
         }
     }
 }

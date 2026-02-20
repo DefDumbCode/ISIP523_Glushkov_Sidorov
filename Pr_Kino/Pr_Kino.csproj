@@ -63,6 +63,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Pages\AccPage.xaml.cs">
+      <DependentUpon>AccPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Cinema.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -117,6 +120,10 @@
     <Compile Include="User.cs">
       <DependentUpon>Cinema.tt</DependentUpon>
     </Compile>
+    <Page Include="Pages\AccPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\FilmPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

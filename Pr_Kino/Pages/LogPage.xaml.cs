@@ -33,10 +33,10 @@ namespace Pr_Kino
 
         private void EnterButt_Click(object sender, RoutedEventArgs e)
         {
-            if (users.FirstOrDefault(p => p.Login == PassName.Text && p.Password == PassName.Text) != null)
+            if (users.FirstOrDefault(p => p.Login == LogName.Text && p.Password == PassName.Text) != null)
             {
-                MainWindow.user = users.FirstOrDefault(p => p.Login == PassName.Text && p.Password == PassName.Text);
-                MessageBox.Show("Выход прошёл успешно!");
+                MainWindow.user = users.FirstOrDefault(p => p.Login == LogName.Text && p.Password == PassName.Text);
+                MessageBox.Show("Вход прошёл успешно!");
                 NavigationService.Navigate(new MainePage());
             }
             else

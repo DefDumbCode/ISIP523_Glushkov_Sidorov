@@ -50,6 +50,8 @@ namespace Pr_Kino
                     Password = PassRegName.Text
                 };
                 MessageBox.Show("Регистрация прошла успешно!");
+                Core.Context.User.Add(MainWindow.user);
+                Core.Context.SaveChanges();
                 NavigationService.Navigate(new MainePage());
             }
 
