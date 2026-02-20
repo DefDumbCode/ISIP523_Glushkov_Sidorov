@@ -20,19 +20,35 @@ namespace Pr_Kino
     /// </summary>
     public partial class LogPage : Page
     {
+        public static List<User> users = Core.Context.User.ToList();
         public LogPage()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void RegButt_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new RegPage());
+        }
+
+        private void EnterButt_Click(object sender, RoutedEventArgs e)
+        {
+            if (users.FirstOrDefault(p => p.Login == PassName.Text && p.Password == PassName.Text) != null)
+            {
+                MainWindow.user = users.FirstOrDefault(p => p.Login == PassName.Text && p.Password == PassName.Text);
+                MessageBox.Show("Выход прошёл успешно!");
+                NavigationService.Navigate(new MainePage());
+            }
+            else
+            {
+                MessageBox.Show("Неправильный логин или пароль!");
+            }
+        }
+
+        private void PassName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(PassName.Text) && !string.IsNullOrEmpty(LogName.Text))
+                EnterButt.IsEnabled = true;
         }
     }
 }

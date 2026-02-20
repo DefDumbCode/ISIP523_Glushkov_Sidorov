@@ -17,9 +17,9 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Label FontSize="25" Content="Пароль:" Margin="10"/>
-                <TextBox x:Name="PassName" Width="250" Height="30"/>
+                <TextBox x:Name="PassName" Width="250" Height="30" TextChanged="PassName_TextChanged"/>
             </StackPanel>
-            <Button x:Name="EnterButt" Height="45" Width="100" Content="Войти" Margin="0, 20, 0, 0"/>
+            <Button x:Name="EnterButt" Height="45" Width="100" Content="Войти" Margin="0, 20, 0, 0" Click="EnterButt_Click" IsEnabled="False"/>
             <Label Content="Нет аккаунта?" FontSize="20" HorizontalAlignment="Center" Margin="0, 0,0,0"/>
             <Button x:Name="RegButt" Height="45" Width="100" Content="Регистрация" Margin="0, 15, 0, 0" Click="RegButt_Click"/>
 
