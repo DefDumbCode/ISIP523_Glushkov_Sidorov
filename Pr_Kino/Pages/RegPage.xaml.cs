@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,6 +21,7 @@ namespace Pr_Kino
     /// </summary>
     public partial class RegPage : Page
     {
+        public static List<User> users = Core.Context.User.ToList();
         public RegPage()
         {
             InitializeComponent();
@@ -33,6 +35,23 @@ namespace Pr_Kino
 
         private void EnterButt_Click(object sender, RoutedEventArgs e)
         {
+            if(users.FirstOrDefault(p => p.Login == LogRegName.Text) != null)
+            {
+                MessageBox.Show("Аккаунт с таким логином был уже создан");
+            }
+            else if(PassAgRegName.Text != PassRegName.Text)
+            {
+                MessageBox.Show("Пароли не совпадают!");
+            }
+            else
+            {
+                MainWindow.user = new User {
+                    Login = LogRegName.Text,
+                    Password = PassRegName.Text
+                };
+                MessageBox.Show("Регистрация прошла успешно!");
+                NavigationService.Navigate(new MainePage());
+            }
 
         }
     }

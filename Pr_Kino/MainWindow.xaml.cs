@@ -20,10 +20,12 @@ namespace Pr_Kino
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static User user = new User();
         public MainWindow()
         {
             InitializeComponent();
             MainFrame.NavigationService.Navigate(new MainePage());
+
         }
     }
 }
