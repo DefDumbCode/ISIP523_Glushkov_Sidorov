@@ -13,5 +13,7 @@ namespace Pr_Kino
     /// </summary>
     public partial class App : Application
     {
+        
     }
+
 }

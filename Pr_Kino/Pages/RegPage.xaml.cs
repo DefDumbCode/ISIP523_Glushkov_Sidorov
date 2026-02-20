@@ -24,5 +24,16 @@ namespace Pr_Kino
         {
             InitializeComponent();
         }
+
+        private void LogRegName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(LogRegName.Text) && !string.IsNullOrEmpty(PassRegName.Text) && !string.IsNullOrEmpty(PassAgRegName.Text))
+                EnterButt.IsEnabled = true;
+        }
+
+        private void EnterButt_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

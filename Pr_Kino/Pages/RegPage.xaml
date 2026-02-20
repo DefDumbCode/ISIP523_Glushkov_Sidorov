@@ -14,17 +14,17 @@
             <Label Content="Регистрация" FontSize="35" HorizontalAlignment="Center"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Label FontSize="25" Content="Логин:" Margin="10"/>
-                <TextBox x:Name="LogRegName" Width="250" Height="30"/>
+                <TextBox x:Name="LogRegName" Width="250" Height="30" TextChanged="LogRegName_TextChanged"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Label FontSize="25" Content="Пароль:" Margin="10"/>
-                <TextBox x:Name="PassRegName" Width="250" Height="30"/>
+                <TextBox x:Name="PassRegName" Width="250" Height="30" TextChanged="LogRegName_TextChanged"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Label FontSize="25" Content="Повтор пароля:" Margin="10"/>
-                <TextBox x:Name="PassAgRegName" Width="250" Height="30"/>
+                <TextBox x:Name="PassAgRegName" Width="250" Height="30" TextChanged="LogRegName_TextChanged"/>
             </StackPanel>
-            <Button x:Name="EnterButt" Height="45" Width="100" Content="Войти" Margin="0, 20, 0, 0"/>
+            <Button x:Name="EnterButt" Height="45" Width="100" Content="Войти" Margin="0, 20, 0, 0" IsEnabled="False" Click="EnterButt_Click"/>
 
         </StackPanel>
     </Grid>
