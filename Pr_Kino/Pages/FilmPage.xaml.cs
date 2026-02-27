@@ -29,5 +29,21 @@ namespace Pr_Kino
             this.film = _Film;
             SeansList.ItemsSource = Sessions.Where(s => s.ID_Film == _Film.ID).ToList(); ;
         }
+
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (NavigationService.CanGoBack)
+            {
+                NavigationService.GoBack();
+            }
+        }
+
+
+
+
+        private void SeansList_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new Pages.SessionPage(SeansList.SelectedItem as Session));
+        }
     }
 }

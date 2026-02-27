@@ -13,25 +13,30 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Pr_Kino
+namespace Pr_Kino.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AccPage.xaml
+    /// Логика взаимодействия для TicketPage.xaml
     /// </summary>
-    public partial class AccPage : Page
+    public partial class TicketPage : Page
     {
-        public AccPage()
+        public TicketPage(Seat seat)
         {
             InitializeComponent();
-            DataContext = MainWindow.user;
+            DataContext = seat;
         }
 
-        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
             if (NavigationService.CanGoBack)
             {
                 NavigationService.GoBack();
             }
+        }
+
+        private void BuyBTN_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

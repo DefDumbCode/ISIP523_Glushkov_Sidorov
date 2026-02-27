@@ -14,5 +14,8 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
+        <Button x:Name="BackBtn" Height="50" Width="100" 
+                VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="5" Content="Назад" FontSize="20" Click="BackBtn_Click"/>
+        <TextBlock Text="{Binding Login,StringFormat=Логин: {0}}" Margin="20,20,0,0" Height="50" VerticalAlignment="Top"/>
     </Grid>
 </Page>

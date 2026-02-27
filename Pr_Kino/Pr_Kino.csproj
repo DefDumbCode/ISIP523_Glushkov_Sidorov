@@ -93,6 +93,12 @@
     <Compile Include="Pages\RegPage.xaml.cs">
       <DependentUpon>RegPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\SessionPage.xaml.cs">
+      <DependentUpon>SessionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TicketPage.xaml.cs">
+      <DependentUpon>TicketPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Room.cs">
       <DependentUpon>Cinema.tt</DependentUpon>
     </Compile>
@@ -159,6 +165,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\RegPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SessionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TicketPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
