@@ -39,7 +39,8 @@ namespace Pr_Kino.Pages
 
         private void SeatList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            NavigationService.Navigate(new TicketPage(SeatList.SelectedItem as Seat));
+            Session_Seat selectedSeat = SeatList.SelectedItem as Session_Seat;
+            NavigationService.Navigate(new TicketPage(selectedSeat));
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Pr_Kino.Pages
     /// </summary>
     public partial class TicketPage : Page
     {
-        public TicketPage(Seat seat)
+        public TicketPage(Session_Seat seat)
         {
             InitializeComponent();
             DataContext = seat;

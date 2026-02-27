@@ -17,11 +17,11 @@
         <Button x:Name="BackBTN" Grid.Row="1" Width="100" Height="50" HorizontalAlignment="Left" Margin="15" Content="Назад" FontSize="25" Click="BackBTN_Click"/>
         <Button x:Name="BuyBTN" Grid.Row="1" Width="100" Height="50" HorizontalAlignment="Right" Margin="15" Content="Купить" FontSize="25" Click="BuyBTN_Click"/>
         <StackPanel Grid.Row="0" HorizontalAlignment="Left">
-            <Image Source="{Binding ImagePath}" Width="200" Height="250"></Image>
-            <TextBlock Text="{Binding Name}" Margin="20,0,0,0"/>
-            <TextBlock Text="{Binding Rating, StringFormat=Оценка: {0}}" Margin="20,0,0,0"/>
-            <TextBlock Text="{Binding Release_Date, StringFormat=Релиз: {0}}" Margin="20,0,0,0"/>
-            <TextBlock Text="{Binding Segregation.AgeRate, StringFormat=Рейтинг: }" Margin="20,0,0,0"/>
+            <Image Source="{Binding Session.Film.ImagePath}" Width="200" Height="250"></Image>
+            <TextBlock Text="{Binding Session.Film.Name}" Margin="20,0,0,0"/>
+            <TextBlock Text="{Binding Session.Film.Rating, StringFormat=Оценка: {0}}" Margin="20,0,0,0"/>
+            <TextBlock Text="{Binding Session.Film.Release_Date, StringFormat=Релиз: {0}}" Margin="20,0,0,0"/>
+            <TextBlock Text="{Binding Session.Film.Segregation.AgeRate, StringFormat=Рейтинг: }" Margin="20,0,0,0"/>
             <TextBlock Text="{Binding Description}" Margin="20, 0, 0, 0"/>
         </StackPanel>
     </Grid>
