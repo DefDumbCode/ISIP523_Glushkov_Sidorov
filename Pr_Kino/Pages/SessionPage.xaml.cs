@@ -21,12 +21,13 @@ namespace Pr_Kino.Pages
     public partial class SessionPage : Page
     {
         public static List<Seat> Seats = Core.Context.Seat.ToList();
-        public List<Session_Seat> SesSeats = Core.Context.Session_Seat.ToList();
+        public static List<Session_Seat> SesSeats = Core.Context.Session_Seat.ToList();
         public SessionPage(Session session)
         {
             InitializeComponent();
             SesSeats = SesSeats.Where(s => s.ID_Session == session.ID).ToList();
             SeatList.ItemsSource = SesSeats;
+            SesSeats = Core.Context.Session_Seat.ToList();
         }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)

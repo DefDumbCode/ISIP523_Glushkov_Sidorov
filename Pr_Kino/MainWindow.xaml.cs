@@ -24,6 +24,7 @@ namespace Pr_Kino
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
             MainFrame.NavigationService.Navigate(new MainePage());
 
         }

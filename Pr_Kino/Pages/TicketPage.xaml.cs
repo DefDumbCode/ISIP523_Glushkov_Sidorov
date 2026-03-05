@@ -40,6 +40,10 @@ namespace Pr_Kino.Pages
                     break;
             }
             PriceTB.Text += price.ToString();
+            if(Core.Context.Session_Seat.FirstOrDefault(c => c.ID == _Session_seat.ID).Taken == true)
+            {
+                BuyBTN.Visibility = Visibility.Hidden;
+            }
         }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)

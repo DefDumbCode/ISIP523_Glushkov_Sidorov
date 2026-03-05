@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Collections.Specialized.BitVector32;
 
 namespace Pr_Kino
 {
@@ -20,10 +21,13 @@ namespace Pr_Kino
     /// </summary>
     public partial class AccPage : Page
     {
+        public List<Ticket> Ticket = Core.Context.Ticket.ToList();
         public AccPage()
         {
             InitializeComponent();
             DataContext = MainWindow.user;
+            Ticket = Ticket.Where(s => s.ID_User == MainWindow.user.ID).ToList();
+            TicketList.ItemsSource = Ticket;
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
@@ -32,6 +36,12 @@ namespace Pr_Kino
             {
                 NavigationService.GoBack();
             }
+        }
+
+        private void TicketList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Ticket ticket = TicketList.SelectedItem as Ticket;
+            NavigationService.Navigate(new Pages.TicketPage(ticket.Session.Session_Seat.FirstOrDefault(s => s.ID_Session == ticket.ID_Session && s.ID_Seat == ticket.ID_Seat)));
         }
     }
 }

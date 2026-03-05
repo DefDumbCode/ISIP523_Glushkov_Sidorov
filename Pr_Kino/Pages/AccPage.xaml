@@ -17,5 +17,23 @@
         <Button x:Name="BackBtn" Height="50" Width="100" 
                 VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="5" Content="Назад" FontSize="20" Click="BackBtn_Click"/>
         <TextBlock Text="{Binding Login,StringFormat=Логин: {0}}" Margin="20,20,0,0" Height="50" VerticalAlignment="Top"/>
+        <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+          x:Name="TicketList" Grid.Column="1" MouseDoubleClick="TicketList_MouseDoubleClick">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Session.Film.Name}"/>
+                        <TextBlock Text="{Binding Session.Date}"/>
+                        <TextBlock Text="{Binding ID_Session}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Stretch">
+                    </WrapPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
     </Grid>
 </Page>
