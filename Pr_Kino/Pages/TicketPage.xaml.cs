@@ -20,10 +20,26 @@ namespace Pr_Kino.Pages
     /// </summary>
     public partial class TicketPage : Page
     {
+
+        public static Session_Seat _Session_seat;
+        public int price = 250;
         public TicketPage(Session_Seat seat)
         {
             InitializeComponent();
             DataContext = seat;
+            _Session_seat = seat;
+            switch (seat.Session.Room.Room_Rating.RoomQuality)
+            {
+                case "VIP":
+                    price *= 2;
+                    break;
+                case "Люкс":
+                    price *= 3; 
+                    break;
+                case "Обычный":
+                    break;
+            }
+            PriceTB.Text += price.ToString();
         }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
@@ -36,7 +52,19 @@ namespace Pr_Kino.Pages
 
         private void BuyBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            Ticket ticket = new Ticket
+            {
+                ID_User = MainWindow.user.ID,
+                ID_Seat = _Session_seat.ID_Seat,
+                ID_Session = _Session_seat.ID_Session,
+                Price = price
+            };
+            Core.Context.Ticket.Add(ticket);
+            Core.Context.Session_Seat.FirstOrDefault(c => c.ID == _Session_seat.ID).Taken = true;
+            Core.Context.SaveChanges();
+            MessageBox.Show("Покупка произведена!");
+            NavigationService.Navigate(new MainePage());
+            
         }
     }
 }

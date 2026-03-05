@@ -28,6 +28,7 @@
                 <TextBlock Text="{Binding Session.Film.Release_Date, StringFormat=Релиз: {0}}" Margin="15,0,0,0" FontSize="20"/>
                 <TextBlock Text="{Binding Session.Film.Segregation.AgeRate, StringFormat=Рейтинг: }" Margin="15,0,0,0" FontSize="20"/>
                 <TextBlock Text="{Binding Session.Film.Description}" Margin="15, 0, 0, 0" FontSize="20"/>
+                <TextBlock Text="Цена: " x:Name="PriceTB" FontSize="20" Margin="15, 0, 0, 0"/>
                 <TextBlock Text="{Binding Seat.Name, StringFormat=Место: {0}}" Margin="15,0,0,0" FontSize="50"/>
             </StackPanel>
         </Grid>
