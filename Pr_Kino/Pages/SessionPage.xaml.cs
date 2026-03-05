@@ -39,8 +39,15 @@ namespace Pr_Kino.Pages
 
         private void SeatList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Session_Seat selectedSeat = SeatList.SelectedItem as Session_Seat;
-            NavigationService.Navigate(new TicketPage(selectedSeat));
+            if(MainWindow.user == null)
+            {
+                MessageBox.Show("Для покупки билетов необходим аккаунт!");
+            }
+            else
+            {
+                Session_Seat selectedSeat = SeatList.SelectedItem as Session_Seat;
+                NavigationService.Navigate(new TicketPage(selectedSeat));
+            }
         }
     }
 }
