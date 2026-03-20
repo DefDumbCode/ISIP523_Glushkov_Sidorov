@@ -35,8 +35,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\..\ConsoleApp2\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\..\ConsoleApp2\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +63,101 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="assembly_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="basepart_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="boardformfactorcase_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="casesize_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="case_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="certificate_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cpu_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fandimension_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="formfactor_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gpuinterface_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gpu_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="hdd_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="igpu_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="manufacturer_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="memorytype_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model_PC_build.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="motherboard_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="partassembly_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="parttype_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="powersupply_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="processorcooler_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ram_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="socketprocessorcooler_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="socket_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ssd_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="storagedeviceinterface_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="storagedevicetype_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="storagedevice_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="videoconnectorgpu_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
+    <Compile Include="videoconnector_.cs">
+      <DependentUpon>Model_PC_build.tt</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -73,6 +176,16 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model_PC_build.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model_PC_build.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model_PC_build.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model_PC_build.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -93,6 +206,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Model_PC_build.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model_PC_build.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model_PC_build.edmx.diagram">
+      <DependentUpon>Model_PC_build.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -100,6 +221,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model_PC_build.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model_PC_build.Context.cs</LastGenOutput>
+      <DependentUpon>Model_PC_build.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model_PC_build.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model_PC_build.edmx</DependentUpon>
+      <LastGenOutput>Model_PC_build.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

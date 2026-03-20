@@ -24,7 +24,7 @@ namespace Pr_PC_Builder
         {
             InitializeComponent();
             MainFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
-            MainFrame.NavigationService.Navigate(new MainPage());
+            MainFrame.NavigationService.Navigate(new Pages.MainPage());
         }
     }
 }
