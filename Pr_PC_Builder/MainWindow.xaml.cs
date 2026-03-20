@@ -23,6 +23,8 @@ namespace Pr_PC_Builder
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+            MainFrame.NavigationService.Navigate(new MainPage());
         }
     }
 }
