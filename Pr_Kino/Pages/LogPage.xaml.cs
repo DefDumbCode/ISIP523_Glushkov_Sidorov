@@ -50,5 +50,14 @@ namespace Pr_Kino
             if (!string.IsNullOrEmpty(PassName.Text) && !string.IsNullOrEmpty(LogName.Text))
                 EnterButt.IsEnabled = true;
         }
+
+        private void BackBTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (NavigationService.CanGoBack) 
+            {
+                NavigationService.GoBack();
+            }
+        }
+
     }
 }

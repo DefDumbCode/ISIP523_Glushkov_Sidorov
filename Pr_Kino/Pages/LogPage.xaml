@@ -9,6 +9,7 @@
       Title="LogPage">
 
     <Grid Background="Beige">
+        <Button x:Name="BackBTN" Height="45" Width="100" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="15" Content="Назад" FontSize="20" Click="BackBTN_Click"/>
         <StackPanel HorizontalAlignment="Center">
             <Label Width="250" Content="Вход в аккаунт" FontSize="35" Margin="15" HorizontalContentAlignment="Center"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">

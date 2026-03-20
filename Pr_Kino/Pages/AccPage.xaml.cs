@@ -33,9 +33,8 @@ namespace Pr_Kino
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
             if (NavigationService.CanGoBack)
-            {
                 NavigationService.GoBack();
-            }
+            
         }
 
         private void TicketList_MouseDoubleClick(object sender, MouseButtonEventArgs e)

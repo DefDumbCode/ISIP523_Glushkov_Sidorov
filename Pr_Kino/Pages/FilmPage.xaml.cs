@@ -22,12 +22,21 @@ namespace Pr_Kino
     {
         public Film film { get; set; }
         public static List<Session> Sessions = Core.Context.Session.ToList();
+        public static List<Film_Genre> Fgenre = Core.Context.Film_Genre.ToList();
+        public static List<Genre> Genre = Core.Context.Genre.ToList();
+
         public FilmPage(Film _Film)
         {
             InitializeComponent();
             DataContext = _Film;
             this.film = _Film;
-            SeansList.ItemsSource = Sessions.Where(s => s.ID_Film == _Film.ID).ToList(); ;
+            SeansList.ItemsSource = Sessions.Where(s => s.ID_Film == _Film.ID).ToList();
+            List <Film_Genre> Fg = Fgenre.Where(c => c.ID_Film == film.ID).ToList();
+            foreach(Film_Genre f in Fg)
+            {
+                GenreTB.Text += Genre.FirstOrDefault(s => s.ID == f.ID_Genre).Name.ToString();
+                GenreTB.Text += " ";
+            }
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
