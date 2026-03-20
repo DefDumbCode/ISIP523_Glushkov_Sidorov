@@ -10,6 +10,25 @@
       Background="Salmon">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2.5*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListBox x:Name="UnitList" Grid.Column="0" Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" >
+                        <Image></Image>
+                        <StackPanel>
+                            <TextBlock Text="{Binding basepart.name}"></TextBlock>
+                            <TextBlock Text="{Binding name}"></TextBlock>
+                        </StackPanel>
+                        <TextBlock Text="{Binding basepart.price, StringFormat=Цена: {0}}"/>
+                        <Button x:Name="Butt1" Height="50" Width="50" Margin="15" Content="Добавить" Click="Butt1_Click"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Page>

@@ -20,9 +20,17 @@ namespace Pr_PC_Builder.Pages
     /// </summary>
     public partial class MainPage : Page
     {
+
         public MainPage()
         {
             InitializeComponent();
+
+            UnitList.ItemsSource = PC_var;
+        }
+
+        private void Butt1_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
