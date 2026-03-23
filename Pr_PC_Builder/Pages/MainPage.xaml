@@ -15,7 +15,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <ListBox x:Name="UnitList" Grid.Column="0" Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}">
+        <!--<ListBox x:Name="UnitList" Grid.Column="0" Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" >
@@ -29,6 +29,8 @@
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-        </ListBox>
+        </ListBox>-->
+        
+        
     </Grid>
 </Page>

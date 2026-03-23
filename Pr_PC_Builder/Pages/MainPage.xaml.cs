@@ -25,7 +25,7 @@ namespace Pr_PC_Builder.Pages
         {
             InitializeComponent();
 
-            UnitList.ItemsSource = PC_var;
+            //UnitList.ItemsSource = PC_var;
         }
 
         private void Butt1_Click(object sender, RoutedEventArgs e)
