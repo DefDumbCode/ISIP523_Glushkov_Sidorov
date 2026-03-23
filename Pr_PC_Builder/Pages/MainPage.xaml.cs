@@ -24,8 +24,8 @@ namespace Pr_PC_Builder.Pages
         public MainPage()
         {
             InitializeComponent();
-
-            //UnitList.ItemsSource = PC_var;
+            Assemble ass = new Assemble();
+            UnitList.ItemsSource = PC_var;
         }
 
         private void Butt1_Click(object sender, RoutedEventArgs e)
