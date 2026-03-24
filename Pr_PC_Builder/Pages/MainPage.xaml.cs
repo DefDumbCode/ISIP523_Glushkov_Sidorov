@@ -26,6 +26,13 @@ namespace Pr_PC_Builder.Pages
             InitializeComponent();
             Assemble ass = new Assemble();
             UnitList.ItemsSource = ass.partlist;
+            //basepart_ baza = new basepart_{ id = 101, name = "AAAA",
+            //manufacturerid = 1,
+            //price = 200,
+            //parttypeid = 2,
+            //image = ""};
+            //basepart_ smth = 
+            //MessageBox.Show(baza.parttype_.name);
         }
 
         private void Butt1_Click(object sender, RoutedEventArgs e)

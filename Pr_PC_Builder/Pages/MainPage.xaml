@@ -10,6 +10,7 @@
       Background="Salmon">
 
     <Grid>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2.5*"/>
             <ColumnDefinition Width="*"/>
@@ -22,9 +23,9 @@
                         <Image Source="{Binding image}" Width="70"></Image>
                         <StackPanel>
                             <TextBlock Text="{Binding name}" Margin="15, 0, 15, 0"></TextBlock>
-                            <TextBlock Text="{}" Margin="15, 0, 15, 0"></TextBlock>
+                            <TextBlock Text="{Binding }" Margin="15, 0, 15, 0" ></TextBlock>
                         </StackPanel>
-                        <TextBlock Text="{Binding price}" Margin="15, 0, 0, 0"/>
+                        <TextBlock Text="{Binding price, StringFormat=Цена: {0}}" Margin="15, 0, 0, 0"/>
                         <Button x:Name="Butt1" Height="50" Width="80" Margin="15" Content="Добавить" Click="Butt1_Click"/>
                     </StackPanel>
                 </DataTemplate>
