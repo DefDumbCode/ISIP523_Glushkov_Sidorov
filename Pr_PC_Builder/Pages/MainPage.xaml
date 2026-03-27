@@ -16,17 +16,26 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <ListBox x:Name="UnitList" Grid.Column="0" Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <!--<Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            
+        </Grid>-->
+
+        <ListBox x:Name="UnitList" Grid.Column="0" Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" >
                         <Image Source="{Binding image}" Width="70"></Image>
                         <StackPanel>
                             <TextBlock Text="{Binding name}" Margin="15, 0, 15, 0"></TextBlock>
-                            <TextBlock Text="{Binding }" Margin="15, 0, 15, 0" ></TextBlock>
+                            <TextBlock Text="{Binding Typename}" Margin="15, 0, 15, 0" ></TextBlock>
                         </StackPanel>
                         <TextBlock Text="{Binding price, StringFormat=Цена: {0}}" Margin="15, 0, 0, 0"/>
-                        <Button x:Name="Butt1" Height="50" Width="80" Margin="15" Content="Добавить" Click="Butt1_Click"/>
+                        <Button x:Name="Butt1" Height="50" Width="80" Margin="120, 0, 0, 0" Content="Удалить" Click="Butt1_Click"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

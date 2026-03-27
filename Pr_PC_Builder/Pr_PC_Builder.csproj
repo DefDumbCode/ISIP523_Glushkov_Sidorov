@@ -82,6 +82,7 @@
     <Compile Include="certificate_.cs">
       <DependentUpon>Model_PC_build.tt</DependentUpon>
     </Compile>
+    <Compile Include="Core.cs" />
     <Compile Include="cpu_.cs">
       <DependentUpon>Model_PC_build.tt</DependentUpon>
     </Compile>
@@ -153,6 +154,7 @@
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>Model_PC_build.tt</DependentUpon>
     </Compile>
+    <Compile Include="TypePart.cs" />
     <Compile Include="videoconnectorgpu_.cs">
       <DependentUpon>Model_PC_build.tt</DependentUpon>
     </Compile>

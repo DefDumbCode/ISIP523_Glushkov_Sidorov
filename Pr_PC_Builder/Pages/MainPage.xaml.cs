@@ -21,6 +21,7 @@ namespace Pr_PC_Builder.Pages
     public partial class MainPage : Page
     {
 
+        public List<parttype_> Types = Core.Context.parttype_.ToList();
         public MainPage()
         {
             InitializeComponent();
