@@ -130,6 +130,7 @@
     <Compile Include="powersupply_.cs">
       <DependentUpon>Model_PC_build.tt</DependentUpon>
     </Compile>
+    <Compile Include="Preview.cs" />
     <Compile Include="processorcooler_.cs">
       <DependentUpon>Model_PC_build.tt</DependentUpon>
     </Compile>

@@ -10,6 +10,23 @@
       Background="Salmon">
 
     <Grid>
-        <Button x:Name="BackBtn" Width="100" Height="75" Content="Назад" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="15" Click="BackBtn_Click"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListBox Grid.Column="1" x:Name="TypeList" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding image}" Width="70"></Image>
+                        <TextBlock Text="{Binding preview}" Margin="15, 0, 0, 0"/>
+
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+            <Button x:Name="BackBtn" Width="100" Height="75" Content="Назад" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="15" Click="BackBtn_Click"/>
     </Grid>
 </Page>

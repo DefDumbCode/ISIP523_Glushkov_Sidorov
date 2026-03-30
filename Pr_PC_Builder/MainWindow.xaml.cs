@@ -20,6 +20,7 @@ namespace Pr_PC_Builder
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static Assemble ass = new Assemble();
         public MainWindow()
         {
             InitializeComponent();

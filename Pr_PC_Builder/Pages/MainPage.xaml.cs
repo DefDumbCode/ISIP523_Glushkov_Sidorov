@@ -22,11 +22,11 @@ namespace Pr_PC_Builder.Pages
     {
 
         public List<parttype_> Types = Core.Context.parttype_.ToList();
-        public Assemble ass = new Assemble();
+        
         public MainPage()
         {
             InitializeComponent();
-            UnitList.ItemsSource = ass.partlist;
+            UnitList.ItemsSource = MainWindow.ass.partlist;
             //basepart_ baza = new basepart_{ id = 101, name = "AAAA",
             //manufacturerid = 1,
             //price = 200,
@@ -37,8 +37,10 @@ namespace Pr_PC_Builder.Pages
         }
         private void Change_Click(object sender, RoutedEventArgs e)
         {
-            parttype_ pt = UnitList.SelectedItem as parttype_;
-            NavigationService.Navigate(new PartPage(pt, ass.partlist));
+            Button btn = (Button)sender;
+            basepart_ selectedPart = btn.DataContext as basepart_;
+            parttype_ pt = Types.FirstOrDefault(type => type.id == selectedPart.parttypeid);
+            NavigationService.Navigate(new PartPage(pt));
         }
     }
 }

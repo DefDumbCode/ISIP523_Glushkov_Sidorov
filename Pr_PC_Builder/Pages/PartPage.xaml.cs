@@ -20,9 +20,12 @@ namespace Pr_PC_Builder.Pages
     /// </summary>
     public partial class PartPage : Page
     {
-        public PartPage(parttype_ idd, List<basepart_> beb)
+        public List <basepart_> allparts = Core.Context.basepart_.ToList ();
+        public PartPage(parttype_ prt)
         {
             InitializeComponent();
+            TypeList.ItemsSource = allparts.Where(c => c.parttypeid == prt.id).ToList();
+
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
