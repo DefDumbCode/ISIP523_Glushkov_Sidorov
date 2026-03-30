@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace Pr_PC_Builder
 {
-    internal class Assemble
+    public class Assemble
     {
         public List<basepart_> partlist = new List<basepart_> 
         {

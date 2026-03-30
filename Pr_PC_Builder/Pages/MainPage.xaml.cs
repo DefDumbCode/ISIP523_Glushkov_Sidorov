@@ -22,10 +22,10 @@ namespace Pr_PC_Builder.Pages
     {
 
         public List<parttype_> Types = Core.Context.parttype_.ToList();
+        public Assemble ass = new Assemble();
         public MainPage()
         {
             InitializeComponent();
-            Assemble ass = new Assemble();
             UnitList.ItemsSource = ass.partlist;
             //basepart_ baza = new basepart_{ id = 101, name = "AAAA",
             //manufacturerid = 1,
@@ -35,10 +35,10 @@ namespace Pr_PC_Builder.Pages
             //basepart_ smth = 
             //MessageBox.Show(baza.parttype_.name);
         }
-
-        private void Butt1_Click(object sender, RoutedEventArgs e)
+        private void Change_Click(object sender, RoutedEventArgs e)
         {
-
+            parttype_ pt = UnitList.SelectedItem as parttype_;
+            NavigationService.Navigate(new PartPage(pt, ass.partlist));
         }
     }
 }

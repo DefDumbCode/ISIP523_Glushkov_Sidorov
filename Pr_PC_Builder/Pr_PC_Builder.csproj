@@ -118,6 +118,9 @@
     <Compile Include="motherboard_.cs">
       <DependentUpon>Model_PC_build.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PartPage.xaml.cs">
+      <DependentUpon>PartPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="partassembly_.cs">
       <DependentUpon>Model_PC_build.tt</DependentUpon>
     </Compile>
@@ -174,6 +177,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PartPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

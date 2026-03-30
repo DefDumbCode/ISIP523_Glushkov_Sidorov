@@ -35,7 +35,7 @@
                             <TextBlock Text="{Binding Typename}" Margin="15, 0, 15, 0" ></TextBlock>
                         </StackPanel>
                         <TextBlock Text="{Binding price, StringFormat=Цена: {0}}" Margin="15, 0, 0, 0"/>
-                        <Button x:Name="Butt1" Height="50" Width="80" Margin="120, 0, 0, 0" Content="Удалить" Click="Butt1_Click"/>
+                        <Button x:Name="Butt1" Height="50" Width="80" Margin="120, 0, 0, 0" Content="Добавить" Click="Change_Click"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
