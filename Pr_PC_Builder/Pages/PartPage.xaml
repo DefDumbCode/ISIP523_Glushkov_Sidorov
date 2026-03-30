@@ -15,7 +15,7 @@
             <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
 
-        <ListBox Grid.Column="1" x:Name="TypeList" d:ItemsSource="{d:SampleData ItemCount=5}">
+        <ListBox Grid.Column="1" x:Name="TypeList" d:ItemsSource="{d:SampleData ItemCount=5}" MouseDoubleClick="TypeList_MouseDoubleClick">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
