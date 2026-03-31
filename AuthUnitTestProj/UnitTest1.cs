@@ -12,7 +12,7 @@ namespace AuthUnitTestProj
         public void AuthTest()
         {
             var page = new LogPage();
-            Assert.IsTrue(page.Auth("test", "test"));
+            Assert.IsTrue(page.Auth("bebe", "baba"));
             Assert.IsFalse(page.Auth("user1", "12345"));
             Assert.IsFalse(page.Auth("", ""));
             Assert.IsFalse(page.Auth(" ", " "));

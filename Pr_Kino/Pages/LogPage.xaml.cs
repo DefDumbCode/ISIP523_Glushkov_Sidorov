@@ -55,11 +55,11 @@ namespace Pr_Kino
 
         public bool Auth(string login, string password)
         {
-            if (!string.IsNullOrEmpty(PassName.Text) && !string.IsNullOrEmpty(LogName.Text))
+            if (!string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(login))
             {
-                if (users.FirstOrDefault(p => p.Login == LogName.Text && p.Password == PassName.Text) != null)
+                if (users.FirstOrDefault(p => p.Login == login && p.Password == password) != null)
                 {
-                    MainWindow.user = users.FirstOrDefault(p => p.Login == LogName.Text && p.Password == PassName.Text);
+                    MainWindow.user = users.FirstOrDefault(p => p.Login == login && p.Password == password);
                     MessageBox.Show("Вход прошёл успешно!");
                     return true;
                 }
