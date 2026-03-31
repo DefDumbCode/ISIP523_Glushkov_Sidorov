@@ -17,5 +17,28 @@ namespace AuthUnitTestProj
             Assert.IsFalse(page.Auth("", ""));
             Assert.IsFalse(page.Auth(" ", " "));
         }
+
+        [TestMethod]
+        public void AuthTestSuccess()
+        {
+            var page = new LogPage();
+            Assert.IsTrue(page.Auth("bebe", "baba"));
+            Assert.IsTrue(page.Auth("pepe", "shn"));
+            Assert.IsTrue(page.Auth("GOREdov", "1467"));
+            Assert.IsTrue(page.Auth("user", "12435"));
+            Assert.IsTrue(page.Auth("Yli@gmai.com", "GwffgE"));
+            Assert.IsTrue(page.Auth("Vladlena@gmai.com", "yntiRS"));
+        }
+
+        [TestMethod]
+        public void AuthTestFail()
+        {
+            var page = new LogPage();
+            Assert.IsFalse(page.Auth("", ""));
+            Assert.IsFalse(page.Auth("Yli@gmai.com", "12345"));
+            Assert.IsFalse(page.Auth("1234@gail.com", "GwffgE"));
+            Assert.IsFalse(page.Auth("Yli@gmai.com", "YNTIRS"));
+            Assert.IsFalse(page.Auth("' OR 1=1 –", "Vladlena@gmai.com'; DROP TABLE users;--"));
+        }
     }
 }
