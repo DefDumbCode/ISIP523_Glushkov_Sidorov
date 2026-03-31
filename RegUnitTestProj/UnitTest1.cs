@@ -20,7 +20,7 @@ namespace RegUnitTestProj
 
 
         /// <summary>
-        /// Проверяет работу позитивных сценариев метода регистрации
+        /// Проверяет работу негативных сценариев метода регистрации
         /// </summary>
         [TestMethod]
         public void RegFail()
