@@ -33,15 +33,9 @@ namespace Pr_Kino
 
         private void EnterButt_Click(object sender, RoutedEventArgs e)
         {
-            if (users.FirstOrDefault(p => p.Login == LogName.Text && p.Password == PassName.Text) != null)
+            if(Auth(LogName.Text, PassName.Text))
             {
-                MainWindow.user = users.FirstOrDefault(p => p.Login == LogName.Text && p.Password == PassName.Text);
-                MessageBox.Show("Вход прошёл успешно!");
                 NavigationService.Navigate(new MainePage());
-            }
-            else
-            {
-                MessageBox.Show("Неправильный логин или пароль!");
             }
         }
 
@@ -56,6 +50,29 @@ namespace Pr_Kino
             if (NavigationService.CanGoBack) 
             {
                 NavigationService.GoBack();
+            }
+        }
+
+        public bool Auth(string login, string password)
+        {
+            if (!string.IsNullOrEmpty(PassName.Text) && !string.IsNullOrEmpty(LogName.Text))
+            {
+                if (users.FirstOrDefault(p => p.Login == LogName.Text && p.Password == PassName.Text) != null)
+                {
+                    MainWindow.user = users.FirstOrDefault(p => p.Login == LogName.Text && p.Password == PassName.Text);
+                    MessageBox.Show("Вход прошёл успешно!");
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Неправильный логин или пароль!");
+                    return false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Неправильный логин или пароль!");
+                return false;
             }
         }
 
