@@ -35,26 +35,47 @@ namespace Pr_Kino
 
         private void EnterButt_Click(object sender, RoutedEventArgs e)
         {
-            if(users.FirstOrDefault(p => p.Login == LogRegName.Text) != null)
+            if (Registration(LogRegName.Text, PassRegName.Text, PassAgRegName.Text))
             {
-                MessageBox.Show("Аккаунт с таким логином был уже создан");
-            }
-            else if(PassAgRegName.Text != PassRegName.Text)
-            {
-                MessageBox.Show("Пароли не совпадают!");
-            }
-            else
-            {
-                MainWindow.user = new User {
+                MainWindow.user = new User
+                {
                     Login = LogRegName.Text,
                     Password = PassRegName.Text
                 };
-                MessageBox.Show("Регистрация прошла успешно!");
                 Core.Context.User.Add(MainWindow.user);
                 Core.Context.SaveChanges();
                 NavigationService.Navigate(new MainePage());
             }
+        }
 
+        public bool Registration(string login, string password, string password2)
+        {
+            if (users.FirstOrDefault(p => p.Login == login) != null)
+            {
+                MessageBox.Show("Аккаунт с таким логином был уже создан");
+                return false;
+            }
+
+            if (password2 != password)
+            {
+                MessageBox.Show("Пароли не совпадают!");
+                return false;
+            }
+
+            if (login.IndexOf("@") == -1 || login.IndexOf(".") == -1 || login.IndexOf(".") < login.IndexOf("@"))
+            {
+                MessageBox.Show("Неверный формат логина!");
+                return false;
+            }
+
+            if (password.Length < 8 || password.Length > 255)
+            {
+                MessageBox.Show("Длина пароля должна быть минимум 8 символов, максимум - 255!");
+                return false;
+            }
+            
+            MessageBox.Show("Регистрация прошла успешно!");
+            return true;
         }
     }
 }
