@@ -53,6 +53,12 @@ namespace Pr_Kino
             }
         }
 
+        /// <summary>
+        /// Метод проверяет правильность заполнения полей регистрации
+        /// </summary>
+        /// <param name="login">Логин пользователя</param>
+        /// <param name="password">Пароль пользователя</param>
+        /// <returns></returns>
         public bool Auth(string login, string password)
         {
             if (!string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(login))

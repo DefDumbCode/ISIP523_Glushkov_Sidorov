@@ -8,6 +8,9 @@ namespace RegUnitTestProj
     [TestClass]
     public class UnitTest1
     {
+        /// <summary>
+        /// Проверяет работу позитивных сценариев метода регистрации
+        /// </summary>
         [TestMethod]
         public void RegSuccess()
         {
@@ -15,6 +18,10 @@ namespace RegUnitTestProj
             Assert.IsTrue(page.Registration("Vasilisa@gmai.com", "d7iKKV56", "d7iKKV56"));
         }
 
+
+        /// <summary>
+        /// Проверяет работу позитивных сценариев метода регистрации
+        /// </summary>
         [TestMethod]
         public void RegFail()
         {

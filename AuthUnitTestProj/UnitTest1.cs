@@ -8,6 +8,9 @@ namespace AuthUnitTestProj
     [TestClass]
     public class UnitTest1
     {
+        /// <summary>
+        /// Проверяет общую работу метода авторизации
+        /// </summary>
         [TestMethod]
         public void AuthTest()
         {
@@ -18,6 +21,9 @@ namespace AuthUnitTestProj
             Assert.IsFalse(page.Auth(" ", " "));
         }
 
+        /// <summary>
+        /// Проверяет работу позитивных сценариев метода авторизации
+        /// </summary>
         [TestMethod]
         public void AuthTestSuccess()
         {
@@ -30,6 +36,9 @@ namespace AuthUnitTestProj
             Assert.IsTrue(page.Auth("Vladlena@gmai.com", "yntiRS"));
         }
 
+        /// <summary>
+        /// Проверяет работу негативных сценариев метода авторизации
+        /// </summary>
         [TestMethod]
         public void AuthTestFail()
         {
